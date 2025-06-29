@@ -509,57 +509,6 @@
       box-shadow: 0 4px 12px rgba(114, 9, 183, 0.3);
     }
 
-    /* Image Gallery Styles */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .gallery-item {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      background: #f8f9fa;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .gallery-image {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .gallery-content {
-      padding: 1.5rem;
-    }
-
-    .gallery-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #7209b7;
-      margin-bottom: 0.5rem;
-    }
-
-    .gallery-description {
-      color: #555;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
     /* Interactive Demo Styles */
     .demo-container {
       margin-top: 1.5rem;
@@ -656,6 +605,300 @@
       overflow-y: auto;
     }
 
+    /* Live Chat Widget Styles */
+    .chat-widget {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 1000;
+      font-family: inherit;
+    }
+
+    .chat-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(114, 9, 183, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(114, 9, 183, 0.4);
+    }
+
+    .chat-button.active {
+      background: linear-gradient(135deg, #5a067a, #7209b7);
+    }
+
+    .chat-window {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid #e9ecef;
+    }
+
+    .chat-window.active {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chat-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .chat-user-info h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .chat-status {
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.2rem;
+      border-radius: 3px;
+      transition: background 0.2s ease;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .chat-message {
+      display: flex;
+      flex-direction: column;
+      max-width: 80%;
+    }
+
+    .chat-message.user {
+      align-self: flex-end;
+    }
+
+    .chat-message.bot {
+      align-self: flex-start;
+    }
+
+    .message-bubble {
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .chat-message.user .message-bubble {
+      background: #7209b7;
+      color: white;
+      border-bottom-right-radius: 5px;
+    }
+
+    .chat-message.bot .message-bubble {
+      background: white;
+      color: #333;
+      border: 1px solid #e9ecef;
+      border-bottom-left-radius: 5px;
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #666;
+      margin-top: 0.3rem;
+      padding: 0 0.5rem;
+    }
+
+    .chat-message.user .message-time {
+      text-align: right;
+    }
+
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1rem;
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 18px;
+      border-bottom-left-radius: 5px;
+      max-width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    .typing-indicator.active {
+      display: flex;
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7209b7;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes typingAnimation {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .chat-input-container {
+      padding: 1rem;
+      background: white;
+      border-top: 1px solid #e9ecef;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      resize: none;
+      max-height: 100px;
+      min-height: 20px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .chat-input:focus {
+      border-color: #7209b7;
+    }
+
+    .chat-send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #7209b7;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .chat-send:hover {
+      background: #5a067a;
+      transform: scale(1.05);
+    }
+
+    .chat-send:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .quick-responses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .quick-response {
+      background: #e9ecef;
+      color: #7209b7;
+      border: 1px solid #7209b7;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quick-response:hover {
+      background: #7209b7;
+      color: white;
+    }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
@@ -710,11 +953,6 @@
         margin-bottom: 0.3rem;
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
       .demo-tabs {
         flex-direction: column;
       }
@@ -729,6 +967,18 @@
 
       .contact-form {
         padding: 1.5rem;
+      }
+
+      .chat-window {
+        width: calc(100vw - 30px);
+        height: 400px;
+        right: -10px;
+      }
+
+      .chat-button {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
       }
     }
 
@@ -797,6 +1047,12 @@
       .hobby-title {
         font-size: 1.2rem;
       }
+
+      .chat-window {
+        width: calc(100vw - 20px);
+        right: -15px;
+        height: 350px;
+      }
     }
   </style>
 </head>
@@ -813,7 +1069,6 @@
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#gallery">Gallery</a>
     <a href="#demos">Demos</a>
     <a href="#publications">Publications</a>
     <a href="#talks">Talks</a>
@@ -1095,72 +1350,6 @@
       <span class="tech-tag">Computer Vision</span>
       <span class="tech-tag">Image Processing</span>
       <span class="tech-tag">Quality Assessment</span>
-    </div>
-  </div>
-</section>
-
-<section id="gallery">
-  <h2>Project Gallery</h2>
-  <p>Visual showcase of my projects and research work</p>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <div class="gallery-image">
-        📊 Data Visualization
-      </div>
-      <div class="gallery-content">
-        <div class="gallery-title">AI Model Performance Dashboard</div>
-        <div class="gallery-description">Interactive dashboard showing real-time performance metrics of deployed machine learning models across different healthcare applications.</div>
-      </div>
-    </div>
-    
-    <div class="gallery-item">
-      <div class="gallery-image">
-        🫁 Medical Imaging
-      </div>
-      <div class="gallery-content">
-        <div class="gallery-title">Chest Ultrasound Analysis</div>
-        <div class="gallery-description">Deep learning model detecting pneumonia indicators in chest ultrasound images with 94% accuracy for clinical deployment.</div>
-      </div>
-    </div>
-    
-    <div class="gallery-item">
-      <div class="gallery-image">
-        🎵 Audio Analysis
-      </div>
-      <div class="gallery-content">
-        <div class="gallery-title">Cough Audio Classification</div>
-        <div class="gallery-description">MFCC feature extraction and LSTM-based classification system for tuberculosis detection from audio recordings.</div>
-      </div>
-    </div>
-    
-    <div class="gallery-item">
-      <div class="gallery-image">
-        🤖 Model Architecture
-      </div>
-      <div class="gallery-content">
-        <div class="gallery-title">MAMBA State-Space Model</div>
-        <div class="gallery-description">Implementation of efficient transformer alternative with linear complexity for long sequence processing tasks.</div>
-      </div>
-    </div>
-    
-    <div class="gallery-item">
-      <div class="gallery-image">
-        📈 Financial Analytics
-      </div>
-      <div class="gallery-content">
-        <div class="gallery-title">Stock Prediction Interface</div>
-        <div class="gallery-description">LLM-powered financial analysis tool combining news sentiment and market trends for investment insights.</div>
-      </div>
-    </div>
-    
-    <div class="gallery-item">
-      <div class="gallery-image">
-        🔍 Computer Vision
-      </div>
-      <div class="gallery-content">
-        <div class="gallery-title">Image Quality Assessment</div>
-        <div class="gallery-description">Combined YOLO and DINOv2 system for automated image quality filtering and content assessment.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1498,6 +1687,62 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
   ↑
 </button>
 
+<!-- Live Chat Widget -->
+<div class="chat-widget">
+  <button class="chat-button" id="chatButton" onclick="toggleChat()">
+    💬
+  </button>
+  
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">👨‍💻</div>
+        <div class="chat-user-info">
+          <h4>Sourabh Kulhare</h4>
+          <p class="chat-status" id="chatStatus">Online</p>
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-message bot">
+        <div class="message-bubble">
+          Hi! 👋 I'm Sourabh. Thanks for visiting my profile! How can I help you today?
+        </div>
+        <div class="message-time">Just now</div>
+      </div>
+      
+      <div class="quick-responses" id="quickResponses">
+        <button class="quick-response" onclick="sendQuickResponse('Tell me about your experience')">Your Experience</button>
+        <button class="quick-response" onclick="sendQuickResponse('What projects are you working on?')">Current Projects</button>
+        <button class="quick-response" onclick="sendQuickResponse('Are you available for collaboration?')">Collaboration</button>
+        <button class="quick-response" onclick="sendQuickResponse('How can I contact you?')">Contact Info</button>
+      </div>
+    </div>
+    
+    <div class="typing-indicator" id="typingIndicator">
+      <div class="typing-dots">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+      <span style="font-size: 0.8rem; color: #666;">Sourabh is typing...</span>
+    </div>
+    
+    <div class="chat-input-container">
+      <textarea 
+        class="chat-input" 
+        id="chatInput" 
+        placeholder="Type your message..."
+        rows="1"
+        onkeypress="handleChatKeyPress(event)"
+        oninput="adjustTextareaHeight(this)"></textarea>
+      <button class="chat-send" id="chatSend" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+</div>
+
 <script>
   // Back to top button functionality
   window.addEventListener('scroll', function() {
@@ -1707,6 +1952,166 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     document.getElementById('progress-fill').style.width = '0%';
     document.getElementById('data-output').textContent = 'Data processor ready...\nPipeline: Data cleaning → Feature extraction → Model training → Validation';
   }
+
+  // Live Chat Widget Functionality
+  let chatOpen = false;
+  let messageCount = 0;
+
+  function toggleChat() {
+    const chatWindow = document.getElementById('chatWindow');
+    const chatButton = document.getElementById('chatButton');
+    
+    chatOpen = !chatOpen;
+    
+    if (chatOpen) {
+      chatWindow.classList.add('active');
+      chatButton.classList.add('active');
+      chatButton.innerHTML = '×';
+      // Auto-focus on input when chat opens
+      setTimeout(() => {
+        document.getElementById('chatInput').focus();
+      }, 300);
+    } else {
+      chatWindow.classList.remove('active');
+      chatButton.classList.remove('active');
+      chatButton.innerHTML = '💬';
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message
+    addMessage(message, 'user');
+    input.value = '';
+    adjustTextareaHeight(input);
+    
+    // Hide quick responses after first message
+    if (messageCount === 1) {
+      document.getElementById('quickResponses').style.display = 'none';
+    }
+    
+    // Show typing indicator and simulate response
+    showTypingIndicator();
+    setTimeout(() => {
+      hideTypingIndicator();
+      generateBotResponse(message);
+    }, 1500 + Math.random() * 1000);
+  }
+
+  function sendQuickResponse(message) {
+    addMessage(message, 'user');
+    document.getElementById('quickResponses').style.display = 'none';
+    
+    showTypingIndicator();
+    setTimeout(() => {
+      hideTypingIndicator();
+      generateBotResponse(message);
+    }, 1000);
+  }
+
+  function addMessage(text, sender) {
+    const messagesContainer = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender}`;
+    
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    
+    messageDiv.innerHTML = `
+      <div class="message-bubble">${text}</div>
+      <div class="message-time">${timeString}</div>
+    `;
+    
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    messageCount++;
+  }
+
+  function showTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    const messagesContainer = document.getElementById('chatMessages');
+    indicator.classList.add('active');
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function hideTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    indicator.classList.remove('active');
+  }
+
+  function generateBotResponse(userMessage) {
+    const responses = {
+      'experience': [
+        "I have 8+ years of experience in AI/ML, working on everything from computer vision to LLMs. Currently, I'm a Machine Learning Research Engineer at Global Health Labs focusing on healthcare AI solutions.",
+        "My experience spans deep learning research, edge deployment, and building FDA-submittable medical AI technology. I've published at top conferences like CVPR and MICCAI."
+      ],
+      'projects': [
+        "I'm currently working on several exciting projects including MAMBA state-space models, self-supervised vision models, and healthcare AI applications. Check out the Projects section above for detailed information!",
+        "Right now I'm focused on pneumonia detection from chest ultrasounds, TB prediction from cough audio, and efficient transformer alternatives. The Gallery section shows some visual examples of my work."
+      ],
+      'collaboration': [
+        "Absolutely! I'm always interested in collaborating on innovative AI projects, especially in healthcare, computer vision, and NLP. Feel free to reach out through the contact form or email me directly.",
+        "Yes, I'm open to collaborations, consulting, and research partnerships. I particularly enjoy working on real-world applications of AI that can make a meaningful impact."
+      ],
+      'contact': [
+        "You can reach me at sourabh.kulhare06@gmail.com or connect with me on LinkedIn. I'm based in Seattle and usually respond within 24 hours.",
+        "The best way to contact me is through email: sourabh.kulhare06@gmail.com. You can also use the contact form on this page or find me on LinkedIn and GitHub."
+      ],
+      'default': [
+        "That's a great question! Could you be more specific about what you'd like to know? I'm happy to discuss my research, experience, or potential collaborations.",
+        "Thanks for your interest! Feel free to ask me about my AI/ML experience, current projects, or how we might work together.",
+        "I'd love to help! You can ask me about my technical background, research publications, or anything else you'd like to know.",
+        "Interesting! Let me know what specific aspect you'd like to explore - whether it's my technical work, research focus, or career journey."
+      ]
+    };
+
+    let responseCategory = 'default';
+    const lowerMessage = userMessage.toLowerCase();
+
+    if (lowerMessage.includes('experience') || lowerMessage.includes('background') || lowerMessage.includes('work')) {
+      responseCategory = 'experience';
+    } else if (lowerMessage.includes('project') || lowerMessage.includes('research') || lowerMessage.includes('work on')) {
+      responseCategory = 'projects';
+    } else if (lowerMessage.includes('collaborat') || lowerMessage.includes('available') || lowerMessage.includes('hire') || lowerMessage.includes('work together')) {
+      responseCategory = 'collaboration';
+    } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('email') || lowerMessage.includes('connect')) {
+      responseCategory = 'contact';
+    }
+
+    const categoryResponses = responses[responseCategory];
+    const randomResponse = categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
+    
+    addMessage(randomResponse, 'bot');
+  }
+
+  function handleChatKeyPress(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function adjustTextareaHeight(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, 100) + 'px';
+  }
+
+  // Initialize chat status
+  document.addEventListener('DOMContentLoaded', function() {
+    // Simulate online status
+    const statusElement = document.getElementById('chatStatus');
+    const statuses = ['Online', 'Usually responds in a few hours', 'Available for collaboration'];
+    let statusIndex = 0;
+    
+    setInterval(() => {
+      statusIndex = (statusIndex + 1) % statuses.length;
+      statusElement.textContent = statuses[statusIndex];
+    }, 5000);
+  });
 </script>
 
 </body>
