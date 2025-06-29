@@ -613,6 +613,86 @@
       background: #f0f0f0;
     }
 
+    /* Vision Foundation Model Styles */
+    .vision-upload-area:hover {
+      border-color: #5a067a !important;
+      background: #f0f8ff !important;
+      transform: translateY(-2px);
+    }
+
+    .vision-tab {
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .vision-tab:hover {
+      background: #7209b7 !important;
+      color: white !important;
+      transform: translateY(-1px);
+    }
+
+    .vision-tab-content {
+      animation: fadeIn 0.3s ease;
+    }
+
+    #neighborsGrid > div:hover {
+      transform: scale(1.1) !important;
+      box-shadow: 0 4px 12px rgba(114, 9, 183, 0.3);
+    }
+
+    #embeddingCanvas, #attentionCanvas {
+      transition: all 0.3s ease;
+      cursor: crosshair;
+    }
+
+    #embeddingCanvas:hover, #attentionCanvas:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .vision-upload-container {
+      animation: slideInUp 0.5s ease;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive design for vision demo */
+    @media (max-width: 768px) {
+      .vision-upload-container {
+        flex-direction: column !important;
+        align-items: center;
+      }
+      
+      .vision-upload-area {
+        width: 100% !important;
+        max-width: 250px !important;
+        height: 120px !important;
+      }
+      
+      #visionResults {
+        min-width: auto !important;
+        width: 100%;
+      }
+      
+      .vision-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .vision-tab {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.8rem !important;
+      }
+    }
+
     .audio-upload-area {
       transition: all 0.3s ease;
     }
@@ -1137,251 +1217,1800 @@
       background: #f0f0f0;
     }
 
-    .image-upload-area.drag-over {
-      background: rgba(114, 9, 183, 0.1);
+    /* Vision Foundation Model Styles */
+    .vision-upload-area:hover {
+      border-color: #5a067a !important;
+      background: #f0f8ff !important;
+      transform: translateY(-2px);
+    }
+
+    .vision-tab {
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .vision-tab:hover {
+      background: #7209b7 !important;
+      color: white !important;
+      transform: translateY(-1px);
+    }
+
+    .vision-tab-content {
+      animation: fadeIn 0.3s ease;
+    }
+
+    #neighborsGrid > div:hover {
+      transform: scale(1.1) !important;
+      box-shadow: 0 4px 12px rgba(114, 9, 183, 0.3);
+    }
+
+    #embeddingCanvas, #attentionCanvas {
+      transition: all 0.3s ease;
+      cursor: crosshair;
+    }
+
+    #embeddingCanvas:hover, #attentionCanvas:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .vision-upload-container {
+      animation: slideInUp 0.5s ease;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive design for vision demo */
+    @media (max-width: 768px) {
+      .vision-upload-container {
+        flex-direction: column !important;
+        align-items: center;
+      }
+      
+      .vision-upload-area {
+        width: 100% !important;
+        max-width: 250px !important;
+        height: 120px !important;
+      }
+      
+      #visionResults {
+        min-width: auto !important;
+        width: 100%;
+      }
+      
+      .vision-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .vision-tab {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.8rem !important;
+      }
+    }
+
+    .audio-upload-area {
+      transition: all 0.3s ease;
+    }
+
+    .audio-upload-area:hover {
       border-color: #5a067a;
+      background: #f0f0f0;
     }
 
-    .upload-icon {
-      font-size: 3rem;
-      color: #7209b7;
-      margin-bottom: 1rem;
+    #audioWaveform {
+      background: linear-gradient(90deg, #7209b7 0%, #a8dadc 50%, #7209b7 100%);
+      position: relative;
+      overflow: hidden;
     }
 
-    .image-preview {
-      max-width: 100%;
-      max-height: 300px;
+    #audioWaveform::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: waveAnimation 2s infinite;
+    }
+
+    @keyframes waveAnimation {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .demo-button:disabled {
+      background: #cbd5e0;
+      color: #718096;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .demo-button:disabled:hover {
+      background: #cbd5e0;
+      transform: none;
+    }
+
+    /* Research progress animation */
+    #research-bar {
+      background: linear-gradient(90deg, #7209b7, #a8dadc, #7209b7);
+      background-size: 200% 100%;
+      animation: progressGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes progressGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Code editor styling */
+    #codeInput {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      background: #1a202c;
+      color: #e2e8f0;
+      border: 2px solid #4a5568;
+    }
+
+    #codeInput:focus {
+      border-color: #7209b7;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+    }
+
+    /* Responsive design for demos */
+    @media (max-width: 768px) {
+      .demo-tabs {
+        flex-direction: column;
+      }
+      
+      .demo-tab {
+        text-align: center;
+        padding: 1rem;
+      }
+      
+      .demo-preview {
+        padding: 1rem;
+        min-height: 150px;
+      }
+      
+      .demo-controls {
+        flex-direction: column;
+      }
+      
+      .demo-button {
+        width: 100%;
+        padding: 0.8rem;
+      }
+      
+      .image-upload-area {
+        width: 100% !important;
+        max-width: 250px;
+        height: 150px !important;
+      }
+      
+      #codeInput {
+        height: 150px;
+      }
+      
+      .audio-upload-area {
+        padding: 1rem;
+      }
+    }
+
+    /* Publication section styles */
+    #publications {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .publication-item {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
       border-radius: 8px;
-      margin: 1rem 0;
+      background: #f8f9fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .publication-item:hover {
+      transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .analysis-result {
-      background: white;
-      border: 1px solid #e9ecef;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-    }
-
-    .result-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .result-item:last-child {
-      border-bottom: none;
-    }
-
-    .confidence-bar {
-      width: 100px;
-      height: 8px;
-      background: #e9ecef;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-left: 1rem;
-    }
-
-    .confidence-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #7209b7, #a8dadc);
-      transition: width 0.3s ease;
-    }
-
-    .research-input {
-      width: 100%;
-      padding: 1rem;
-      border: 2px solid #e9ecef;
-      border-radius: 8px;
-      font-size: 1rem;
-      margin: 1rem 0;
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .research-results {
-      background: white;
-      border: 1px solid #e9ecef;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      max-height: 400px;
-      overflow-y: auto;
-    }
-
-    .research-source {
-      background: #f8f9fa;
-      border-left: 4px solid #7209b7;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .source-title {
-      font-weight: bold;
+    .publication-title {
+      font-size: 1.1rem;
+      font-weight: 500;
       color: #7209b7;
       margin-bottom: 0.5rem;
     }
 
-    .source-snippet {
-      color: #555;
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
-
-    .source-url {
-      font-size: 0.8rem;
-      color: #666;
-    }
-
-    .model-selector {
-      display: flex;
-      gap: 0.5rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-
-    .model-option {
-      background: #e9ecef;
-      color: #555;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    .publication-venue {
       font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
     }
 
-    .model-option.active {
+    .publication-description {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .publication-link {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
       background: #7209b7;
       color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
 
-    .code-editor {
+    .publication-link:hover {
+      background: #5a067a;
+      transform: translateY(-2px);
+    }
+
+    /* Contact section styles */
+    #contact {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .contact-info {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    .contact-info a {
+      color: #7209b7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #5a067a;
+    }
+
+    /* Footer styles */
+    footer {
       background: #2d3748;
       color: #e2e8f0;
-      padding: 1rem;
-      border-radius: 8px;
-      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid #4a5568;
+    }
+
+    footer p {
+      margin: 0;
       font-size: 0.9rem;
-      min-height: 200px;
-      border: none;
-      resize: vertical;
-      width: 100%;
-      margin: 1rem 0;
     }
 
-    .execution-result {
-      background: #1a202c;
-      color: #68d391;
-      padding: 1rem;
-      border-radius: 8px;
-      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-      font-size: 0.9rem;
-      margin: 1rem 0;
-      white-space: pre-wrap;
-      max-height: 200px;
-      overflow-y: auto;
+    /* Live chat widget styles */
+    .chat-widget {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 1000;
+      font-family: inherit;
     }
 
-    .audio-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-
-    .audio-waveform {
-      flex: 1;
-      height: 60px;
-      background: linear-gradient(90deg, #7209b7, #a8dadc);
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
-      min-width: 200px;
-    }
-
-    .waveform-bars {
-      display: flex;
-      align-items: end;
-      height: 100%;
-      gap: 2px;
-      padding: 0 10px;
-    }
-
-    .waveform-bar {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 1px;
-      transition: height 0.1s ease;
-      min-height: 2px;
-    }
-
-    .record-button {
+    .chat-button {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: #dc3545;
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(114, 9, 183, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(114, 9, 183, 0.4);
+    }
+
+    .chat-button.active {
+      background: linear-gradient(135deg, #5a067a, #7209b7);
+    }
+
+    .chat-window {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid #e9ecef;
+    }
+
+    .chat-window.active {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chat-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .chat-user-info h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .chat-status {
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.2rem;
+      border-radius: 3px;
+      transition: background 0.2s ease;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .chat-message {
+      display: flex;
+      flex-direction: column;
+      max-width: 80%;
+    }
+
+    .chat-message.user {
+      align-self: flex-end;
+    }
+
+    .chat-message.bot {
+      align-self: flex-start;
+    }
+
+    .message-bubble {
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .chat-message.user .message-bubble {
+      background: #7209b7;
+      color: white;
+      border-bottom-right-radius: 5px;
+    }
+
+    .chat-message.bot .message-bubble {
+      background: white;
+      color: #333;
+      border: 1px solid #e9ecef;
+      border-bottom-left-radius: 5px;
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #666;
+      margin-top: 0.3rem;
+      padding: 0 0.5rem;
+    }
+
+    .chat-message.user .message-time {
+      text-align: right;
+    }
+
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1rem;
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 18px;
+      border-bottom-left-radius: 5px;
+      max-width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    .typing-indicator.active {
+      display: flex;
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7209b7;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes typingAnimation {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .chat-input-container {
+      padding: 1rem;
+      background: white;
+      border-top: 1px solid #e9ecef;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      resize: none;
+      max-height: 100px;
+      min-height: 20px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .chat-input:focus {
+      border-color: #7209b7;
+    }
+
+    .chat-send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #7209b7;
       border: none;
       color: white;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
       transition: all 0.3s ease;
+      font-size: 1rem;
     }
 
-    .record-button:hover {
-      background: #c82333;
+    .chat-send:hover {
+      background: #5a067a;
       transform: scale(1.05);
     }
 
-    .record-button.recording {
-      background: #dc3545;
-      animation: pulse 1s infinite;
+    .chat-send:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+    .quick-responses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-
-    .feature-card {
-      background: white;
-      border: 1px solid #e9ecef;
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
+    .quick-response {
+      background: #e9ecef;
+      color: #7209b7;
+      border: 1px solid #7209b7;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      cursor: pointer;
       transition: all 0.3s ease;
     }
 
-    .feature-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .quick-response:hover {
+      background: #7209b7;
+      color: white;
+    }
+
+    /* Additional Demo Styles */
+    .image-upload-area {
+      border: 2px dashed #7209b7;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin: 1rem 0;
+    }
+
+    .image-upload-area:hover {
+      border-color: #5a067a;
+      background: #f0f0f0;
+    }
+
+    /* Vision Foundation Model Styles */
+    .vision-upload-area:hover {
+      border-color: #5a067a !important;
+      background: #f0f8ff !important;
       transform: translateY(-2px);
     }
 
-    .feature-icon {
-      font-size: 2rem;
+    .vision-tab {
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .vision-tab:hover {
+      background: #7209b7 !important;
+      color: white !important;
+      transform: translateY(-1px);
+    }
+
+    .vision-tab-content {
+      animation: fadeIn 0.3s ease;
+    }
+
+    #neighborsGrid > div:hover {
+      transform: scale(1.1) !important;
+      box-shadow: 0 4px 12px rgba(114, 9, 183, 0.3);
+    }
+
+    #embeddingCanvas, #attentionCanvas {
+      transition: all 0.3s ease;
+      cursor: crosshair;
+    }
+
+    #embeddingCanvas:hover, #attentionCanvas:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .vision-upload-container {
+      animation: slideInUp 0.5s ease;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive design for vision demo */
+    @media (max-width: 768px) {
+      .vision-upload-container {
+        flex-direction: column !important;
+        align-items: center;
+      }
+      
+      .vision-upload-area {
+        width: 100% !important;
+        max-width: 250px !important;
+        height: 120px !important;
+      }
+      
+      #visionResults {
+        min-width: auto !important;
+        width: 100%;
+      }
+      
+      .vision-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .vision-tab {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.8rem !important;
+      }
+    }
+
+    .audio-upload-area {
+      transition: all 0.3s ease;
+    }
+
+    .audio-upload-area:hover {
+      border-color: #5a067a;
+      background: #f0f0f0;
+    }
+
+    #audioWaveform {
+      background: linear-gradient(90deg, #7209b7 0%, #a8dadc 50%, #7209b7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #audioWaveform::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: waveAnimation 2s infinite;
+    }
+
+    @keyframes waveAnimation {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .demo-button:disabled {
+      background: #cbd5e0;
+      color: #718096;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .demo-button:disabled:hover {
+      background: #cbd5e0;
+      transform: none;
+    }
+
+    /* Research progress animation */
+    #research-bar {
+      background: linear-gradient(90deg, #7209b7, #a8dadc, #7209b7);
+      background-size: 200% 100%;
+      animation: progressGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes progressGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Code editor styling */
+    #codeInput {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      background: #1a202c;
+      color: #e2e8f0;
+      border: 2px solid #4a5568;
+    }
+
+    #codeInput:focus {
+      border-color: #7209b7;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+    }
+
+    /* Responsive design for demos */
+    @media (max-width: 768px) {
+      .demo-tabs {
+        flex-direction: column;
+      }
+      
+      .demo-tab {
+        text-align: center;
+        padding: 1rem;
+      }
+      
+      .demo-preview {
+        padding: 1rem;
+        min-height: 150px;
+      }
+      
+      .demo-controls {
+        flex-direction: column;
+      }
+      
+      .demo-button {
+        width: 100%;
+        padding: 0.8rem;
+      }
+      
+      .image-upload-area {
+        width: 100% !important;
+        max-width: 250px;
+        height: 150px !important;
+      }
+      
+      #codeInput {
+        height: 150px;
+      }
+      
+      .audio-upload-area {
+        padding: 1rem;
+      }
+    }
+
+    /* Publication section styles */
+    #publications {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .publication-item {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background: #f8f9fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .publication-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .publication-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #7209b7;
       margin-bottom: 0.5rem;
     }
 
-    .feature-label {
-      font-size: 0.8rem;
+    .publication-venue {
+      font-size: 0.9rem;
       color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .publication-description {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .publication-link {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      background: #7209b7;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.85rem;
       font-weight: 500;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .publication-link:hover {
+      background: #5a067a;
+      transform: translateY(-2px);
+    }
+
+    /* Contact section styles */
+    #contact {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .contact-info {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    .contact-info a {
+      color: #7209b7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #5a067a;
+    }
+
+    /* Footer styles */
+    footer {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid #4a5568;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Live chat widget styles */
+    .chat-widget {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 1000;
+      font-family: inherit;
+    }
+
+    .chat-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(114, 9, 183, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(114, 9, 183, 0.4);
+    }
+
+    .chat-button.active {
+      background: linear-gradient(135deg, #5a067a, #7209b7);
+    }
+
+    .chat-window {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid #e9ecef;
+    }
+
+    .chat-window.active {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chat-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .chat-user-info h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .chat-status {
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.2rem;
+      border-radius: 3px;
+      transition: background 0.2s ease;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .chat-message {
+      display: flex;
+      flex-direction: column;
+      max-width: 80%;
+    }
+
+    .chat-message.user {
+      align-self: flex-end;
+    }
+
+    .chat-message.bot {
+      align-self: flex-start;
+    }
+
+    .message-bubble {
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .chat-message.user .message-bubble {
+      background: #7209b7;
+      color: white;
+      border-bottom-right-radius: 5px;
+    }
+
+    .chat-message.bot .message-bubble {
+      background: white;
+      color: #333;
+      border: 1px solid #e9ecef;
+      border-bottom-left-radius: 5px;
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #666;
+      margin-top: 0.3rem;
+      padding: 0 0.5rem;
+    }
+
+    .chat-message.user .message-time {
+      text-align: right;
+    }
+
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1rem;
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 18px;
+      border-bottom-left-radius: 5px;
+      max-width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    .typing-indicator.active {
+      display: flex;
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7209b7;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes typingAnimation {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .chat-input-container {
+      padding: 1rem;
+      background: white;
+      border-top: 1px solid #e9ecef;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      resize: none;
+      max-height: 100px;
+      min-height: 20px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .chat-input:focus {
+      border-color: #7209b7;
+    }
+
+    .chat-send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #7209b7;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .chat-send:hover {
+      background: #5a067a;
+      transform: scale(1.05);
+    }
+
+    .chat-send:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .quick-responses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .quick-response {
+      background: #e9ecef;
+      color: #7209b7;
+      border: 1px solid #7209b7;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quick-response:hover {
+      background: #7209b7;
+      color: white;
+    }
+
+    /* Additional Demo Styles */
+    .image-upload-area {
+      border: 2px dashed #7209b7;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin: 1rem 0;
+    }
+
+    .image-upload-area:hover {
+      border-color: #5a067a;
+      background: #f0f0f0;
+    }
+
+    /* Vision Foundation Model Styles */
+    .vision-upload-area:hover {
+      border-color: #5a067a !important;
+      background: #f0f8ff !important;
+      transform: translateY(-2px);
+    }
+
+    .vision-tab {
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .vision-tab:hover {
+      background: #7209b7 !important;
+      color: white !important;
+      transform: translateY(-1px);
+    }
+
+    .vision-tab-content {
+      animation: fadeIn 0.3s ease;
+    }
+
+    #neighborsGrid > div:hover {
+      transform: scale(1.1) !important;
+      box-shadow: 0 4px 12px rgba(114, 9, 183, 0.3);
+    }
+
+    #embeddingCanvas, #attentionCanvas {
+      transition: all 0.3s ease;
+      cursor: crosshair;
+    }
+
+    #embeddingCanvas:hover, #attentionCanvas:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .vision-upload-container {
+      animation: slideInUp 0.5s ease;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive design for vision demo */
+    @media (max-width: 768px) {
+      .vision-upload-container {
+        flex-direction: column !important;
+        align-items: center;
+      }
+      
+      .vision-upload-area {
+        width: 100% !important;
+        max-width: 250px !important;
+        height: 120px !important;
+      }
+      
+      #visionResults {
+        min-width: auto !important;
+        width: 100%;
+      }
+      
+      .vision-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .vision-tab {
+        font-size: 0.7rem !important;
+        padding: 0.4rem 0.8rem !important;
+      }
+    }
+
+    .audio-upload-area {
+      transition: all 0.3s ease;
+    }
+
+    .audio-upload-area:hover {
+      border-color: #5a067a;
+      background: #f0f0f0;
+    }
+
+    #audioWaveform {
+      background: linear-gradient(90deg, #7209b7 0%, #a8dadc 50%, #7209b7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #audioWaveform::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: waveAnimation 2s infinite;
+    }
+
+    @keyframes waveAnimation {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .demo-button:disabled {
+      background: #cbd5e0;
+      color: #718096;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .demo-button:disabled:hover {
+      background: #cbd5e0;
+      transform: none;
+    }
+
+    /* Research progress animation */
+    #research-bar {
+      background: linear-gradient(90deg, #7209b7, #a8dadc, #7209b7);
+      background-size: 200% 100%;
+      animation: progressGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes progressGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Code editor styling */
+    #codeInput {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      background: #1a202c;
+      color: #e2e8f0;
+      border: 2px solid #4a5568;
+    }
+
+    #codeInput:focus {
+      border-color: #7209b7;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+    }
+
+    /* Responsive design for demos */
+    @media (max-width: 768px) {
+      .demo-tabs {
+        flex-direction: column;
+      }
+      
+      .demo-tab {
+        text-align: center;
+        padding: 1rem;
+      }
+      
+      .demo-preview {
+        padding: 1rem;
+        min-height: 150px;
+      }
+      
+      .demo-controls {
+        flex-direction: column;
+      }
+      
+      .demo-button {
+        width: 100%;
+        padding: 0.8rem;
+      }
+      
+      .image-upload-area {
+        width: 100% !important;
+        max-width: 250px;
+        height: 150px !important;
+      }
+      
+      #codeInput {
+        height: 150px;
+      }
+      
+      .audio-upload-area {
+        padding: 1rem;
+      }
+    }
+
+    /* Publication section styles */
+    #publications {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .publication-item {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background: #f8f9fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .publication-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .publication-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #7209b7;
+      margin-bottom: 0.5rem;
+    }
+
+    .publication-venue {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .publication-description {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .publication-link {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      background: #7209b7;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .publication-link:hover {
+      background: #5a067a;
+      transform: translateY(-2px);
+    }
+
+    /* Contact section styles */
+    #contact {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .contact-info {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    .contact-info a {
+      color: #7209b7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #5a067a;
+    }
+
+    /* Footer styles */
+    footer {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid #4a5568;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Live chat widget styles */
+    .chat-widget {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 1000;
+      font-family: inherit;
+    }
+
+    .chat-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(114, 9, 183, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .chat-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(114, 9, 183, 0.4);
+    }
+
+    .chat-button.active {
+      background: linear-gradient(135deg, #5a067a, #7209b7);
+    }
+
+    .chat-window {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 2px solid #e9ecef;
+    }
+
+    .chat-window.active {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #7209b7, #a8dadc);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chat-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .chat-user-info h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .chat-status {
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.2rem;
+      border-radius: 3px;
+      transition: background 0.2s ease;
+    }
+
+    .chat-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .chat-message {
+      display: flex;
+      flex-direction: column;
+      max-width: 80%;
+    }
+
+    .chat-message.user {
+      align-self: flex-end;
+    }
+
+    .chat-message.bot {
+      align-self: flex-start;
+    }
+
+    .message-bubble {
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .chat-message.user .message-bubble {
+      background: #7209b7;
+      color: white;
+      border-bottom-right-radius: 5px;
+    }
+
+    .chat-message.bot .message-bubble {
+      background: white;
+      color: #333;
+      border: 1px solid #e9ecef;
+      border-bottom-left-radius: 5px;
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #666;
+      margin-top: 0.3rem;
+      padding: 0 0.5rem;
+    }
+
+    .chat-message.user .message-time {
+      text-align: right;
+    }
+
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1rem;
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 18px;
+      border-bottom-left-radius: 5px;
+      max-width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    .typing-indicator.active {
+      display: flex;
+    }
+
+    .typing-dots {
+      display: flex;
+      gap: 0.2rem;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7209b7;
+      animation: typingAnimation 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes typingAnimation {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .chat-input-container {
+      padding: 1rem;
+      background: white;
+      border-top: 1px solid #e9ecef;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 2px solid #e9ecef;
+      border-radius: 20px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      resize: none;
+      max-height: 100px;
+      min-height: 20px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .chat-input:focus {
+      border-color: #7209b7;
+    }
+
+    .chat-send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #7209b7;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .chat-send:hover {
+      background: #5a067a;
+      transform: scale(1.05);
+    }
+
+    .chat-send:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .quick-responses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .quick-response {
+      background: #e9ecef;
+      color: #7209b7;
+      border: 1px solid #7209b7;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quick-response:hover {
+      background: #7209b7;
+      color: white;
     }
 
     /* Mobile Responsiveness */
@@ -1863,12 +3492,13 @@
   <div class="demo-container">
     <div class="demo-tabs">
       <button class="demo-tab active" onclick="showDemo('ml-classifier')">Sentiment Analyzer</button>
+      <button class="demo-tab" onclick="showDemo('vision-foundation')">Vision Foundation Model</button>
       <button class="demo-tab" onclick="showDemo('image-analyzer')">Image Analyzer</button>
       <button class="demo-tab" onclick="showDemo('research-agent')">Research Agent</button>
       <button class="demo-tab" onclick="showDemo('audio-classifier')">Audio Classifier</button>
       <button class="demo-tab" onclick="showDemo('code-assistant')">Code Assistant</button>
       <button class="demo-tab" onclick="showDemo('text-analyzer')">Text Analyzer</button>
-      <button class="demo-tab" onclick="showDemo('data-processor')">Data Processor</button>
+      <button class="demo-tab" onclick="showDemo('data-processor')">ML Pipeline</button>
     </div>
     
     <div id="ml-classifier" class="demo-content active">
@@ -1910,6 +3540,84 @@ Accuracy: 94.2% on validation set
       <div class="demo-output" id="text-output">
 Text analysis ready...
 Features: Word count, Character count, Reading time, Complexity score
+      </div>
+    </div>
+    
+    <div id="vision-foundation" class="demo-content">
+      <h3>👁️ Self-Supervised Vision Foundation Model</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Interactive Image Representation Explorer</h4>
+          <p>Upload an image to explore feature representations using DINOv2 foundation model</p>
+          
+          <div class="vision-upload-container" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
+            <div class="vision-upload-area" onclick="document.getElementById('visionImageInput').click()" style="width: 200px; height: 150px; border: 2px dashed #7209b7; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #f8f9fa; transition: all 0.3s ease;">
+              <div id="visionImagePreview" style="text-align: center; color: #666; font-size: 0.9rem;">
+                📸 Upload Image<br>
+                <small>JPG, PNG (max 10MB)</small>
+              </div>
+            </div>
+            
+            <div id="visionResults" style="flex: 1; min-width: 300px; background: #f8f9fa; border-radius: 8px; padding: 1rem; display: none;">
+              <div class="vision-tabs" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                <button class="vision-tab active" onclick="showVisionTab('neighbors')" style="padding: 0.5rem 1rem; border: none; background: #7209b7; color: white; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Nearest Neighbors</button>
+                <button class="vision-tab" onclick="showVisionTab('embeddings')" style="padding: 0.5rem 1rem; border: none; background: #e9ecef; color: #666; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Embeddings</button>
+                <button class="vision-tab" onclick="showVisionTab('attention')" style="padding: 0.5rem 1rem; border: none; background: #e9ecef; color: #666; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Attention Maps</button>
+              </div>
+              
+              <div id="vision-neighbors" class="vision-tab-content active">
+                <h5 style="margin: 0 0 0.5rem 0; color: #7209b7;">🔍 Feature Space Neighbors</h5>
+                <div id="neighborsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 0.5rem;">
+                  <!-- Neighbor images will be populated here -->
+                </div>
+                <div id="neighborsInfo" style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+                  Similarity scores will appear here
+                </div>
+              </div>
+              
+              <div id="vision-embeddings" class="vision-tab-content" style="display: none;">
+                <h5 style="margin: 0 0 0.5rem 0; color: #7209b7;">📊 t-SNE/UMAP Visualization</h5>
+                <div id="embeddingViz" style="width: 100%; height: 200px; background: #fff; border: 1px solid #ddd; border-radius: 4px; position: relative; display: flex; align-items: center; justify-content: center;">
+                  <canvas id="embeddingCanvas" width="300" height="180" style="border-radius: 4px;"></canvas>
+                </div>
+                <div id="embeddingInfo" style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+                  Dimensionality: 384D → 2D | Method: t-SNE
+                </div>
+              </div>
+              
+              <div id="vision-attention" class="vision-tab-content" style="display: none;">
+                <h5 style="margin: 0 0 0.5rem 0; color: #7209b7;">🎯 Attention Heatmap</h5>
+                <div id="attentionMap" style="width: 100%; height: 200px; background: #fff; border: 1px solid #ddd; border-radius: 4px; position: relative; overflow: hidden;">
+                  <canvas id="attentionCanvas" width="300" height="180" style="border-radius: 4px;"></canvas>
+                </div>
+                <div id="attentionInfo" style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+                  Layer: 12 | Head: Multi-head average | Patch size: 14×14
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <input type="file" id="visionImageInput" accept="image/*" style="display: none;" onchange="handleVisionImageUpload(event)">
+          
+          <div id="visionAnalysisProgress" style="margin-top: 1rem; display: none;">
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+              <div id="visionProgressText">🔄 Processing image through DINOv2...</div>
+              <div style="width: 100%; height: 6px; background: #e9ecef; border-radius: 3px; margin-top: 0.5rem; overflow: hidden;">
+                <div id="visionProgressBar" style="height: 100%; background: linear-gradient(90deg, #7209b7, #a8dadc); width: 0%; transition: width 0.5s ease; border-radius: 3px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="analyzeVisionImage()" id="analyzeVisionBtn" disabled>🔍 Analyze Features</button>
+        <button class="demo-button" onclick="generateSampleImages()">📱 Load Sample Images</button>
+        <button class="demo-button" onclick="clearVisionDemo()">🗑️ Clear</button>
+      </div>
+      <div class="demo-output" id="vision-output">
+Vision foundation model ready...
+Model: DINOv2-ViT-B/14 | Features: 384D embeddings
+Capabilities: Self-supervised representations, Feature similarity, Attention visualization
       </div>
     </div>
     
@@ -2037,11 +3745,11 @@ Supported: Python, JavaScript, Java, C++, SQL
     </div>
     
     <div id="data-processor" class="demo-content">
-      <h3>📊 Data Processing Pipeline</h3>
+      <h3>📊 ML Pipeline Demo</h3>
       <div class="demo-preview">
         <div style="text-align: center;">
-          <h4 style="color: #7209b7;">CSV Data Processor</h4>
-          <p>Simulate data processing pipeline with sample datasets</p>
+          <h4 style="color: #7209b7;">Machine Learning Pipeline</h4>
+          <p>Simulate complete ML pipeline with sample datasets</p>
           <select id="dataset-select" style="width: 60%; padding: 0.5rem; margin: 1rem 0; border-radius: 6px; border: 2px solid #e9ecef;">
             <option value="healthcare">Healthcare Dataset (1000 rows)</option>
             <option value="financial">Financial Dataset (500 rows)</option>
@@ -2532,6 +4240,347 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     document.getElementById('text-input').value = '';
     document.getElementById('text-stats').innerHTML = '';
     document.getElementById('text-output').textContent = 'Text analysis ready...\nFeatures: Word count, Character count, Reading time, Complexity score';
+  }
+
+  // Vision Foundation Model Demo Functions
+  let currentVisionImage = null;
+  let visionFeatures = null;
+  
+  function handleVisionImageUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        alert('File size must be less than 10MB');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        currentVisionImage = e.target.result;
+        const preview = document.getElementById('visionImagePreview');
+        preview.innerHTML = `<img src="${currentVisionImage}" style="max-width: 100%; max-height: 130px; border-radius: 4px; object-fit: cover;">`;
+        document.getElementById('analyzeVisionBtn').disabled = false;
+        
+        // Update upload area styling
+        const uploadArea = document.querySelector('.vision-upload-area');
+        uploadArea.style.border = '2px solid #7209b7';
+        uploadArea.style.background = '#f0f8ff';
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function analyzeVisionImage() {
+    if (!currentVisionImage) {
+      alert('Please upload an image first');
+      return;
+    }
+    
+    const progress = document.getElementById('visionAnalysisProgress');
+    const progressBar = document.getElementById('visionProgressBar');
+    const progressText = document.getElementById('visionProgressText');
+    const output = document.getElementById('vision-output');
+    
+    progress.style.display = 'block';
+    progressBar.style.width = '0%';
+    
+    const steps = [
+      '🔄 Loading DINOv2 foundation model...',
+      '🖼️ Preprocessing image patches...',
+      '🧠 Extracting 384D feature embeddings...',
+      '🔍 Computing similarity in feature space...',
+      '📊 Generating t-SNE visualization...',
+      '🎯 Computing attention maps...',
+      '✅ Analysis complete!'
+    ];
+    
+    let currentStep = 0;
+    const interval = setInterval(() => {
+      if (currentStep < steps.length) {
+        progressText.textContent = steps[currentStep];
+        progressBar.style.width = ((currentStep + 1) / steps.length * 100) + '%';
+        output.textContent = `Processing vision features...\nStep ${currentStep + 1}/${steps.length}: ${steps[currentStep]}\nFeature extraction progress: ${Math.round((currentStep + 1) / steps.length * 100)}%`;
+        currentStep++;
+      } else {
+        clearInterval(interval);
+        showVisionResults();
+      }
+    }, 800);
+  }
+
+  function showVisionResults() {
+    // Generate mock vision analysis results
+    visionFeatures = {
+      embeddings: generateMockEmbeddings(),
+      neighbors: generateMockNeighbors(),
+      attention: generateMockAttention(),
+      similarity_scores: Array.from({length: 8}, () => (Math.random() * 0.4 + 0.6).toFixed(3))
+    };
+    
+    document.getElementById('visionResults').style.display = 'block';
+    document.getElementById('visionAnalysisProgress').style.display = 'none';
+    
+    // Populate nearest neighbors
+    populateNearestNeighbors();
+    
+    // Generate embedding visualization
+    generateEmbeddingVisualization();
+    
+    // Generate attention heatmap
+    generateAttentionHeatmap();
+    
+    document.getElementById('vision-output').textContent = `Vision analysis complete!\nFeature vector: 384 dimensions\nNearest neighbors: 8 similar images found\nSimilarity range: ${visionFeatures.similarity_scores[0]} - ${visionFeatures.similarity_scores[7]}\nProcessing time: ${(Math.random() * 1000 + 500).toFixed(0)}ms`;
+  }
+
+  function populateNearestNeighbors() {
+    const grid = document.getElementById('neighborsGrid');
+    const info = document.getElementById('neighborsInfo');
+    
+    // Generate mock neighbor images (colored squares representing similar images)
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+    
+    grid.innerHTML = '';
+    colors.forEach((color, index) => {
+      const neighborDiv = document.createElement('div');
+      neighborDiv.style.cssText = `
+        width: 60px; 
+        height: 60px; 
+        background: ${color}; 
+        border-radius: 4px; 
+        border: 2px solid #ddd;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      `;
+      neighborDiv.onmouseover = () => neighborDiv.style.transform = 'scale(1.1)';
+      neighborDiv.onmouseout = () => neighborDiv.style.transform = 'scale(1)';
+      
+      // Add similarity score overlay
+      const scoreOverlay = document.createElement('div');
+      scoreOverlay.textContent = visionFeatures.similarity_scores[index];
+      scoreOverlay.style.cssText = `
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7rem;
+        color: #666;
+        background: white;
+        padding: 1px 3px;
+        border-radius: 2px;
+        border: 1px solid #ddd;
+      `;
+      neighborDiv.appendChild(scoreOverlay);
+      
+      grid.appendChild(neighborDiv);
+    });
+    
+    info.textContent = `Found ${colors.length} visually similar images | Average similarity: ${(visionFeatures.similarity_scores.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / visionFeatures.similarity_scores.length).toFixed(3)}`;
+  }
+
+  function generateEmbeddingVisualization() {
+    const canvas = document.getElementById('embeddingCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Generate mock t-SNE points
+    const points = Array.from({length: 50}, () => ({
+      x: Math.random() * (canvas.width - 20) + 10,
+      y: Math.random() * (canvas.height - 20) + 10,
+      isQuery: false
+    }));
+    
+    // Add query point (our uploaded image)
+    points.push({
+      x: canvas.width / 2 + (Math.random() - 0.5) * 40,
+      y: canvas.height / 2 + (Math.random() - 0.5) * 40,
+      isQuery: true
+    });
+    
+    // Draw background grid
+    ctx.strokeStyle = '#f0f0f0';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < canvas.width; i += 30) {
+      ctx.beginPath();
+      ctx.moveTo(i, 0);
+      ctx.lineTo(i, canvas.height);
+      ctx.stroke();
+    }
+    for (let i = 0; i < canvas.height; i += 30) {
+      ctx.beginPath();
+      ctx.moveTo(0, i);
+      ctx.lineTo(canvas.width, i);
+      ctx.stroke();
+    }
+    
+    // Draw points
+    points.forEach(point => {
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, point.isQuery ? 6 : 3, 0, 2 * Math.PI);
+      ctx.fillStyle = point.isQuery ? '#7209b7' : '#a8dadc';
+      ctx.fill();
+      
+      if (point.isQuery) {
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+    });
+    
+    // Add labels
+    ctx.fillStyle = '#666';
+    ctx.font = '10px Arial';
+    ctx.fillText('t-SNE Component 1', canvas.width - 80, canvas.height - 5);
+    ctx.save();
+    ctx.translate(10, canvas.height / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('t-SNE Component 2', 0, 0);
+    ctx.restore();
+  }
+
+  function generateAttentionHeatmap() {
+    const canvas = document.getElementById('attentionCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Create a simple attention heatmap
+    const patchSize = 20;
+    const cols = Math.floor(canvas.width / patchSize);
+    const rows = Math.floor(canvas.height / patchSize);
+    
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const attention = Math.random();
+        const intensity = Math.floor(attention * 255);
+        
+        // Create heatmap colors (blue to red)
+        let r, g, b;
+        if (attention < 0.5) {
+          r = 0;
+          g = Math.floor(attention * 2 * 255);
+          b = 255;
+        } else {
+          r = Math.floor((attention - 0.5) * 2 * 255);
+          g = 255 - Math.floor((attention - 0.5) * 2 * 255);
+          b = 0;
+        }
+        
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.7)`;
+        ctx.fillRect(col * patchSize, row * patchSize, patchSize, patchSize);
+        
+        // Add attention value text for high attention areas
+        if (attention > 0.7) {
+          ctx.fillStyle = 'white';
+          ctx.font = '8px Arial';
+          ctx.fillText(attention.toFixed(2), col * patchSize + 2, row * patchSize + 12);
+        }
+      }
+    }
+    
+    // Add overlay with key regions
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(canvas.width * 0.3, canvas.height * 0.2, canvas.width * 0.4, canvas.height * 0.3);
+    ctx.fillStyle = 'white';
+    ctx.font = '10px Arial';
+    ctx.fillText('High Attention', canvas.width * 0.32, canvas.height * 0.18);
+  }
+
+  function showVisionTab(tabName) {
+    // Hide all tab contents
+    document.querySelectorAll('.vision-tab-content').forEach(content => {
+      content.style.display = 'none';
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.vision-tab').forEach(tab => {
+      tab.style.background = '#e9ecef';
+      tab.style.color = '#666';
+    });
+    
+    // Show selected tab content
+    document.getElementById(`vision-${tabName}`).style.display = 'block';
+    
+    // Highlight active tab
+    event.target.style.background = '#7209b7';
+    event.target.style.color = 'white';
+  }
+
+  function generateSampleImages() {
+    // Simulate loading sample images
+    const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Create a simple colored canvas as sample
+    const canvas = document.createElement('canvas');
+    canvas.width = 200;
+    canvas.height = 150;
+    const ctx = canvas.getContext('2d');
+    
+    // Create gradient background
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, randomColor);
+    gradient.addColorStop(1, '#ffffff');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Add some shapes to make it interesting
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.beginPath();
+    ctx.arc(canvas.width * 0.3, canvas.height * 0.4, 30, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+    ctx.fillRect(canvas.width * 0.6, canvas.height * 0.2, 40, 60);
+    
+    currentVisionImage = canvas.toDataURL();
+    const preview = document.getElementById('visionImagePreview');
+    preview.innerHTML = `<img src="${currentVisionImage}" style="max-width: 100%; max-height: 130px; border-radius: 4px; object-fit: cover;">`;
+    document.getElementById('analyzeVisionBtn').disabled = false;
+    
+    const uploadArea = document.querySelector('.vision-upload-area');
+    uploadArea.style.border = '2px solid #7209b7';
+    uploadArea.style.background = '#f0f8ff';
+    
+    document.getElementById('vision-output').textContent = 'Sample image loaded! Click "Analyze Features" to explore vision representations.';
+  }
+
+  function clearVisionDemo() {
+    currentVisionImage = null;
+    visionFeatures = null;
+    
+    document.getElementById('visionImagePreview').innerHTML = '📸 Upload Image<br><small>JPG, PNG (max 10MB)</small>';
+    document.getElementById('visionImageInput').value = '';
+    document.getElementById('visionResults').style.display = 'none';
+    document.getElementById('visionAnalysisProgress').style.display = 'none';
+    document.getElementById('analyzeVisionBtn').disabled = true;
+    
+    const uploadArea = document.querySelector('.vision-upload-area');
+    uploadArea.style.border = '2px dashed #7209b7';
+    uploadArea.style.background = '#f8f9fa';
+    
+    document.getElementById('vision-output').textContent = 'Vision foundation model ready...\nModel: DINOv2-ViT-B/14 | Features: 384D embeddings\nCapabilities: Self-supervised representations, Feature similarity, Attention visualization';
+  }
+
+  function generateMockEmbeddings() {
+    return Array.from({length: 384}, () => Math.random() * 2 - 1);
+  }
+
+  function generateMockNeighbors() {
+    return Array.from({length: 8}, (_, i) => ({
+      id: i,
+      similarity: (Math.random() * 0.4 + 0.6).toFixed(3),
+      category: ['object', 'scene', 'texture', 'pattern'][Math.floor(Math.random() * 4)]
+    }));
+  }
+
+  function generateMockAttention() {
+    const patchCount = 14 * 14; // 14x14 patches for ViT
+    return Array.from({length: patchCount}, () => Math.random());
   }
 
   // Image Analyzer Demo Functions
