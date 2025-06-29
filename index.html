@@ -625,194 +625,125 @@
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .stock-input-section textarea:focus {
+    /* MCP Agent2Agent Styles */
+    .agent-config select:focus,
+    #discussion-topic:focus {
       border-color: #7209b7 !important;
       box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
       outline: none;
     }
 
-    .stock-prediction-card {
+    .agent-panel {
       transition: all 0.3s ease;
       animation: slideInUp 0.5s ease;
     }
 
-    .stock-prediction-card:hover {
+    .agent-panel:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    #token-attribution span {
-      display: inline-block;
-      transition: all 0.2s ease;
-      cursor: pointer;
+    .agent-header {
+      font-family: 'Segoe UI', sans-serif;
+      letter-spacing: 0.5px;
     }
 
-    #token-attribution span:hover {
-      transform: scale(1.1);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    .agent-thoughts {
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    .prediction-header {
-      border-bottom: 1px solid #e9ecef;
-      padding-bottom: 0.5rem;
+    .agent-thoughts::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, #7209b7, #a8dadc);
     }
 
-    #stock-progress-bar {
-      animation: stockProgressGlow 2s ease-in-out infinite;
+    .conversation-log {
+      transition: all 0.3s ease;
+      border: 2px solid #e9ecef !important;
     }
 
-    @keyframes stockProgressGlow {
-      0%, 100% { 
-        background: linear-gradient(90deg, #28a745, #ffc107, #dc3545);
-      }
-      50% { 
-        background: linear-gradient(90deg, #20c997, #fd7e14, #e74c3c);
-      }
+    .conversation-log:hover {
+      border-color: #7209b7 !important;
     }
 
-    .sentiment-analysis {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 1rem;
-      border-radius: 8px;
+    .conversation-header {
+      background: linear-gradient(135deg, #7209b7, #a8dadc) !important;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background: linear-gradient(135deg, #7209b7, #a8dadc) !important; }
+      50% { background: linear-gradient(135deg, #a8dadc, #7209b7) !important; }
+    }
+
+    .mcp-trace {
       border-left: 4px solid #7209b7;
-    }
-
-    /* Responsive design for stock predictor */
-    @media (max-width: 768px) {
-      .prediction-header {
-        flex-direction: column !important;
-        gap: 0.5rem;
-        text-align: center;
-      }
-      
-      .model-info {
-        grid-template-columns: 1fr !important;
-        text-align: center;
-      }
-      
-      #token-attribution {
-        font-size: 0.8rem !important;
-      }
-      
-      .stock-input-section textarea {
-        height: 80px !important;
-      }
-    }
-
-    .vision-tab {
       transition: all 0.3s ease;
-      font-weight: 500;
     }
 
-    .vision-tab:hover {
-      background: #7209b7 !important;
-      color: white !important;
-      transform: translateY(-1px);
+    .mcp-trace:hover {
+      background: #f0f8ff !important;
+      transform: translateX(5px);
     }
 
-    .vision-tab-content {
-      animation: fadeIn 0.3s ease;
+    #mcp-trace-log {
+      line-height: 1.4;
     }
 
-    #neighborsGrid > div:hover {
-      transform: scale(1.1) !important;
-      box-shadow: 0 4px 12px rgba(114, 9, 183, 0.3);
+    /* Conversation message animations */
+    .conversation-log > div {
+      animation: messageSlideIn 0.5s ease;
     }
 
-    #embeddingCanvas, #attentionCanvas {
-      transition: all 0.3s ease;
-      cursor: crosshair;
-    }
-
-    #embeddingCanvas:hover, #attentionCanvas:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .vision-upload-container {
-      animation: slideInUp 0.5s ease;
-    }
-
-    @keyframes slideInUp {
+    @keyframes messageSlideIn {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateX(-20px);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
     }
 
-    /* Responsive design for vision demo */
+    /* Responsive design for MCP agents */
     @media (max-width: 768px) {
-      .vision-upload-container {
+      .agent-panels {
+        grid-template-columns: 1fr !important;
+        gap: 0.5rem !important;
+      }
+      
+      .agent-setup-section > div {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .conversation-header {
         flex-direction: column !important;
-        align-items: center;
+        gap: 0.3rem;
+        text-align: center;
       }
       
-      .vision-upload-area {
-        width: 100% !important;
-        max-width: 250px !important;
-        height: 120px !important;
+      .agent-thoughts,
+      .agent-memory {
+        padding: 0.5rem !important;
+        font-size: 0.8rem !important;
       }
       
-      #visionResults {
-        min-width: auto !important;
-        width: 100%;
-      }
-      
-      .vision-tabs {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .vision-tab {
-        font-size: 0.7rem !important;
-        padding: 0.4rem 0.8rem !important;
+      .conversation-log {
+        height: 250px !important;
       }
     }
 
-    .audio-upload-area {
-      transition: all 0.3s ease;
-    }
-
-    .audio-upload-area:hover {
-      border-color: #5a067a;
-      background: #f0f0f0;
-    }
-
-    #audioWaveform {
-      background: linear-gradient(90deg, #7209b7 0%, #a8dadc 50%, #7209b7 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #audioWaveform::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      animation: waveAnimation 2s infinite;
-    }
-
-    @keyframes waveAnimation {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    .demo-button:disabled {
-      background: #cbd5e0;
-      color: #718096;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .demo-button:disabled:hover {
-      background: #cbd5e0;
-      transform: none;
+    .stock-input-section textarea:focus {
+      border-color: #7209b7 !important;
+      box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+      outline: none;
     }
 
     /* Research progress animation */
@@ -1760,6 +1691,7 @@
     <div class="demo-tabs">
       <button class="demo-tab active" onclick="showDemo('ml-classifier')">Sentiment Analyzer</button>
       <button class="demo-tab" onclick="showDemo('stock-predictor')">Stock Predictor</button>
+      <button class="demo-tab" onclick="showDemo('mcp-agents')">MCP Agent2Agent</button>
       <button class="demo-tab" onclick="showDemo('vision-foundation')">Vision Foundation Model</button>
       <button class="demo-tab" onclick="showDemo('image-analyzer')">Image Analyzer</button>
       <button class="demo-tab" onclick="showDemo('research-agent')">Research Agent</button>
@@ -1873,72 +1805,212 @@ Datasets: Financial news corpus, Market data, SEC filings
       </div>
     </div>
     
+    <div id="mcp-agents" class="demo-content">
+      <h3>🤖 MCP Agent2Agent LLM Chatbots</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Model Context Protocol Agent Communication</h4>
+          <p>Watch two AI agents communicate and negotiate using advanced LLM frameworks</p>
+          
+          <div class="agent-setup-section" style="margin: 1rem 0; background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="agent-config">
+                <label style="display: block; font-weight: 600; color: #555; margin-bottom: 0.5rem;">🤖 Agent Alpha</label>
+                <select id="agent-alpha-role" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef;">
+                  <option value="negotiator">Business Negotiator</option>
+                  <option value="researcher">Research Scientist</option>
+                  <option value="analyst">Data Analyst</option>
+                  <option value="consultant">Strategy Consultant</option>
+                </select>
+              </div>
+              <div class="agent-config">
+                <label style="display: block; font-weight: 600; color: #555; margin-bottom: 0.5rem;">🤖 Agent Beta</label>
+                <select id="agent-beta-role" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef;">
+                  <option value="client">Client Representative</option>
+                  <option value="peer-researcher">Peer Researcher</option>
+                  <option value="stakeholder">Stakeholder</option>
+                  <option value="manager">Project Manager</option>
+                </select>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-weight: 600; color: #555; margin-bottom: 0.5rem;">💬 Discussion Topic</label>
+              <select id="discussion-topic" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef;">
+                <option value="contract">Contract Negotiation ($500K Software License)</option>
+                <option value="research">Research Collaboration (AI Ethics Study)</option>
+                <option value="budget">Budget Allocation (Q4 Marketing Campaign)</option>
+                <option value="timeline">Project Timeline (Product Launch)</option>
+                <option value="strategy">Strategic Planning (Market Expansion)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div id="agent-conversation" style="display: none; margin-top: 1rem;">
+            <div class="conversation-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 0.8rem; background: linear-gradient(135deg, #7209b7, #a8dadc); color: white; border-radius: 8px;">
+              <h5 style="margin: 0; font-size: 1rem;">🎭 Agent Conversation</h5>
+              <div id="conversation-status" style="font-size: 0.85rem; opacity: 0.9;">Initializing MCP...</div>
+            </div>
+            
+            <div class="agent-panels" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="agent-panel" style="border: 2px solid #7209b7; border-radius: 8px; overflow: hidden;">
+                <div class="agent-header" style="background: #7209b7; color: white; padding: 0.5rem; text-align: center; font-weight: 600;">
+                  🤖 Agent Alpha <span id="alpha-role-display"></span>
+                </div>
+                <div id="alpha-thoughts" class="agent-thoughts" style="background: #f0f8ff; padding: 0.8rem; font-size: 0.85rem; border-bottom: 1px solid #e9ecef; min-height: 60px;">
+                  <strong>💭 Inner Thoughts:</strong><br>
+                  <span id="alpha-thinking">Waiting for conversation to start...</span>
+                </div>
+                <div id="alpha-memory" class="agent-memory" style="background: #fff; padding: 0.8rem; font-size: 0.8rem; color: #666; min-height: 50px;">
+                  <strong>🧠 Memory/Context:</strong><br>
+                  <span id="alpha-context">No context loaded</span>
+                </div>
+              </div>
+              
+              <div class="agent-panel" style="border: 2px solid #a8dadc; border-radius: 8px; overflow: hidden;">
+                <div class="agent-header" style="background: #a8dadc; color: #333; padding: 0.5rem; text-align: center; font-weight: 600;">
+                  🤖 Agent Beta <span id="beta-role-display"></span>
+                </div>
+                <div id="beta-thoughts" class="agent-thoughts" style="background: #f0fff0; padding: 0.8rem; font-size: 0.85rem; border-bottom: 1px solid #e9ecef; min-height: 60px;">
+                  <strong>💭 Inner Thoughts:</strong><br>
+                  <span id="beta-thinking">Waiting for conversation to start...</span>
+                </div>
+                <div id="beta-memory" class="agent-memory" style="background: #fff; padding: 0.8rem; font-size: 0.8rem; color: #666; min-height: 50px;">
+                  <strong>🧠 Memory/Context:</strong><br>
+                  <span id="beta-context">No context loaded</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="conversation-log" style="background: white; border: 2px solid #e9ecef; border-radius: 8px; height: 300px; overflow-y: auto; padding: 1rem;" id="conversation-log">
+              <div style="text-align: center; color: #666; font-style: italic;">Conversation will appear here...</div>
+            </div>
+            
+            <div class="mcp-trace" style="margin-top: 1rem; background: #f8f9fa; border-radius: 8px; padding: 1rem;">
+              <h6 style="margin: 0 0 0.5rem 0; color: #7209b7; font-size: 0.9rem;">🔍 MCP Protocol Trace</h6>
+              <div id="mcp-trace-log" style="font-family: 'Courier New', monospace; font-size: 0.8rem; color: #495057; max-height: 100px; overflow-y: auto;">
+                [MCP] Waiting for agent initialization...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="startAgentConversation()" id="startConversationBtn">🎬 Start Conversation</button>
+        <button class="demo-button" onclick="pauseConversation()" id="pauseBtn" disabled style="background: #ffc107;">⏸️ Pause</button>
+        <button class="demo-button" onclick="resetAgents()" style="background: #dc3545;">🔄 Reset Agents</button>
+      </div>
+      <div class="demo-output" id="mcp-output">
+MCP Agent2Agent system ready...
+Framework: LangChain + Flask + MCP | Models: GPT-4 + Claude-3.5
+Features: Agent memory, Context sharing, Negotiation protocols, Inner thought exposure
+      </div>
+    </div>
+    
+    <div id="vision-foundation" class="demo-content">
+      <h3>👁️ Self-Supervised Vision Foundation Model</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Interactive Image Representation Explorer</h4>
+          <p>Upload an image to explore feature representations using DINOv2 foundation model</p>
+          
+          <div class="vision-upload-container" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0;">
+            <div class="vision-upload-area" onclick="document.getElementById('visionImageInput').click()" style="width: 200px; height: 150px; border: 2px dashed #7209b7; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #f8f9fa; transition: all 0.3s ease;">
+              <div id="visionImagePreview" style="text-align: center; color: #666; font-size: 0.9rem;">
+                📸 Upload Image<br>
+                <small>JPG, PNG (max 10MB)</small>
+              </div>
+            </div>
+            
+            <div id="visionResults" style="flex: 1; min-width: 300px; background: #f8f9fa; border-radius: 8px; padding: 1rem; display: none;">
+              <div class="vision-tabs" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                <button class="vision-tab active" onclick="showVisionTab('neighbors')" style="padding: 0.5rem 1rem; border: none; background: #7209b7; color: white; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Nearest Neighbors</button>
+                <button class="vision-tab" onclick="showVisionTab('embeddings')" style="padding: 0.5rem 1rem; border: none; background: #e9ecef; color: #666; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Embeddings</button>
+                <button class="vision-tab" onclick="showVisionTab('attention')" style="padding: 0.5rem 1rem; border: none; background: #e9ecef; color: #666; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Attention Maps</button>
+                                        </div>
+              
+              <div id="vision-neighbors" class="vision-tab-content active">
+                <h5 style="margin: 0 0 0.5rem 0; color: #7209b7;">🔍 Feature Space Neighbors</h5>
+                <div id="neighborsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 0.5rem;">
+                  <!-- Neighbor images will be populated here -->
+                </div>
+                <div id="neighborsInfo" style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+                  Similarity scores will appear here
+                </div>
+              </div>
+              
+              <div id="vision-embeddings" class="vision-tab-content" style="display: none;">
+                <h5 style="margin: 0 0 0.5rem 0; color: #7209b7;">📊 t-SNE/UMAP Visualization</h5>
+                <div id="embeddingViz" style="width: 100%; height: 200px; background: #fff; border: 1px solid #ddd; border-radius: 4px; position: relative; display: flex; align-items: center; justify-content: center;">
+                  <canvas id="embeddingCanvas" width="300" height="180" style="border-radius: 4px;"></canvas>
+                </div>
+                <div id="embeddingInfo" style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+                  Dimensionality: 384D → 2D | Method: t-SNE
+                </div>
+              </div>
+              
+              <div id="vision-attention" class="vision-tab-content" style="display: none;">
+                <h5 style="margin: 0 0 0.5rem 0; color: #7209b7;">🎯 Attention Heatmap</h5>
+                <div id="attentionMap" style="width: 100%; height: 200px; background: #fff; border: 1px solid #ddd; border-radius: 4px; position: relative; overflow: hidden;">
+                  <canvas id="attentionCanvas" width="300" height="180" style="border-radius: 4px;"></canvas>
+                </div>
+                <div id="attentionInfo" style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+                  Layer: 12 | Head: Multi-head average | Patch size: 14×14
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <input type="file" id="visionImageInput" accept="image/*" style="display: none;" onchange="handleVisionImageUpload(event)">
+          
+          <div id="visionAnalysisProgress" style="margin-top: 1rem; display: none;">
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+              <div id="visionProgressText">🔄 Processing image through DINOv2...</div>
+              <div style="width: 100%; height: 6px; background: #e9ecef; border-radius: 3px; margin-top: 0.5rem; overflow: hidden;">
+                <div id="visionProgressBar" style="height: 100%; background: linear-gradient(90deg, #7209b7, #a8dadc); width: 0%; transition: width 0.5s ease; border-radius: 3px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="analyzeVisionImage()" id="analyzeVisionBtn" disabled>🔍 Analyze Features</button>
+        <button class="demo-button" onclick="generateSampleImages()">📱 Load Sample Images</button>
+        <button class="demo-button" onclick="clearVisionDemo()">🗑️ Clear</button>
+      </div>
+      <div class="demo-output" id="vision-output">
+Vision foundation model ready...
+Model: DINOv2-ViT-B/14 | Features: 384D embeddings
+Capabilities: Self-supervised representations, Feature similarity, Attention visualization
+      </div>
+    </div>
+    
+    <div id="text-analyzer" class="demo-content">
+      <h3>📝 Text Analysis Suite</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Text Statistics & Analysis</h4>
+          <textarea id="text-input" placeholder="Paste your text here for analysis..." style="width: 90%; height: 100px; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef; resize: vertical;"></textarea>
+          <div id="text-stats" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px;"></div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="analyzeText()">Analyze Text</button>
+        <button class="demo-button" onclick="clearText()">Clear</button>
+      </div>
+      <div class="demo-output" id="text-output">
+Text analysis ready...
+Features: Word count, Character count, Reading time, Complexity score
+      </div>
+    </div>
+    
     <div id="image-analyzer" class="demo-content">
       <h3>🖼️ Image Analyzer Demo</h3>
       <div class="demo-preview">
         <div style="text-align: center;">
           <h4 style="color: #7209b7;">Computer Vision Analysis</h4>
           <p>Upload an image to analyze using deep learning models</p>
-          <div class="image-upload-area" onclick="document.getElementById('imageInput').click()" style="width: 300px; height: 200px; border: 2px dashed #7209b7; border-radius: 8px; margin: 1rem auto; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #f8f9fa;">
-            <div id="imagePreview" style="text-align: center; color: #666;">
-              📷 Click to upload image<br>
-              <small>JPG, PNG, GIF (max 5MB)</small>
-            </div>
-          </div>
-          <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-          <div id="imageAnalysis" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;"></div>
-        </div>
-      </div>
-      <div class="demo-controls">
-        <button class="demo-button" onclick="analyzeImage()" id="analyzeImageBtn" disabled>Analyze Image</button>
-        <button class="demo-button" onclick="clearImage()">Clear</button>
-      </div>
-      <div class="demo-output" id="image-output">
-Image analyzer ready...
-Models: ResNet-50, YOLO v8, ViT-Base
-Capabilities: Object detection, Scene classification, Feature extraction
-      </div>
-    </div>
-    
-    <div id="research-agent" class="demo-content">
-      <h3>🔬 Research Agent Demo</h3>
-      <div class="demo-preview">
-        <div style="text-align: center;">
-          <h4 style="color: #7209b7;">AI Research Assistant</h4>
-          <p>Get comprehensive research summaries on any topic</p>
-          <div style="margin: 1rem 0;">
-            <input type="text" id="research-topic" placeholder="Enter research topic (e.g., 'quantum computing', 'climate change')..." style="width: 80%; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef;">
-          </div>
-          <div id="research-progress" style="margin-top: 1rem; display: none;">
-            <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
-              <div id="research-status">🔍 Searching academic databases...</div>
-              <div style="width: 100%; height: 6px; background: #e9ecef; border-radius: 3px; margin-top: 0.5rem;">
-                <div id="research-bar" style="height: 100%; background: linear-gradient(90deg, #7209b7, #a8dadc); width: 0%; transition: width 0.5s ease; border-radius: 3px;"></div>
-              </div>
-            </div>
-          </div>
-          <div id="research-results" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;"></div>
-        </div>
-      </div>
-      <div class="demo-controls">
-        <button class="demo-button" onclick="conductResearch()">Start Research</button>
-        <button class="demo-button" onclick="downloadResearch()" id="downloadBtn" disabled>📄 Download PDF</button>
-        <button class="demo-button" onclick="clearResearch()">Clear</button>
-      </div>
-      <div class="demo-output" id="research-output">
-Research agent ready...
-Sources: arXiv, Google Scholar, PubMed, IEEE Xplore
-Features: Citation analysis, Trend identification, Key findings extraction
-      </div>
-    </div>
-    
-    <div id="audio-classifier" class="demo-content">
-      <h3>🎵 Audio Classifier Demo</h3>
-      <div class="demo-preview">
-        <div style="text-align: center;">
-          <h4 style="color: #7209b7;">Audio Analysis & Classification</h4>
-          <p>Analyze audio patterns for medical diagnosis and sound classification</p>
-          <div class="audio-upload-area" style="border: 2px dashed #7209b7; border-radius: 8px; padding: 2rem; margin: 1rem auto; max-width: 400px; background: #f8f9fa;">
+          <div class="image-upload-area" style="border: 2px dashed #7209b7; border-radius: 8px; padding: 2rem; margin: 1rem auto; max-width: 400px; background: #f8f9fa;">
             <div id="audioControls">
               <button class="demo-button" onclick="startRecording()" id="recordBtn">🎤 Start Recording</button>
               <button class="demo-button" onclick="stopRecording()" id="stopBtn" disabled>⏹️ Stop</button>
@@ -2062,6 +2134,13 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     <div class="publication-title">Salient Activity Recognition in Video Sequences</div>
     <div class="publication-venue">ICPR 2016, Cancún, México</div>
     <div class="publication-description"> This paper explores efficient and accurate methods for large-scale activity recognition in surveillance videos, addressing the challenges of processing vast amounts of streaming data. It presents a novel deep learning fusion architecture leveraging multi-modal inputs, including color spaces and optical flow, and introduces keyframe extraction to reduce computational load while maintaining classification performance.</div>
+    <a href="#" class="publication-link">View Publication</a>
+  </div>
+  
+  <div class="publication-item">
+    <div class="publication-title">Deep Learning for Automated Detection of Abnormalities in Chest Radiographs</div>
+    <div class="publication-venue">MICCAI 2023, Vancouver, Canada</div>
+    <div class="publication-description">We present a deep learning framework for the automated detection of pneumonia and other thoracic diseases in chest radiographs. Our method leverages a large-scale dataset of labeled radiographs and incorporates a novel attention mechanism to enhance the interpretability of the model's predictions.</div>
     <a href="#" class="publication-link">View Publication</a>
   </div>
 </section>
@@ -2689,7 +2768,611 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     document.getElementById('stock-output').textContent = 'Financial LLM predictor ready...\nModels: FinBERT + LangChain + GPT-4 | Features: Sentiment analysis, Trend prediction, Token attribution\nDatasets: Financial news corpus, Market data, SEC filings';
   }
 
+  // MCP Agent2Agent Demo Functions
+  let conversationStep = 0;
+  let conversationInterval = null;
+  
+  function startAgentConversation() {
+    const alphaRole = document.getElementById('agent-alpha-role').value;
+    const betaRole = document.getElementById('agent-beta-role').value;
+    const topic = document.getElementById('discussion-topic').value;
+    
+    document.getElementById('alpha-role-display').textContent = `(${alphaRole})`;
+    document.getElementById('beta-role-display').textContent = `(${betaRole})`;
+    
+    // Initialize agent contexts
+    document.getElementById('alpha-context').textContent = `Role: ${alphaRole} | Topic: ${topic} | Strategy: Collaborative approach`;
+    document.getElementById('beta-context').textContent = `Role: ${betaRole} | Topic: ${topic} | Strategy: Detail-oriented analysis`;
+    
+    // Show conversation interface
+    document.getElementById('agent-conversation').style.display = 'block';
+    document.getElementById('startConversationBtn').disabled = true;
+    document.getElementById('pauseBtn').disabled = false;
+    
+    // Clear previous conversation
+    document.getElementById('conversation-log').innerHTML = '';
+    conversationStep = 0;
+    
+    // Start MCP trace
+    logMCPTrace('Initializing agent communication protocol...');
+    logMCPTrace('Loading agent personas and context...');
+    logMCPTrace('Establishing secure communication channel...');
+    
+    document.getElementById('conversation-status').textContent = 'Agents communicating...';
+    document.getElementById('mcp-output').textContent = `MCP session active | Topic: ${topic} | Agents: ${alphaRole} ↔ ${betaRole}`;
+    
+    // Start conversation loop
+    setTimeout(() => {
+      agentConversationLoop();
+    }, 1500);
+  }
+
+  function agentConversationLoop(step = 0) {
+    const steps = [
+      {
+        speaker: 'alpha',
+        message: generateAgentResponse('alpha', document.getElementById('discussion-topic').value),
+        thinking: 'I need to establish rapport and outline my perspective on this topic.',
+        mcp: 'Agent Alpha transmitting initial position...'
+      },
+      {
+        speaker: 'beta',
+        message: generateAgentResponse('beta', document.getElementById('discussion-topic').value),
+        thinking: 'Let me analyze their proposal and present my counterpoint.',
+        mcp: 'Agent Beta processing and formulating response...'
+      },
+      {
+        speaker: 'alpha',
+        message: generateAgentResponse('alpha', 'clarification'),
+        thinking: 'I should address their concerns and find common ground.',
+        mcp: 'Agent Alpha adapting strategy based on Beta\'s feedback...'
+      },
+      {
+        speaker: 'beta',
+        message: generateAgentResponse('beta', 'agreement'),
+        thinking: 'This seems reasonable. I can work with this proposal.',
+        mcp: 'Agent Beta evaluating compromise options...'
+      },
+      {
+        speaker: 'alpha',
+        message: generateAgentResponse('alpha', 'conclusion'),
+        thinking: 'Great! We\'re making progress. Let me solidify the agreement.',
+        mcp: 'Agent Alpha finalizing terms and conditions...'
+      }
+    ];
+    
+    if (step < steps.length) {
+      const currentStep = steps[step];
+      
+      // Update thinking
+      if (currentStep.speaker === 'alpha') {
+        document.getElementById('alpha-thinking').textContent = currentStep.thinking;
+        document.getElementById('beta-thinking').textContent = 'Listening and analyzing...';
+      } else {
+        document.getElementById('beta-thinking').textContent = currentStep.thinking;
+        document.getElementById('alpha-thinking').textContent = 'Waiting for response...';
+      }
+      
+      // Log MCP trace
+      logMCPTrace(currentStep.mcp);
+      
+      // Add message to conversation
+      setTimeout(() => {
+        const speakerColor = currentStep.speaker === 'alpha' ? '#7209b7' : '#20c997';
+        const agentName = currentStep.speaker === 'alpha' ? 'Agent Alpha' : 'Agent Beta';
+        
+        document.getElementById('conversation-log').innerHTML += `
+          <div style="margin-bottom: 1rem;">
+            <div style="color: ${speakerColor}; font-weight: 600; margin-bottom: 0.3rem;">🤖 ${agentName}:</div>
+            <div style="background: ${currentStep.speaker === 'alpha' ? '#f8f4ff' : '#f0fff4'}; padding: 0.8rem; border-radius: 8px; border-left: 3px solid ${speakerColor};">
+              ${currentStep.message}
+            </div>
+          </div>
+        `;
+        
+        // Auto-scroll conversation
+        const log = document.getElementById('conversation-log');
+        log.scrollTop = log.scrollHeight;
+        
+        // Schedule next step
+        conversationInterval = setTimeout(() => {
+          agentConversationLoop(step + 1);
+        }, 3000);
+      }, 1000);
+    } else {
+      concludeAgentConversation();
+    }
+  }
+
+  function generateAgentResponse(agent, input) {
+    // Simulated response generation
+    const responses = {
+      alpha: [
+        "I appreciate the opportunity to discuss this matter. Based on my analysis, I believe we can find a mutually beneficial solution.",
+        "Thank you for that perspective. Let me address your concerns while highlighting the advantages of our approach.",
+        "I understand your position. Perhaps we can explore a hybrid solution that incorporates both of our key requirements.",
+        "That's a fair point. I'm willing to be flexible on those terms if we can agree on the core framework.",
+        "Excellent! I believe we've reached a solid foundation for moving forward. Shall we outline the next steps?"
+      ],
+      beta: [
+        "I'm glad we're having this conversation. I do have some concerns about the current proposal that I'd like to address.",
+        "Your points are well-taken. However, I think we need to consider the practical implications and potential risks involved.",
+        "I can see the merit in your suggestion. What if we modified the approach to include additional safeguards?",
+        "That compromise sounds reasonable. I think this addresses most of my primary concerns while achieving our shared objectives.",
+        "I'm satisfied with this direction. This collaborative approach should lead to better outcomes for all parties involved."
+      ]
+    };
+    
+    return responses[agent][Math.floor(Math.random() * responses[agent].length)];
+  }
+
+  function logMCPTrace(message) {
+    const traceLog = document.getElementById('mcp-trace-log');
+    traceLog.innerHTML += `[MCP] ${message}<br>`;
+    traceLog.scrollTop = traceLog.scrollHeight; // Auto-scroll to bottom
+  }
+
+  function concludeAgentConversation() {
+    setTimeout(() => {
+      document.getElementById('alpha-thinking').textContent = 'Discussion concluded. Summarizing key points...';
+      document.getElementById('beta-thinking').textContent = `Closing remarks: ${document.getElementById('discussion-topic').value} have been successfully addressed.`;
+      
+      // Final summary log
+      logMCPTrace('Negotiation concluded. Agents will now provide closing statements.');
+      
+      setTimeout(() => {
+        document.getElementById('conversation-log').innerHTML += `
+          <div style="margin-bottom: 1rem; border-top: 2px solid #e9ecef; padding-top: 1rem;">
+            <div style="color: #7209b7; font-weight: 600; margin-bottom: 0.3rem;">🤖 Agent Alpha:</div>
+            <div style="background: #f8f4ff; padding: 0.8rem; border-radius: 8px; border-left: 3px solid #7209b7;">
+              Thank you for the productive discussion. I look forward to implementing our agreed-upon solution.
+            </div>
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <div style="color: #20c997; font-weight: 600; margin-bottom: 0.3rem;">🤖 Agent Beta:</div>
+            <div style="background: #f0fff4; padding: 0.8rem; border-radius: 8px; border-left: 3px solid #20c997;">
+              Likewise! This collaborative approach has resulted in a well-balanced outcome. Great teamwork!
+            </div>
+          </div>
+        `;
+        
+        document.getElementById('conversation-status').textContent = 'Conversation completed successfully';
+        document.getElementById('pauseBtn').disabled = true;
+        logMCPTrace('Session terminated. All agent states saved.');
+        
+        const log = document.getElementById('conversation-log');
+        log.scrollTop = log.scrollHeight;
+      }, 2000);
+    }, 1000);
+  }
+
+  function pauseConversation() {
+    const isPaused = document.getElementById('pauseBtn').textContent === '▶️ Resume';
+    
+    if (isPaused) {
+      // Resume conversation
+      document.getElementById('pauseBtn').textContent = '⏸️ Pause';
+      document.getElementById('conversation-status').textContent = 'Agents communicating...';
+      agentConversationLoop(conversationStep);
+      logMCPTrace('Communication resumed...');
+    } else {
+      // Pause conversation
+      if (conversationInterval) {
+        clearTimeout(conversationInterval);
+      }
+      document.getElementById('pauseBtn').textContent = '▶️ Resume';
+      document.getElementById('conversation-status').textContent = 'Conversation paused';
+      document.getElementById('alpha-thinking').textContent = 'Conversation paused...';
+      document.getElementById('beta-thinking').textContent = 'Conversation paused...';
+      logMCPTrace('Communication paused by user...');
+    }
+  }
+
+  function resetAgents() {
+    // Clear conversation interval
+    if (conversationInterval) {
+      clearTimeout(conversationInterval);
+    }
+    
+    // Reset UI
+    document.getElementById('agent-conversation').style.display = 'none';
+    document.getElementById('conversation-log').innerHTML = '<div style="text-align: center; color: #666; font-style: italic;">Conversation will appear here...</div>';
+    document.getElementById('mcp-trace-log').innerHTML = '[MCP] Waiting for agent initialization...';
+    document.getElementById('alpha-thinking').textContent = 'Waiting for conversation to start...';
+    document.getElementById('beta-thinking').textContent = 'Waiting for conversation to start...';
+    document.getElementById('alpha-context').textContent = 'No context loaded';
+    document.getElementById('beta-context').textContent = 'No context loaded';
+    document.getElementById('conversation-status').textContent = 'Initializing MCP...';
+    
+    // Reset buttons
+    document.getElementById('pauseBtn').disabled = true;
+    document.getElementById('pauseBtn').textContent = '⏸️ Pause';
+    document.getElementById('startConversationBtn').disabled = false;
+    
+    // Reset variables
+    conversationStep = 0;
+    conversationInterval = null;
+    
+    document.getElementById('mcp-output').textContent = 'MCP Agent2Agent system ready...\nFramework: LangChain + Flask + MCP | Models: GPT-4 + Claude-3.5\nFeatures: Agent memory, Context sharing, Negotiation protocols, Inner thought exposure';
+  }
+
+  // Vision Foundation Model Demo Functions
+  let currentVisionImage = null;
+  let visionFeatures = null;
+  
+  function handleVisionImageUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        alert('File size must be less than 10MB');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        currentVisionImage = e.target.result;
+        const preview = document.getElementById('visionImagePreview');
+        preview.innerHTML = `<img src="${currentVisionImage}" style="max-width: 100%; max-height: 130px; border-radius: 4px; object-fit: cover;">`;
+        document.getElementById('analyzeVisionBtn').disabled = false;
+        
+        // Update upload area styling
+        const uploadArea = document.querySelector('.vision-upload-area');
+        uploadArea.style.border = '2px solid #7209b7';
+        uploadArea.style.background = '#f0f8ff';
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function analyzeVisionImage() {
+    if (!currentVisionImage) {
+      alert('Please upload an image first');
+      return;
+    }
+    
+    const progress = document.getElementById('visionAnalysisProgress');
+    const progressBar = document.getElementById('visionProgressBar');
+    const progressText = document.getElementById('visionProgressText');
+    const output = document.getElementById('vision-output');
+    
+    progress.style.display = 'block';
+    progressBar.style.width = '0%';
+    
+    const steps = [
+      '🔄 Loading DINOv2 foundation model...',
+      '🖼️ Preprocessing image patches...',
+      '🧠 Extracting 384D feature embeddings...',
+      '🔍 Computing similarity in feature space...',
+      '📊 Generating t-SNE visualization...',
+      '🎯 Computing attention maps...',
+      '✅ Analysis complete!'
+    ];
+    
+    let currentStep = 0;
+    const interval = setInterval(() => {
+      if (currentStep < steps.length) {
+        progressText.textContent = steps[currentStep];
+        progressBar.style.width = ((currentStep + 1) / steps.length * 100) + '%';
+        output.textContent = `Processing vision features...\nStep ${currentStep + 1}/${steps.length}: ${steps[currentStep]}\nFeature extraction progress: ${Math.round((currentStep + 1) / steps.length * 100)}%`;
+        currentStep++;
+      } else {
+        clearInterval(interval);
+        showVisionResults();
+      }
+    }, 800);
+  }
+
+  function showVisionResults() {
+    // Generate mock vision analysis results
+    visionFeatures = {
+      embeddings: generateMockEmbeddings(),
+      neighbors: generateMockNeighbors(),
+      attention: generateMockAttention(),
+      similarity_scores: Array.from({length: 8}, () => (Math.random() * 0.4 + 0.6).toFixed(3))
+    };
+    
+    document.getElementById('visionResults').style.display = 'block';
+    document.getElementById('visionAnalysisProgress').style.display = 'none';
+    
+    // Populate nearest neighbors
+    populateNearestNeighbors();
+    
+    // Generate embedding visualization
+    generateEmbeddingVisualization();
+    
+    // Generate attention heatmap
+    generateAttentionHeatmap();
+    
+    document.getElementById('vision-output').textContent = `Vision analysis complete!\nFeature vector: 384 dimensions\nNearest neighbors: 8 similar images found\nSimilarity range: ${visionFeatures.similarity_scores[0]} - ${visionFeatures.similarity_scores[7]}\nProcessing time: ${(Math.random() * 1000 + 500).toFixed(0)}ms`;
+  }
+
+  function populateNearestNeighbors() {
+    const grid = document.getElementById('neighborsGrid');
+    const info = document.getElementById('neighborsInfo');
+    
+    // Generate mock neighbor images (colored squares representing similar images)
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+    
+    grid.innerHTML = '';
+    colors.forEach((color, index) => {
+      const neighborDiv = document.createElement('div');
+      neighborDiv.style.cssText = `
+        width: 60px; 
+        height: 60px; 
+        background: ${color}; 
+        border-radius: 4px; 
+        border: 2px solid #ddd;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      `;
+      neighborDiv.onmouseover = () => neighborDiv.style.transform = 'scale(1.1)';
+      neighborDiv.onmouseout = () => neighborDiv.style.transform = 'scale(1)';
+      
+      // Add similarity score overlay
+      const scoreOverlay = document.createElement('div');
+      scoreOverlay.textContent = visionFeatures.similarity_scores[index];
+      scoreOverlay.style.cssText = `
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7rem;
+        color: #666;
+        background: white;
+        padding: 1px 3px;
+        border-radius: 2px;
+        border: 1px solid #ddd;
+      `;
+      neighborDiv.appendChild(scoreOverlay);
+      
+      grid.appendChild(neighborDiv);
+    });
+    
+    info.textContent = `Found ${colors.length} visually similar images | Average similarity: ${(visionFeatures.similarity_scores.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / visionFeatures.similarity_scores.length).toFixed(3)}`;
+  }
+
+  function generateEmbeddingVisualization() {
+    const canvas = document.getElementById('embeddingCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Generate mock t-SNE points
+    const points = Array.from({length: 50}, () => ({
+      x: Math.random() * (canvas.width - 20) + 10,
+      y: Math.random() * (canvas.height - 20) + 10,
+      isQuery: false
+    }));
+    
+    // Add query point (our uploaded image)
+    points.push({
+      x: canvas.width / 2 + (Math.random() - 0.5) * 40,
+      y: canvas.height / 2 + (Math.random() - 0.5) * 40,
+      isQuery: true
+    });
+    
+    // Draw background grid
+    ctx.strokeStyle = '#f0f0f0';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < canvas.width; i += 30) {
+      ctx.beginPath();
+      ctx.moveTo(i, 0);
+      ctx.lineTo(i, canvas.height);
+      ctx.stroke();
+    }
+    for (let i = 0; i < canvas.height; i += 30) {
+      ctx.beginPath();
+      ctx.moveTo(0, i);
+      ctx.lineTo(canvas.width, i);
+      ctx.stroke();
+    }
+    
+    // Draw points
+    points.forEach(point => {
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, point.isQuery ? 6 : 3, 0, 2 * Math.PI);
+      ctx.fillStyle = point.isQuery ? '#7209b7' : '#a8dadc';
+      ctx.fill();
+      
+      if (point.isQuery) {
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+    });
+    
+    // Add labels
+    ctx.fillStyle = '#666';
+    ctx.font = '10px Arial';
+    ctx.fillText('t-SNE Component 1', canvas.width - 80, canvas.height - 5);
+    ctx.save();
+    ctx.translate(10, canvas.height / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('t-SNE Component 2', 0, 0);
+    ctx.restore();
+  }
+
+  function generateAttentionHeatmap() {
+    const canvas = document.getElementById('attentionCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Create a simple attention heatmap
+    const patchSize = 20;
+    const cols = Math.floor(canvas.width / patchSize);
+    const rows = Math.floor(canvas.height / patchSize);
+    
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const attention = Math.random();
+        const intensity = Math.floor(attention * 255);
+        
+        // Create heatmap colors (blue to red)
+        let r, g, b;
+        if (attention < 0.5) {
+          r = 0;
+          g = Math.floor(attention * 2 * 255);
+          b = 255;
+        } else {
+          r = Math.floor((attention - 0.5) * 2 * 255);
+          g = 255 - Math.floor((attention - 0.5) * 2 * 255);
+          b = 0;
+        }
+        
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.7)`;
+        ctx.fillRect(col * patchSize, row * patchSize, patchSize, patchSize);
+        
+        // Add attention value text for high attention areas
+        if (attention > 0.7) {
+          ctx.fillStyle = 'white';
+          ctx.font = '8px Arial';
+          ctx.fillText(attention.toFixed(2), col * patchSize + 2, row * patchSize + 12);
+        }
+      }
+    }
+    
+    // Add overlay with key regions
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(canvas.width * 0.3, canvas.height * 0.2, canvas.width * 0.4, canvas.height * 0.3);
+    ctx.fillStyle = 'white';
+    ctx.font = '10px Arial';
+    ctx.fillText('High Attention', canvas.width * 0.32, canvas.height * 0.18);
+  }
+
+  function showVisionTab(tabName) {
+    // Hide all tab contents
+    document.querySelectorAll('.vision-tab-content').forEach(content => {
+      content.style.display = 'none';
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.vision-tab').forEach(tab => {
+      tab.style.background = '#e9ecef';
+      tab.style.color = '#666';
+    });
+    
+    // Show selected tab content
+    document.getElementById(`vision-${tabName}`).style.display = 'block';
+    
+    // Highlight active tab
+    event.target.style.background = '#7209b7';
+    event.target.style.color = 'white';
+  }
+
+  function generateSampleImages() {
+    // Simulate loading sample images
+    const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Create a simple colored canvas as sample
+    const canvas = document.createElement('canvas');
+    canvas.width = 200;
+    canvas.height = 150;
+    const ctx = canvas.getContext('2d');
+    
+    // Create gradient background
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, randomColor);
+    gradient.addColorStop(1, '#ffffff');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Add some shapes to make it interesting
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.beginPath();
+    ctx.arc(canvas.width * 0.3, canvas.height * 0.4, 30, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+    ctx.fillRect(canvas.width * 0.6, canvas.height * 0.2, 40, 60);
+    
+    currentVisionImage = canvas.toDataURL();
+    const preview = document.getElementById('visionImagePreview');
+    preview.innerHTML = `<img src="${currentVisionImage}" style="max-width: 100%; max-height: 130px; border-radius: 4px; object-fit: cover;">`;
+    document.getElementById('analyzeVisionBtn').disabled = false;
+    
+    const uploadArea = document.querySelector('.vision-upload-area');
+    uploadArea.style.border = '2px solid #7209b7';
+    uploadArea.style.background = '#f0f8ff';
+    
+    document.getElementById('vision-output').textContent = 'Sample image loaded! Click "Analyze Features" to explore vision representations.';
+  }
+
+  function clearVisionDemo() {
+    currentVisionImage = null;
+    visionFeatures = null;
+    
+    document.getElementById('visionImagePreview').innerHTML = '📸 Upload Image<br><small>JPG, PNG (max 10MB)</small>';
+    document.getElementById('visionImageInput').value = '';
+    document.getElementById('visionResults').style.display = 'none';
+    document.getElementById('visionAnalysisProgress').style.display = 'none';
+    document.getElementById('analyzeVisionBtn').disabled = true;
+    
+    const uploadArea = document.querySelector('.vision-upload-area');
+    uploadArea.style.border = '2px dashed #7209b7';
+    uploadArea.style.background = '#f8f9fa';
+    
+    document.getElementById('vision-output').textContent = 'Vision foundation model ready...\nModel: DINOv2-ViT-B/14 | Features: 384D embeddings\nCapabilities: Self-supervised representations, Feature similarity, Attention visualization';
+  }
+
+  function generateMockEmbeddings() {
+    return Array.from({length: 384}, () => Math.random() * 2 - 1);
+  }
+
+  function generateMockNeighbors() {
+    return Array.from({length: 8}, (_, i) => ({
+      id: i,
+      similarity: (Math.random() * 0.4 + 0.6).toFixed(3),
+      category: ['object', 'scene', 'texture', 'pattern'][Math.floor(Math.random() * 4)]
+    }));
+  }
+
+  function generateMockAttention() {
+    const patchCount = 14 * 14; // 14x14 patches for ViT
+    return Array.from({length: patchCount}, () => Math.random());
+  }
+
   // Text Analyzer Demo Functions
+  function analyzeText() {
+    const input = document.getElementById('text-input').value;
+    const stats = document.getElementById('text-stats');
+    const output = document.getElementById('text-output');
+    
+    if (!input.trim()) {
+      alert('Please enter some text to analyze');
+      return;
+    }
+    
+    const words = input.trim().split(/\s+/).length;
+    const chars = input.length;
+    const sentences = input.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+    const readingTime = Math.ceil(words / 200);
+    const complexity = words > 100 ? 'High' : words > 50 ? 'Medium' : 'Low';
+    
+    stats.innerHTML = `
+      <strong>Text Statistics:</strong><br>
+      📝 Words: ${words}<br>
+      🔤 Characters: ${chars}<br>
+      📄 Sentences: ${sentences}<br>
+      ⏱️ Reading Time: ~${readingTime} min<br>
+      🧠 Complexity: ${complexity}
+    `;
+    
+    output.textContent = `Text analysis complete!\nLexical diversity: ${(new Set(input.toLowerCase().split(/\s+/)).size / words * 100).toFixed(1)}%\nAverage word length: ${(chars / words).toFixed(1)} characters\nAverage sentence length: ${(words / sentences).toFixed(1)} words`;
+  }
+
+  function clearText() {
+    document.getElementById('text-input').value = '';
+    document.getElementById('text-stats').innerHTML = '';
+    document.getElementById('text-output').textContent = 'Text analysis ready...\nFeatures: Word count, Character count, Reading time, Complexity score';
+  }
+
+  // Image Analyzer Demo Functions
 </script>
 
 </body>
