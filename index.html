@@ -262,14 +262,58 @@
     }
 
     /* Skills Section Enhancements */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
     .skill-category {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
       padding: 1rem;
       background: #f8f9fa;
       border-radius: 8px;
       border-left: 4px solid #7209b7;
+      transition: all 0.3s ease;
     }
 
+    .skill-category:hover {
+      background: #e9ecef;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .skill-category h3 {
+      margin: 0 0 0.8rem 0;
+      color: #7209b7;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-tag {
+      background: #7209b7;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      background: #5a067a;
+      transform: translateY(-1px);
+    }
+
+    /* Legacy skill styles for backward compatibility */
     .skill-item {
       display: flex;
       align-items: center;
@@ -286,6 +330,26 @@
     .skill-name {
       flex: 1;
       font-weight: 500;
+    }
+
+    /* Mobile responsiveness for skills */
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skill-category {
+        padding: 0.8rem;
+      }
+      
+      .skill-tags {
+        gap: 0.3rem;
+      }
+      
+      .skill-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+      }
     }
 
     /* Project Enhancement */
@@ -1654,143 +1718,65 @@
 <section id="skills">
   <h2>Skills & Tools</h2>
   
-  <div class="skill-category">
-    <h3>Programming Languages</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🐍</span>
-      <span class="skill-name">Python</span>
+  <div class="skills-grid">
+    <div class="skill-category">
+      <h3>Programming Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">🐍 Python</span>
+        <span class="skill-tag">⚡ C++</span>
+        <span class="skill-tag">☕ Java</span>
+        <span class="skill-tag">🌙 Lua</span>
+      </div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⚡</span>
-      <span class="skill-name">C++</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">☕</span>
-      <span class="skill-name">Java</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🌙</span>
-      <span class="skill-name">Lua</span>
-    </div>
-  </div>
 
-  <div class="skill-category">
-    <h3>ML/DL Frameworks</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🔥</span>
-      <span class="skill-name">PyTorch</span>
+    <div class="skill-category">
+      <h3>ML/DL Frameworks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">🔥 PyTorch</span>
+        <span class="skill-tag">🧠 TensorFlow</span>
+        <span class="skill-tag">📊 scikit-learn</span>
+        <span class="skill-tag">🎯 Keras</span>
+        <span class="skill-tag">👁️ OpenCV</span>
+        <span class="skill-tag">⚡ ONNX</span>
+      </div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">🧠</span>
-      <span class="skill-name">TensorFlow</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">📊</span>
-      <span class="skill-name">scikit-learn</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🎯</span>
-      <span class="skill-name">Keras</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">👁️</span>
-      <span class="skill-name">OpenCV</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">⚡</span>
-      <span class="skill-name">ONNX</span>
-    </div>
-  </div>
 
-  <div class="skill-category">
-    <h3>LLMs & Agentic</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🔗</span>
-      <span class="skill-name">LangChain</span>
+    <div class="skill-category">
+      <h3>LLMs & Agentic</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">🔗 LangChain</span>
+        <span class="skill-tag">🔍 RAG</span>
+        <span class="skill-tag">🤗 Hugging Face</span>
+        <span class="skill-tag">📝 NLTK</span>
+        <span class="skill-tag">🦙 LlamaIndex</span>
+        <span class="skill-tag">⚡ OpenAI Function Calling</span>
+        <span class="skill-tag">🗃️ FAISS</span>
+        <span class="skill-tag">🔗 Weaviate</span>
+      </div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔍</span>
-      <span class="skill-name">RAG (Retrieval-Augmented Generation)</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🤗</span>
-      <span class="skill-name">Hugging Face</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">📝</span>
-      <span class="skill-name">NLTK</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🦙</span>
-      <span class="skill-name">LlamaIndex</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">⚡</span>
-      <span class="skill-name">OpenAI Function Calling</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🗃️</span>
-      <span class="skill-name">FAISS</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔗</span>
-      <span class="skill-name">Weaviate</span>
-    </div>
-  </div>
 
-  <div class="skill-category">
-    <h3>Deployment & Cloud</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🌐</span>
-      <span class="skill-name">Flask</span>
+    <div class="skill-category">
+      <h3>Deployment & Cloud</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">🌐 Flask</span>
+        <span class="skill-tag">🐳 Docker</span>
+        <span class="skill-tag">⚡ TensorRT</span>
+        <span class="skill-tag">📱 TFLite</span>
+        <span class="skill-tag">☁️ AWS</span>
+        <span class="skill-tag">🔵 Azure</span>
+        <span class="skill-tag">🔥 TorchScript</span>
+        <span class="skill-tag">🎯 NVIDIA Jetson</span>
+      </div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">🐳</span>
-      <span class="skill-name">Docker</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">⚡</span>
-      <span class="skill-name">TensorRT</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">📱</span>
-      <span class="skill-name">TFLite</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">☁️</span>
-      <span class="skill-name">AWS</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔵</span>
-      <span class="skill-name">Azure</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔥</span>
-      <span class="skill-name">TorchScript</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🎯</span>
-      <span class="skill-name">NVIDIA Jetson</span>
-    </div>
-  </div>
 
-  <div class="skill-category">
-    <h3>Tools & Other</h3>
-    <div class="skill-item">
-      <span class="skill-icon">📈</span>
-      <span class="skill-name">W&B (Weights & Biases)</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔧</span>
-      <span class="skill-name">Git/GitHub</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🗄️</span>
-      <span class="skill-name">SQL</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🎨</span>
-      <span class="skill-name">Matplotlib/Seaborn</span>
+    <div class="skill-category">
+      <h3>Tools & Other</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">📈 W&B</span>
+        <span class="skill-tag">🔧 Git/GitHub</span>
+        <span class="skill-tag">🗄️ SQL</span>
+        <span class="skill-tag">🎨 Matplotlib/Seaborn</span>
+      </div>
     </div>
   </div>
 </section>
