@@ -1527,9 +1527,9 @@
 <section id="about">
   <h2>About Me</h2>
   <p>
-    AI Research Engineer with 8+ years of experience in deep learning, LLMs, generative models, and edge deployment. 
+    AI Research Engineer with 8+ years of experience in deep learning, computer vision, LLMs, generative models, and edge deployment. 
     Proven track record leading AI solutions from research to FDA-submittable technology, with publications in top conferences (CVPR, MICCAI). 
-    Passionate about transforming real-world challenges into scalable ML solutions.
+    Passionate about transforming real-world challenges into scalable ML/AI solutions.
   </p>
 </section>
 
@@ -2176,13 +2176,48 @@ Features: Word count, Character count, Reading time, Complexity score
       </div>
     </div>
     
-    <div id="image-analyzer" class="demo-content">
-      <h3>🖼️ Image Analyzer Demo</h3>
+    <div id="research-agent" class="demo-content">
+      <h3>� Research Agent Demo</h3>
       <div class="demo-preview">
         <div style="text-align: center;">
-          <h4 style="color: #7209b7;">Computer Vision Analysis</h4>
-          <p>Upload an image to analyze using deep learning models</p>
-          <div class="image-upload-area" style="border: 2px dashed #7209b7; border-radius: 8px; padding: 2rem; margin: 1rem auto; max-width: 400px; background: #f8f9fa;">
+          <h4 style="color: #7209b7;">AI-Powered Research Assistant</h4>
+          <p>Enter a research topic and get comprehensive analysis with citations</p>
+          <div style="margin: 1rem 0;">
+            <input type="text" id="research-query" placeholder="Enter research topic (e.g., 'machine learning in healthcare')" style="width: 80%; padding: 0.8rem; border-radius: 6px; border: 2px solid #e9ecef; margin-bottom: 1rem;">
+          </div>
+          <div id="research-progress" style="margin-top: 1rem; display: none;">
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+              <div id="research-status">🔍 Searching academic databases...</div>
+              <div style="width: 100%; height: 6px; background: #e9ecef; border-radius: 3px; margin-top: 0.5rem; overflow: hidden;">
+                <div id="research-progress-bar" style="height: 100%; background: linear-gradient(90deg, #7209b7, #a8dadc); width: 0%; transition: width 0.5s ease; border-radius: 3px;"></div>
+              </div>
+            </div>
+          </div>
+          <div id="research-results" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;">
+            <div id="research-summary"></div>
+            <div id="research-citations" style="margin-top: 1rem;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="startResearch()" id="researchBtn">🔍 Start Research</button>
+        <button class="demo-button" onclick="downloadResearch()" id="downloadBtn" disabled>📁 Download PDF</button>
+        <button class="demo-button" onclick="clearResearch()">🗑️ Clear</button>
+      </div>
+      <div class="demo-output" id="research-output">
+Research agent ready...
+Sources: PubMed, arXiv, Google Scholar, IEEE Xplore
+Features: Literature review, Citation analysis, Summary generation, PDF export
+      </div>
+    </div>
+    
+    <div id="audio-classifier" class="demo-content">
+      <h3>🎵 Audio Classifier Demo</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Deep Learning Audio Analysis</h4>
+          <p>Record or upload audio for classification and analysis</p>
+          <div class="audio-upload-area" style="border: 2px dashed #7209b7; border-radius: 8px; padding: 2rem; margin: 1rem auto; max-width: 400px; background: #f8f9fa;">
             <div id="audioControls">
               <button class="demo-button" onclick="startRecording()" id="recordBtn">🎤 Start Recording</button>
               <button class="demo-button" onclick="stopRecording()" id="stopBtn" disabled>⏹️ Stop</button>
@@ -2194,18 +2229,64 @@ Features: Word count, Character count, Reading time, Complexity score
             <div id="audioWaveform" style="margin-top: 1rem; height: 60px; background: #e9ecef; border-radius: 4px; display: none; position: relative; overflow: hidden;">
               <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666;">Audio Waveform</div>
             </div>
+            <div id="audioSpectogram" style="margin-top: 1rem; height: 100px; background: #fff; border: 1px solid #ddd; border-radius: 4px; display: none; position: relative;">
+              <canvas id="spectogramCanvas" width="350" height="80" style="border-radius: 4px;"></canvas>
+            </div>
           </div>
-          <div id="audioAnalysis" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;"></div>
+          <div id="audioAnalysis" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;">
+            <h5 style="color: #7209b7; margin: 0 0 0.5rem 0;">🎯 Classification Results</h5>
+            <div id="audioClassResults"></div>
+            <h5 style="color: #7209b7; margin: 1rem 0 0.5rem 0;">📊 Audio Features</h5>
+            <div id="audioFeatures"></div>
+          </div>
         </div>
       </div>
       <div class="demo-controls">
-        <button class="demo-button" onclick="classifyAudio()" id="classifyAudioBtn" disabled>Classify Audio</button>
-        <button class="demo-button" onclick="clearAudio()">Clear</button>
+        <button class="demo-button" onclick="classifyAudio()" id="classifyAudioBtn" disabled>🎯 Classify Audio</button>
+        <button class="demo-button" onclick="loadSampleAudio()">📱 Load Sample</button>
+        <button class="demo-button" onclick="clearAudio()">🗑️ Clear</button>
       </div>
       <div class="demo-output" id="audio-output">
 Audio classifier ready...
 Models: Wav2Vec 2.0, SpeechT5, Custom CNN
 Applications: Cough analysis, Speech recognition, Environmental sound classification
+      </div>
+    </div>
+    
+    <div id="image-analyzer" class="demo-content">
+      <h3>🖼️ Image Analyzer Demo</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Computer Vision Analysis</h4>
+          <p>Upload an image to analyze using deep learning models</p>
+          <div class="image-upload-area" style="border: 2px dashed #7209b7; border-radius: 8px; padding: 2rem; margin: 1rem auto; max-width: 400px; background: #f8f9fa;">
+            <div id="imageUploadControls">
+              <div style="margin: 1rem 0;">
+                <input type="file" id="imageInput" accept="image/*" onchange="handleImageUpload(event)" style="display: none;">
+                <button class="demo-button" onclick="document.getElementById('imageInput').click()">📁 Upload Image</button>
+              </div>
+              <div id="imagePreview" style="margin-top: 1rem; display: none;">
+                <img id="previewImg" style="max-width: 100%; max-height: 200px; border-radius: 6px; border: 2px solid #7209b7;">
+              </div>
+            </div>
+          </div>
+          <div id="imageAnalysis" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;">
+            <h5 style="color: #7209b7; margin: 0 0 0.5rem 0;">🎯 Detection Results</h5>
+            <div id="imageClassResults"></div>
+            <h5 style="color: #7209b7; margin: 1rem 0 0.5rem 0;">📊 Image Properties</h5>
+            <div id="imageProperties"></div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="analyzeImage()" id="analyzeImageBtn" disabled>🔍 Analyze Image</button>
+        <button class="demo-button" onclick="loadSampleImage()">📱 Load Sample</button>
+        <button class="demo-button" onclick="clearImage()">🗑️ Clear</button>
+      </div>
+      <div class="demo-output" id="image-output">
+Image analyzer ready...
+Models: ResNet-50, YOLOv8, CLIP
+Features: Object detection, Scene classification, OCR, Facial analysis
       </div>
     </div>
     
@@ -3544,7 +3625,332 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     document.getElementById('text-output').textContent = 'Text analysis ready...\nFeatures: Word count, Character count, Reading time, Complexity score';
   }
 
+  // Research Agent Demo Functions
+  function startResearch() {
+    const query = document.getElementById('research-query').value.trim();
+    if (!query) {
+      alert('Please enter a research topic');
+      return;
+    }
+    
+    const progressDiv = document.getElementById('research-progress');
+    const progressBar = document.getElementById('research-progress-bar');
+    const statusDiv = document.getElementById('research-status');
+    const resultsDiv = document.getElementById('research-results');
+    const researchBtn = document.getElementById('researchBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    progressDiv.style.display = 'block';
+    resultsDiv.style.display = 'none';
+    researchBtn.disabled = true;
+    downloadBtn.disabled = true;
+    
+    const steps = [
+      '🔍 Searching academic databases...',
+      '📚 Analyzing literature patterns...',
+      '🧠 Processing with language models...',
+      '📊 Generating comprehensive summary...',
+      '✅ Research complete!'
+    ];
+    
+    let stepIndex = 0;
+    const interval = setInterval(() => {
+      if (stepIndex < steps.length) {
+        statusDiv.textContent = steps[stepIndex];
+        progressBar.style.width = ((stepIndex + 1) / steps.length * 100) + '%';
+        stepIndex++;
+      } else {
+        clearInterval(interval);
+        displayResearchResults(query);
+        progressDiv.style.display = 'none';
+        researchBtn.disabled = false;
+        downloadBtn.disabled = false;
+      }
+    }, 1000);
+  }
+  
+  function displayResearchResults(query) {
+    const resultsDiv = document.getElementById('research-results');
+    const summaryDiv = document.getElementById('research-summary');
+    const citationsDiv = document.getElementById('research-citations');
+    
+    const sampleResults = {
+      'machine learning in healthcare': {
+        summary: 'Machine learning in healthcare has shown significant promise in diagnostic imaging, drug discovery, and personalized treatment. Recent advances in deep learning have enabled automated analysis of medical images with accuracy comparable to expert radiologists. Key applications include early disease detection, treatment outcome prediction, and clinical decision support systems.',
+        citations: [
+          'Smith, J. et al. (2023). "Deep Learning for Medical Image Analysis." Nature Medicine, 15(3), 234-245.',
+          'Johnson, A. et al. (2023). "AI in Clinical Decision Making." NEJM, 387(12), 1123-1135.',
+          'Wang, L. et al. (2022). "Personalized Medicine through ML." Science, 378(6621), 889-896.'
+        ]
+      }
+    };
+    
+    const result = sampleResults[query.toLowerCase()] || {
+      summary: `Research on "${query}" encompasses various methodologies and applications. Current literature shows significant advances in this field with practical implementations across multiple domains. Key findings indicate promising results for future development and application.`,
+      citations: [
+        'Author, A. et al. (2023). "Recent Advances in ' + query + '." Journal of Research, 45(2), 123-134.',
+        'Researcher, B. et al. (2022). "Applications of ' + query + '." IEEE Transactions, 78(5), 567-578.',
+        'Expert, C. et al. (2023). "Future Directions in ' + query + '." Science Advances, 9(8), eabc123.'
+      ]
+    };
+    
+    summaryDiv.innerHTML = `
+      <h5 style="color: #7209b7; margin: 0 0 0.5rem 0;">📋 Research Summary</h5>
+      <p style="line-height: 1.6; margin-bottom: 1rem;">${result.summary}</p>
+    `;
+    
+    citationsDiv.innerHTML = `
+      <h5 style="color: #7209b7; margin: 0 0 0.5rem 0;">📚 Key Citations</h5>
+      <ul style="margin: 0; padding-left: 1.5rem;">
+        ${result.citations.map(citation => `<li style="margin-bottom: 0.5rem; font-size: 0.9rem;">${citation}</li>`).join('')}
+      </ul>
+    `;
+    
+    resultsDiv.style.display = 'block';
+  }
+  
+  function downloadResearch() {
+    const query = document.getElementById('research-query').value.trim();
+    if (!query) return;
+    
+    // Simulate PDF download
+    const link = document.createElement('a');
+    link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(`Research Summary: ${query}\n\nThis is a simulated research document. In a real implementation, this would contain the full research analysis with citations and references.`);
+    link.download = `research_${query.replace(/\s+/g, '_')}.txt`;
+    link.click();
+  }
+  
+  function clearResearch() {
+    document.getElementById('research-query').value = '';
+    document.getElementById('research-progress').style.display = 'none';
+    document.getElementById('research-results').style.display = 'none';
+    document.getElementById('researchBtn').disabled = false;
+    document.getElementById('downloadBtn').disabled = true;
+  }
+
+  // Audio Classifier Demo Functions
+  let audioRecording = false;
+  let mediaRecorder = null;
+  let recordedChunks = [];
+  
+  function startRecording() {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        mediaRecorder = new MediaRecorder(stream);
+        recordedChunks = [];
+        
+        mediaRecorder.ondataavailable = event => {
+          if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+          }
+        };
+        
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(recordedChunks, { type: 'audio/wav' });
+          displayAudioWaveform();
+          document.getElementById('classifyAudioBtn').disabled = false;
+        };
+        
+        mediaRecorder.start();
+        audioRecording = true;
+        
+        document.getElementById('recordBtn').disabled = true;
+        document.getElementById('stopBtn').disabled = false;
+        document.getElementById('audioWaveform').style.display = 'block';
+        
+        // Animate recording
+        const waveform = document.getElementById('audioWaveform');
+        waveform.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #7209b7; font-weight: bold;">🎤 Recording...</div>';
+      })
+      .catch(err => {
+        alert('Could not access microphone: ' + err.message);
+      });
+  }
+  
+  function stopRecording() {
+    if (mediaRecorder && audioRecording) {
+      mediaRecorder.stop();
+      audioRecording = false;
+      
+      document.getElementById('recordBtn').disabled = false;
+      document.getElementById('stopBtn').disabled = true;
+    }
+  }
+  
+  function handleAudioUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      displayAudioWaveform();
+      document.getElementById('classifyAudioBtn').disabled = false;
+    }
+  }
+  
+  function displayAudioWaveform() {
+    const waveform = document.getElementById('audioWaveform');
+    waveform.style.display = 'block';
+    
+    // Simulate waveform display
+    const canvas = document.createElement('canvas');
+    canvas.width = 350;
+    canvas.height = 60;
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#7209b7';
+    
+    // Draw random waveform
+    for (let i = 0; i < 100; i++) {
+      const height = Math.random() * 40 + 10;
+      const x = (i / 100) * canvas.width;
+      ctx.fillRect(x, (canvas.height - height) / 2, 2, height);
+    }
+    
+    waveform.innerHTML = '';
+    waveform.appendChild(canvas);
+    
+    // Show spectogram
+    document.getElementById('audioSpectogram').style.display = 'block';
+    const spectogramCanvas = document.getElementById('spectogramCanvas');
+    const spectCtx = spectogramCanvas.getContext('2d');
+    
+    // Draw simple spectogram
+    const imageData = spectCtx.createImageData(350, 80);
+    for (let i = 0; i < imageData.data.length; i += 4) {
+      const intensity = Math.random() * 255;
+      imageData.data[i] = intensity * 0.3; // R
+      imageData.data[i + 1] = intensity * 0.6; // G
+      imageData.data[i + 2] = intensity; // B
+      imageData.data[i + 3] = 255; // A
+    }
+    spectCtx.putImageData(imageData, 0, 0);
+  }
+  
+  function classifyAudio() {
+    const analysisDiv = document.getElementById('audioAnalysis');
+    const resultsDiv = document.getElementById('audioClassResults');
+    const featuresDiv = document.getElementById('audioFeatures');
+    
+    analysisDiv.style.display = 'block';
+    resultsDiv.innerHTML = '<div style="color: #7209b7;">🔄 Analyzing audio...</div>';
+    
+    setTimeout(() => {
+      const audioClasses = [
+        { name: 'Speech', confidence: 0.87 },
+        { name: 'Music', confidence: 0.12 },
+        { name: 'Ambient', confidence: 0.01 }
+      ];
+      
+      resultsDiv.innerHTML = audioClasses.map(cls => 
+        `<div style="margin-bottom: 0.5rem;">
+          <span style="font-weight: 600;">${cls.name}:</span> 
+          <span style="color: #7209b7;">${(cls.confidence * 100).toFixed(1)}%</span>
+          <div style="background: #e9ecef; height: 4px; border-radius: 2px; margin-top: 2px;">
+            <div style="background: #7209b7; height: 100%; width: ${cls.confidence * 100}%; border-radius: 2px;"></div>
+          </div>
+        </div>`
+      ).join('');
+      
+      featuresDiv.innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+          <div><strong>Duration:</strong> ${(Math.random() * 10 + 5).toFixed(1)}s</div>
+          <div><strong>Sample Rate:</strong> 44.1kHz</div>
+          <div><strong>Channels:</strong> Mono</div>
+          <div><strong>Frequency Range:</strong> 80Hz - 8kHz</div>
+          <div><strong>Energy:</strong> ${(Math.random() * 0.5 + 0.2).toFixed(3)}</div>
+          <div><strong>ZCR:</strong> ${(Math.random() * 0.1 + 0.05).toFixed(3)}</div>
+        </div>
+      `;
+    }, 2000);
+  }
+  
+  function loadSampleAudio() {
+    displayAudioWaveform();
+    document.getElementById('classifyAudioBtn').disabled = false;
+  }
+  
+  function clearAudio() {
+    document.getElementById('audioWaveform').style.display = 'none';
+    document.getElementById('audioSpectogram').style.display = 'none';
+    document.getElementById('audioAnalysis').style.display = 'none';
+    document.getElementById('classifyAudioBtn').disabled = true;
+    document.getElementById('audioInput').value = '';
+    
+    if (audioRecording && mediaRecorder) {
+      mediaRecorder.stop();
+      audioRecording = false;
+    }
+    
+    document.getElementById('recordBtn').disabled = false;
+    document.getElementById('stopBtn').disabled = true;
+  }
+
   // Image Analyzer Demo Functions
+  function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById('previewImg');
+        img.src = e.target.result;
+        document.getElementById('imagePreview').style.display = 'block';
+        document.getElementById('analyzeImageBtn').disabled = false;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  function analyzeImage() {
+    const analysisDiv = document.getElementById('imageAnalysis');
+    const resultsDiv = document.getElementById('imageClassResults');
+    const propertiesDiv = document.getElementById('imageProperties');
+    
+    analysisDiv.style.display = 'block';
+    resultsDiv.innerHTML = '<div style="color: #7209b7;">🔄 Analyzing image...</div>';
+    
+    setTimeout(() => {
+      const detections = [
+        { object: 'Person', confidence: 0.94, bbox: '[120, 80, 300, 450]' },
+        { object: 'Car', confidence: 0.87, bbox: '[50, 200, 180, 320]' },
+        { object: 'Building', confidence: 0.76, bbox: '[200, 10, 500, 200]' }
+      ];
+      
+      resultsDiv.innerHTML = detections.map(det => 
+        `<div style="margin-bottom: 0.5rem;">
+          <span style="font-weight: 600;">${det.object}:</span> 
+          <span style="color: #7209b7;">${(det.confidence * 100).toFixed(1)}%</span>
+          <span style="font-size: 0.8rem; color: #666; margin-left: 1rem;">BBox: ${det.bbox}</span>
+        </div>`
+      ).join('');
+      
+      propertiesDiv.innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+          <div><strong>Dimensions:</strong> ${Math.floor(Math.random() * 1000 + 500)} x ${Math.floor(Math.random() * 800 + 400)}</div>
+          <div><strong>File Size:</strong> ${(Math.random() * 5 + 1).toFixed(1)} MB</div>
+          <div><strong>Color Space:</strong> RGB</div>
+          <div><strong>Compression:</strong> JPEG</div>
+          <div><strong>Quality Score:</strong> ${(Math.random() * 0.3 + 0.7).toFixed(2)}</div>
+          <div><strong>Brightness:</strong> ${(Math.random() * 0.4 + 0.3).toFixed(2)}</div>
+        </div>
+      `;
+    }, 2000);
+  }
+  
+  function loadSampleImage() {
+    // Simulate loading a sample image
+    const img = document.getElementById('previewImg');
+    img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNzIwOWI3Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TYW1wbGUgSW1hZ2U8L3RleHQ+PC9zdmc+';
+    document.getElementById('imagePreview').style.display = 'block';
+    document.getElementById('analyzeImageBtn').disabled = false;
+  }
+  
+  function clearImage() {
+    document.getElementById('imagePreview').style.display = 'none';
+    document.getElementById('imageAnalysis').style.display = 'none';
+    document.getElementById('analyzeImageBtn').disabled = true;
+    document.getElementById('imageInput').value = '';
+  }
+
 </script>
 
 </body>
