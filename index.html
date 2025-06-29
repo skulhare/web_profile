@@ -241,6 +241,96 @@
       transform: translateY(-2px);
     }
 
+    /* Books Section */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .book-item {
+      text-align: center;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .book-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border-color: #0077b6;
+    }
+
+    .book-cover {
+      width: 120px;
+      height: 180px;
+      margin: 0 auto 1rem auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+      line-height: 1.2;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .book-cover span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .book-title {
+      font-weight: bold;
+      color: #0077b6;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.3;
+    }
+
+    .book-author {
+      color: #666;
+      font-style: italic;
+      font-size: 0.85rem;
+    }
+
+    /* Book Cover Colors */
+    .book-item:nth-child(1) .book-cover { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+    .book-item:nth-child(2) .book-cover { background: linear-gradient(135deg, #4834d4, #686de0); }
+    .book-item:nth-child(3) .book-cover { background: linear-gradient(135deg, #00d2d3, #54a0ff); }
+    .book-item:nth-child(4) .book-cover { background: linear-gradient(135deg, #ff9ff3, #f368e0); }
+    .book-item:nth-child(5) .book-cover { background: linear-gradient(135deg, #ff3838, #ff9500); }
+    .book-item:nth-child(6) .book-cover { background: linear-gradient(135deg, #8c7ae6, #9c88ff); }
+    .book-item:nth-child(7) .book-cover { background: linear-gradient(135deg, #00d8d6, #17c0eb); }
+    .book-item:nth-child(8) .book-cover { background: linear-gradient(135deg, #ffa726, #ff7043); }
+    .book-item:nth-child(9) .book-cover { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+    .book-item:nth-child(10) .book-cover { background: linear-gradient(135deg, #fd79a8, #e84393); }
+    .book-item:nth-child(11) .book-cover { background: linear-gradient(135deg, #fdcb6e, #f39c12); }
+    .book-item:nth-child(12) .book-cover { background: linear-gradient(135deg, #55a3ff, #3742fa); }
+    .book-item:nth-child(13) .book-cover { background: linear-gradient(135deg, #26de81, #20bf6b); }
+    .book-item:nth-child(14) .book-cover { background: linear-gradient(135deg, #778ca3, #4b6584); }
+    .book-item:nth-child(15) .book-cover { background: linear-gradient(135deg, #f53b57, #ef3b2d); }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
@@ -325,6 +415,25 @@
       .project-item {
         padding: 1rem;
       }
+
+      .books-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+
+      .book-cover {
+        width: 100px;
+        height: 150px;
+        font-size: 0.8rem;
+      }
+
+      .book-title {
+        font-size: 0.85rem;
+      }
+
+      .book-author {
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -343,6 +452,7 @@
     <a href="#projects">Projects</a>
     <a href="#publications">Publications</a>
     <a href="#talks">Talks</a>
+    <a href="#books">Books</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -630,6 +740,131 @@
     <li>Introduction to Neural Networks, IEEE Global Humanitarian Technology Conference, 2020</li>
     
   </ul>
+</section>
+
+<section id="books">
+  <h2>Favorite Books</h2>
+  <div class="books-grid">
+    <div class="book-item">
+      <div class="book-cover">
+        <span>RELENTLESS</span>
+      </div>
+      <div class="book-title">Relentless</div>
+      <div class="book-author">Tim Grover</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>MAN'S SEARCH FOR MEANING</span>
+      </div>
+      <div class="book-title">Man's Search for Meaning</div>
+      <div class="book-author">Viktor Frankl</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>START WITH WHY</span>
+      </div>
+      <div class="book-title">Start with Why</div>
+      <div class="book-author">Simon Sinek</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>THE RIGHTEOUS MIND</span>
+      </div>
+      <div class="book-title">The Righteous Mind</div>
+      <div class="book-author">Jonathan Haidt</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>CAN'T HURT ME</span>
+      </div>
+      <div class="book-title">Can't Hurt Me</div>
+      <div class="book-author">David Goggins</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>A SINGULAR WOMAN</span>
+      </div>
+      <div class="book-title">A Singular Woman</div>
+      <div class="book-author">Janny Scott</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>SO GOOD THEY CAN'T IGNORE YOU</span>
+      </div>
+      <div class="book-title">So Good They Can't Ignore You</div>
+      <div class="book-author">Cal Newport</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>ATOMIC HABITS</span>
+      </div>
+      <div class="book-title">Atomic Habits</div>
+      <div class="book-author">James Clear</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>FLOW</span>
+      </div>
+      <div class="book-title">Flow</div>
+      <div class="book-author">Mihaly Csikszentmihalyi</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>GOOD TO GREAT</span>
+      </div>
+      <div class="book-title">Good to Great</div>
+      <div class="book-author">Jim Collins</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>LEONARDO DA VINCI</span>
+      </div>
+      <div class="book-title">Leonardo da Vinci</div>
+      <div class="book-author">Walter Isaacson</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>LONG WALK TO FREEDOM</span>
+      </div>
+      <div class="book-title">Long Walk to Freedom</div>
+      <div class="book-author">Nelson Mandela</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>ZERO TO ONE</span>
+      </div>
+      <div class="book-title">Zero to One</div>
+      <div class="book-author">Peter Thiel</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>ELON MUSK</span>
+      </div>
+      <div class="book-title">Elon Musk</div>
+      <div class="book-author">Ashlee Vance</div>
+    </div>
+    
+    <div class="book-item">
+      <div class="book-cover">
+        <span>SHOE DOG</span>
+      </div>
+      <div class="book-title">Shoe Dog</div>
+      <div class="book-author">Phil Knight</div>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
