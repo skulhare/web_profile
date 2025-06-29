@@ -385,6 +385,69 @@
       border-radius: 0 12px 0 60px;
     }
 
+    /* Publications Section */
+    .publication-item {
+      background: #f8f9fa;
+      padding: 1.8rem;
+      margin: 1.5rem 0;
+      border-radius: 12px;
+      border-left: 4px solid #0077b6;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .publication-item:hover {
+      background: #e9ecef;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .publication-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #0077b6;
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .publication-venue {
+      display: inline-block;
+      background: #0077b6;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .publication-description {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .publication-link {
+      display: inline-block;
+      background: linear-gradient(135deg, #90e0ef, #0077b6);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,119,182,0.3);
+    }
+
+    .publication-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,119,182,0.4);
+      color: white;
+    }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
@@ -807,13 +870,40 @@
 
 <section id="publications">
   <h2>Publications</h2>
-  <ul>
-    <li>Deep Learning for Pneumonia Detection in Chest Ultrasound, CVPR 2023, Vancouver, Canada</li>
-    <li>Medical Image Synthesis Using Generative Adversarial Networks, MICCAI 2023, Vancouver, Canada</li>
-    <li>Lung Abnormality Detection in Medical Imaging Using Efficient CNNs, MICCAI 2018, Granada, Spain</li>
-    <li>Video and Text Summarization Using Deep Learning, WACV 2017, Santa Rosa, CA</li>
-    <li>Salient Activity Recognition in Video Sequences, ICPR 2016, Cancún, México</li>
-  </ul>
+  <div class="publication-item">
+    <div class="publication-title">Deep Learning for Pneumonia Detection in Chest Ultrasound</div>
+    <div class="publication-venue">CVPR 2023, Vancouver, Canada</div>
+    <div class="publication-description">Advanced deep learning techniques for automated pneumonia detection using chest ultrasound imaging.</div>
+    <a href="#" class="publication-link">View Publication</a>
+  </div>
+  
+  <div class="publication-item">
+    <div class="publication-title">Medical Image Synthesis Using Generative Adversarial Networks</div>
+    <div class="publication-venue">MICCAI 2023, Vancouver, Canada</div>
+    <div class="publication-description">Novel GAN-based approach for generating high-quality synthetic medical images for training and validation.</div>
+    <a href="#" class="publication-link">View Publication</a>
+  </div>
+  
+  <div class="publication-item">
+    <div class="publication-title">Lung Abnormality Detection in Medical Imaging Using Efficient CNNs</div>
+    <div class="publication-venue">MICCAI 2018, Granada, Spain</div>
+    <div class="publication-description">Efficient convolutional neural network architectures for real-time lung abnormality detection in clinical settings.</div>
+    <a href="#" class="publication-link">View Publication</a>
+  </div>
+  
+  <div class="publication-item">
+    <div class="publication-title">Video and Text Summarization Using Deep Learning</div>
+    <div class="publication-venue">WACV 2017, Santa Rosa, CA</div>
+    <div class="publication-description">Comprehensive approach to multi-modal content summarization combining video analysis and natural language processing.</div>
+    <a href="#" class="publication-link">View Publication</a>
+  </div>
+  
+  <div class="publication-item">
+    <div class="publication-title">Salient Activity Recognition in Video Sequences</div>
+    <div class="publication-venue">ICPR 2016, Cancún, México</div>
+    <div class="publication-description">Pattern recognition techniques for identifying and classifying significant activities in video streams.</div>
+    <a href="#" class="publication-link">View Publication</a>
+  </div>
 </section>
 
 <section id="talks">
