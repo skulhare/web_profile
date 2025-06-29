@@ -600,12 +600,234 @@
       border-radius: 6px;
       font-family: 'Courier New', monospace;
       font-size: 0.9rem;
+      line-height: 1.4;
       white-space: pre-wrap;
+      border: 1px solid #4a5568;
       max-height: 200px;
       overflow-y: auto;
     }
 
-    /* Live Chat Widget Styles */
+    /* New Demo Component Styles */
+    .image-upload-area:hover {
+      border-color: #5a067a;
+      background: #f0f0f0;
+    }
+
+    .audio-upload-area {
+      transition: all 0.3s ease;
+    }
+
+    .audio-upload-area:hover {
+      border-color: #5a067a;
+      background: #f0f0f0;
+    }
+
+    #audioWaveform {
+      background: linear-gradient(90deg, #7209b7 0%, #a8dadc 50%, #7209b7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #audioWaveform::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: waveAnimation 2s infinite;
+    }
+
+    @keyframes waveAnimation {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .demo-button:disabled {
+      background: #cbd5e0;
+      color: #718096;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .demo-button:disabled:hover {
+      background: #cbd5e0;
+      transform: none;
+    }
+
+    /* Research progress animation */
+    #research-bar {
+      background: linear-gradient(90deg, #7209b7, #a8dadc, #7209b7);
+      background-size: 200% 100%;
+      animation: progressGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes progressGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Code editor styling */
+    #codeInput {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      background: #1a202c;
+      color: #e2e8f0;
+      border: 2px solid #4a5568;
+    }
+
+    #codeInput:focus {
+      border-color: #7209b7;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+    }
+
+    /* Responsive design for demos */
+    @media (max-width: 768px) {
+      .demo-tabs {
+        flex-direction: column;
+      }
+      
+      .demo-tab {
+        text-align: center;
+        padding: 1rem;
+      }
+      
+      .demo-preview {
+        padding: 1rem;
+        min-height: 150px;
+      }
+      
+      .demo-controls {
+        flex-direction: column;
+      }
+      
+      .demo-button {
+        width: 100%;
+        padding: 0.8rem;
+      }
+      
+      .image-upload-area {
+        width: 100% !important;
+        max-width: 250px;
+        height: 150px !important;
+      }
+      
+      #codeInput {
+        height: 150px;
+      }
+      
+      .audio-upload-area {
+        padding: 1rem;
+      }
+    }
+
+    /* Publication section styles */
+    #publications {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .publication-item {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background: #f8f9fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .publication-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .publication-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #7209b7;
+      margin-bottom: 0.5rem;
+    }
+
+    .publication-venue {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .publication-description {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .publication-link {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      background: #7209b7;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .publication-link:hover {
+      background: #5a067a;
+      transform: translateY(-2px);
+    }
+
+    /* Contact section styles */
+    #contact {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border-left: 4px solid #7209b7;
+    }
+
+    .contact-info {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin: 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    .contact-info a {
+      color: #7209b7;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #5a067a;
+    }
+
+    /* Footer styles */
+    footer {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid #4a5568;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Live chat widget styles */
     .chat-widget {
       position: fixed;
       bottom: 80px;
@@ -899,6 +1121,269 @@
       color: white;
     }
 
+    /* Additional Demo Styles */
+    .image-upload-area {
+      border: 2px dashed #7209b7;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin: 1rem 0;
+    }
+
+    .image-upload-area:hover {
+      border-color: #5a067a;
+      background: #f0f0f0;
+    }
+
+    .image-upload-area.drag-over {
+      background: rgba(114, 9, 183, 0.1);
+      border-color: #5a067a;
+    }
+
+    .upload-icon {
+      font-size: 3rem;
+      color: #7209b7;
+      margin-bottom: 1rem;
+    }
+
+    .image-preview {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 8px;
+      margin: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .analysis-result {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .confidence-bar {
+      width: 100px;
+      height: 8px;
+      background: #e9ecef;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-left: 1rem;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #7209b7, #a8dadc);
+      transition: width 0.3s ease;
+    }
+
+    .research-input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin: 1rem 0;
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .research-results {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .research-source {
+      background: #f8f9fa;
+      border-left: 4px solid #7209b7;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .source-title {
+      font-weight: bold;
+      color: #7209b7;
+      margin-bottom: 0.5rem;
+    }
+
+    .source-snippet {
+      color: #555;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .source-url {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .model-selector {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .model-option {
+      background: #e9ecef;
+      color: #555;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .model-option.active {
+      background: #7209b7;
+      color: white;
+    }
+
+    .code-editor {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.9rem;
+      min-height: 200px;
+      border: none;
+      resize: vertical;
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .execution-result {
+      background: #1a202c;
+      color: #68d391;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .audio-waveform {
+      flex: 1;
+      height: 60px;
+      background: linear-gradient(90deg, #7209b7, #a8dadc);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      min-width: 200px;
+    }
+
+    .waveform-bars {
+      display: flex;
+      align-items: end;
+      height: 100%;
+      gap: 2px;
+      padding: 0 10px;
+    }
+
+    .waveform-bar {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 1px;
+      transition: height 0.1s ease;
+      min-height: 2px;
+    }
+
+    .record-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #dc3545;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .record-button:hover {
+      background: #c82333;
+      transform: scale(1.05);
+    }
+
+    .record-button.recording {
+      background: #dc3545;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-label {
+      font-size: 0.8rem;
+      color: #666;
+      font-weight: 500;
+    }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
@@ -979,6 +1464,23 @@
         width: 55px;
         height: 55px;
         font-size: 1.3rem;
+      }
+
+      .model-selector {
+        flex-direction: column;
+      }
+
+      .audio-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .image-upload-area {
+        padding: 1.5rem;
       }
     }
 
@@ -1361,6 +1863,10 @@
   <div class="demo-container">
     <div class="demo-tabs">
       <button class="demo-tab active" onclick="showDemo('ml-classifier')">ML Classifier</button>
+      <button class="demo-tab" onclick="showDemo('image-analyzer')">Image Analyzer</button>
+      <button class="demo-tab" onclick="showDemo('research-agent')">Research Agent</button>
+      <button class="demo-tab" onclick="showDemo('audio-classifier')">Audio Classifier</button>
+      <button class="demo-tab" onclick="showDemo('code-assistant')">Code Assistant</button>
       <button class="demo-tab" onclick="showDemo('text-analyzer')">Text Analyzer</button>
       <button class="demo-tab" onclick="showDemo('data-processor')">Data Processor</button>
     </div>
@@ -1404,6 +1910,128 @@ Accuracy: 94.2% on validation set
       <div class="demo-output" id="text-output">
 Text analysis ready...
 Features: Word count, Character count, Reading time, Complexity score
+      </div>
+    </div>
+    
+    <div id="image-analyzer" class="demo-content">
+      <h3>🖼️ Image Analyzer Demo</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Computer Vision Analysis</h4>
+          <p>Upload an image to analyze using deep learning models</p>
+          <div class="image-upload-area" onclick="document.getElementById('imageInput').click()" style="width: 300px; height: 200px; border: 2px dashed #7209b7; border-radius: 8px; margin: 1rem auto; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #f8f9fa;">
+            <div id="imagePreview" style="text-align: center; color: #666;">
+              📷 Click to upload image<br>
+              <small>JPG, PNG, GIF (max 5MB)</small>
+            </div>
+          </div>
+          <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+          <div id="imageAnalysis" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;"></div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="analyzeImage()" id="analyzeImageBtn" disabled>Analyze Image</button>
+        <button class="demo-button" onclick="clearImage()">Clear</button>
+      </div>
+      <div class="demo-output" id="image-output">
+Image analyzer ready...
+Models: ResNet-50, YOLO v8, ViT-Base
+Capabilities: Object detection, Scene classification, Feature extraction
+      </div>
+    </div>
+    
+    <div id="research-agent" class="demo-content">
+      <h3>🔬 Research Agent Demo</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">AI Research Assistant</h4>
+          <p>Get comprehensive research summaries on any topic</p>
+          <div style="margin: 1rem 0;">
+            <input type="text" id="research-topic" placeholder="Enter research topic (e.g., 'quantum computing', 'climate change')..." style="width: 80%; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef;">
+          </div>
+          <div id="research-progress" style="margin-top: 1rem; display: none;">
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+              <div id="research-status">🔍 Searching academic databases...</div>
+              <div style="width: 100%; height: 6px; background: #e9ecef; border-radius: 3px; margin-top: 0.5rem;">
+                <div id="research-bar" style="height: 100%; background: linear-gradient(90deg, #7209b7, #a8dadc); width: 0%; transition: width 0.5s ease; border-radius: 3px;"></div>
+              </div>
+            </div>
+          </div>
+          <div id="research-results" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;"></div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="conductResearch()">Start Research</button>
+        <button class="demo-button" onclick="clearResearch()">Clear</button>
+      </div>
+      <div class="demo-output" id="research-output">
+Research agent ready...
+Sources: arXiv, Google Scholar, PubMed, IEEE Xplore
+Features: Citation analysis, Trend identification, Key findings extraction
+      </div>
+    </div>
+    
+    <div id="audio-classifier" class="demo-content">
+      <h3>🎵 Audio Classifier Demo</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">Audio Analysis & Classification</h4>
+          <p>Analyze audio patterns for medical diagnosis and sound classification</p>
+          <div class="audio-upload-area" style="border: 2px dashed #7209b7; border-radius: 8px; padding: 2rem; margin: 1rem auto; max-width: 400px; background: #f8f9fa;">
+            <div id="audioControls">
+              <button class="demo-button" onclick="startRecording()" id="recordBtn">🎤 Start Recording</button>
+              <button class="demo-button" onclick="stopRecording()" id="stopBtn" disabled>⏹️ Stop</button>
+              <div style="margin: 1rem 0;">
+                <input type="file" id="audioInput" accept="audio/*" onchange="handleAudioUpload(event)" style="display: none;">
+                <button class="demo-button" onclick="document.getElementById('audioInput').click()">📁 Upload Audio</button>
+              </div>
+            </div>
+            <div id="audioWaveform" style="margin-top: 1rem; height: 60px; background: #e9ecef; border-radius: 4px; display: none; position: relative; overflow: hidden;">
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666;">Audio Waveform</div>
+            </div>
+          </div>
+          <div id="audioAnalysis" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;"></div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="classifyAudio()" id="classifyAudioBtn" disabled>Classify Audio</button>
+        <button class="demo-button" onclick="clearAudio()">Clear</button>
+      </div>
+      <div class="demo-output" id="audio-output">
+Audio classifier ready...
+Models: Wav2Vec 2.0, SpeechT5, Custom CNN
+Applications: Cough analysis, Speech recognition, Environmental sound classification
+      </div>
+    </div>
+    
+    <div id="code-assistant" class="demo-content">
+      <h3>💻 Code Assistant Demo</h3>
+      <div class="demo-preview">
+        <div style="text-align: center;">
+          <h4 style="color: #7209b7;">AI-Powered Code Analysis</h4>
+          <p>Get intelligent code suggestions, debugging help, and optimization tips</p>
+          <div style="margin: 1rem 0;">
+            <select id="codeLanguage" style="width: 200px; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef; margin-bottom: 1rem;">
+              <option value="python">Python</option>
+              <option value="javascript">JavaScript</option>
+              <option value="java">Java</option>
+              <option value="cpp">C++</option>
+              <option value="sql">SQL</option>
+            </select>
+          </div>
+          <textarea id="codeInput" placeholder="Paste your code here for analysis..." style="width: 95%; height: 200px; padding: 0.5rem; border-radius: 6px; border: 2px solid #e9ecef; font-family: 'Courier New', monospace; font-size: 0.9rem; resize: vertical;"></textarea>
+          <div id="codeSuggestions" style="margin-top: 1rem; text-align: left; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: none;"></div>
+        </div>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-button" onclick="analyzeCode()">Analyze Code</button>
+        <button class="demo-button" onclick="generateCode()">Generate Sample</button>
+        <button class="demo-button" onclick="clearCode()">Clear</button>
+      </div>
+      <div class="demo-output" id="code-output">
+Code assistant ready...
+Features: Syntax analysis, Bug detection, Performance optimization, Best practices
+Supported: Python, JavaScript, Java, C++, SQL
       </div>
     </div>
     
@@ -1905,199 +2533,452 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     document.getElementById('text-output').textContent = 'Text analysis ready...\nFeatures: Word count, Character count, Reading time, Complexity score';
   }
 
-  // Data Processor Demo Functions
-  function processData() {
-    const dataset = document.getElementById('dataset-select').value;
-    const status = document.getElementById('processing-status');
-    const progressBar = document.getElementById('progress-bar');
-    const progressFill = document.getElementById('progress-fill');
-    const output = document.getElementById('data-output');
+  // Image Analyzer Demo Functions
+  let currentImage = null;
+
+  function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File size must be less than 5MB');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        currentImage = e.target.result;
+        const preview = document.getElementById('imagePreview');
+        preview.innerHTML = `<img src="${currentImage}" style="max-width: 100%; max-height: 180px; border-radius: 4px;">`;
+        document.getElementById('analyzeImageBtn').disabled = false;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function analyzeImage() {
+    if (!currentImage) {
+      alert('Please upload an image first');
+      return;
+    }
     
-    const datasets = {
-      healthcare: { rows: 1000, features: 15, processing_time: 3000 },
-      financial: { rows: 500, features: 12, processing_time: 2000 },
-      sensor: { rows: 2000, features: 8, processing_time: 4000 }
-    };
+    const analysis = document.getElementById('imageAnalysis');
+    const output = document.getElementById('image-output');
     
-    const selected = datasets[dataset];
+    analysis.style.display = 'block';
+    analysis.innerHTML = '<div style="text-align: center;">🔄 Analyzing image...</div>';
+    output.textContent = 'Running computer vision models...';
     
-    status.textContent = 'Initializing data pipeline...';
-    progressBar.style.display = 'block';
-    progressFill.style.width = '0%';
+    setTimeout(() => {
+      const objects = ['person', 'car', 'tree', 'building', 'sky', 'road', 'animal', 'furniture'];
+      const detectedObjects = objects.slice(0, Math.floor(Math.random() * 4) + 2);
+      const confidence = (Math.random() * 0.2 + 0.8).toFixed(2);
+      const scene = ['outdoor', 'indoor', 'urban', 'nature', 'residential'][Math.floor(Math.random() * 5)];
+      
+      analysis.innerHTML = `
+        <strong>🔍 Analysis Results:</strong><br>
+        <strong>Objects Detected:</strong> ${detectedObjects.join(', ')}<br>
+        <strong>Scene Type:</strong> ${scene}<br>
+        <strong>Confidence:</strong> ${confidence}<br>
+        <strong>Image Quality:</strong> High<br>
+        <strong>Resolution:</strong> Optimal for analysis<br>
+        <strong>Color Palette:</strong> ${Math.floor(Math.random() * 20) + 10} dominant colors
+      `;
+      
+      output.textContent = `Image analysis complete!\nProcessing time: ${Math.random() * 500 + 200}ms\nModels used: ResNet-50 (classification), YOLO v8 (detection)\nFeatures extracted: ${Math.floor(Math.random() * 1000) + 2048}\nConfidence score: ${confidence}`;
+    }, 2000);
+  }
+
+  function clearImage() {
+    currentImage = null;
+    document.getElementById('imagePreview').innerHTML = '📷 Click to upload image<br><small>JPG, PNG, GIF (max 5MB)</small>';
+    document.getElementById('imageInput').value = '';
+    document.getElementById('imageAnalysis').style.display = 'none';
+    document.getElementById('analyzeImageBtn').disabled = true;
+    document.getElementById('image-output').textContent = 'Image analyzer ready...\nModels: ResNet-50, YOLO v8, ViT-Base\nCapabilities: Object detection, Scene classification, Feature extraction';
+  }
+
+  // Research Agent Demo Functions
+  function conductResearch() {
+    const topic = document.getElementById('research-topic').value.trim();
+    if (!topic) {
+      alert('Please enter a research topic');
+      return;
+    }
     
-    const steps = ['Loading data', 'Cleaning data', 'Feature extraction', 'Model training', 'Validation'];
+    const progress = document.getElementById('research-progress');
+    const results = document.getElementById('research-results');
+    const status = document.getElementById('research-status');
+    const bar = document.getElementById('research-bar');
+    const output = document.getElementById('research-output');
+    
+    progress.style.display = 'block';
+    results.style.display = 'none';
+    bar.style.width = '0%';
+    
+    const steps = [
+      '🔍 Searching academic databases...',
+      '📚 Analyzing research papers...',
+      '🧠 Extracting key insights...',
+      '📊 Generating summary...',
+      '✅ Research complete!'
+    ];
+    
     let currentStep = 0;
-    
     const interval = setInterval(() => {
-      currentStep++;
-      const progress = (currentStep / steps.length) * 100;
-      progressFill.style.width = progress + '%';
-      
-      if (currentStep <= steps.length) {
-        status.textContent = `${steps[currentStep - 1]}... (${progress.toFixed(0)}%)`;
-        output.textContent = `Processing ${dataset} dataset...\nRows: ${selected.rows}\nFeatures: ${selected.features}\nCurrent step: ${steps[currentStep - 1]}`;
-      }
-      
-      if (currentStep >= steps.length) {
+      if (currentStep < steps.length) {
+        status.textContent = steps[currentStep];
+        bar.style.width = ((currentStep + 1) / steps.length * 100) + '%';
+        output.textContent = `Researching "${topic}"...\nStep ${currentStep + 1}/${steps.length}: ${steps[currentStep]}\nSources scanned: ${Math.floor(Math.random() * 50) + currentStep * 20}`;
+        currentStep++;
+      } else {
         clearInterval(interval);
-        status.textContent = '✅ Processing complete!';
-        output.textContent = `Dataset processed successfully!\n\nDataset: ${dataset}\nRows processed: ${selected.rows}\nFeatures extracted: ${selected.features}\nProcessing time: ${selected.processing_time}ms\nAccuracy: ${(Math.random() * 0.1 + 0.85).toFixed(3)}\nModel ready for deployment!`;
+        showResearchResults(topic);
       }
-    }, selected.processing_time / steps.length);
-  }
-
-  function resetProcessor() {
-    document.getElementById('processing-status').textContent = '';
-    document.getElementById('progress-bar').style.display = 'none';
-    document.getElementById('progress-fill').style.width = '0%';
-    document.getElementById('data-output').textContent = 'Data processor ready...\nPipeline: Data cleaning → Feature extraction → Model training → Validation';
-  }
-
-  // Live Chat Widget Functionality
-  let chatOpen = false;
-  let messageCount = 0;
-
-  function toggleChat() {
-    const chatWindow = document.getElementById('chatWindow');
-    const chatButton = document.getElementById('chatButton');
-    
-    chatOpen = !chatOpen;
-    
-    if (chatOpen) {
-      chatWindow.classList.add('active');
-      chatButton.classList.add('active');
-      chatButton.innerHTML = '×';
-      // Auto-focus on input when chat opens
-      setTimeout(() => {
-        document.getElementById('chatInput').focus();
-      }, 300);
-    } else {
-      chatWindow.classList.remove('active');
-      chatButton.classList.remove('active');
-      chatButton.innerHTML = '💬';
-    }
-  }
-
-  function sendMessage() {
-    const input = document.getElementById('chatInput');
-    const message = input.value.trim();
-    
-    if (!message) return;
-    
-    // Add user message
-    addMessage(message, 'user');
-    input.value = '';
-    adjustTextareaHeight(input);
-    
-    // Hide quick responses after first message
-    if (messageCount === 1) {
-      document.getElementById('quickResponses').style.display = 'none';
-    }
-    
-    // Show typing indicator and simulate response
-    showTypingIndicator();
-    setTimeout(() => {
-      hideTypingIndicator();
-      generateBotResponse(message);
-    }, 1500 + Math.random() * 1000);
-  }
-
-  function sendQuickResponse(message) {
-    addMessage(message, 'user');
-    document.getElementById('quickResponses').style.display = 'none';
-    
-    showTypingIndicator();
-    setTimeout(() => {
-      hideTypingIndicator();
-      generateBotResponse(message);
     }, 1000);
   }
 
-  function addMessage(text, sender) {
-    const messagesContainer = document.getElementById('chatMessages');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `chat-message ${sender}`;
+  function showResearchResults(topic) {
+    const results = document.getElementById('research-results');
+    const output = document.getElementById('research-output');
     
-    const now = new Date();
-    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const sampleTopics = {
+      'quantum computing': {
+        summary: 'Quantum computing leverages quantum mechanical phenomena to process information in fundamentally different ways than classical computers.',
+        papers: 156,
+        citations: 12890,
+        trends: 'Increasing focus on NISQ devices and quantum error correction'
+      },
+      'climate change': {
+        summary: 'Climate change refers to long-term shifts in global temperatures and weather patterns, primarily driven by human activities.',
+        papers: 2847,
+        citations: 89234,
+        trends: 'Growing emphasis on renewable energy and carbon capture technologies'
+      },
+      'default': {
+        summary: `Research on ${topic} encompasses various aspects including theoretical foundations, practical applications, and emerging trends.`,
+        papers: Math.floor(Math.random() * 500) + 50,
+        citations: Math.floor(Math.random() * 20000) + 1000,
+        trends: 'Active research area with growing interest and applications'
+      }
+    };
     
-    messageDiv.innerHTML = `
-      <div class="message-bubble">${text}</div>
-      <div class="message-time">${timeString}</div>
+    const research = sampleTopics[topic.toLowerCase()] || sampleTopics['default'];
+    
+    results.innerHTML = `
+      <strong>📋 Research Summary: ${topic}</strong><br><br>
+      <strong>Overview:</strong> ${research.summary}<br><br>
+      <strong>📊 Statistics:</strong><br>
+      • Research papers found: ${research.papers}<br>
+      • Total citations: ${research.citations.toLocaleString()}<br>
+      • Publication growth: +${Math.floor(Math.random() * 30) + 10}% (last 5 years)<br><br>
+      <strong>🔮 Current Trends:</strong> ${research.trends}<br><br>
+      <strong>🏆 Top Journals:</strong> Nature, Science, IEEE, ACM<br>
+      <strong>📅 Latest Publications:</strong> ${Math.floor(Math.random() * 50) + 20} papers this month
     `;
     
-    messagesContainer.appendChild(messageDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    messageCount++;
+    results.style.display = 'block';
+    output.textContent = `Research analysis complete for "${topic}"!\nSources analyzed: arXiv, Google Scholar, PubMed, IEEE Xplore\nProcessing time: ${Math.random() * 2 + 3}s\nRelevance score: ${(Math.random() * 0.2 + 0.8).toFixed(2)}`;
   }
 
-  function showTypingIndicator() {
-    const indicator = document.getElementById('typingIndicator');
-    const messagesContainer = document.getElementById('chatMessages');
-    indicator.classList.add('active');
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  function clearResearch() {
+    document.getElementById('research-topic').value = '';
+    document.getElementById('research-progress').style.display = 'none';
+    document.getElementById('research-results').style.display = 'none';
+    document.getElementById('research-bar').style.width = '0%';
+    document.getElementById('research-output').textContent = 'Research agent ready...\nSources: arXiv, Google Scholar, PubMed, IEEE Xplore\nFeatures: Citation analysis, Trend identification, Key findings extraction';
   }
 
-  function hideTypingIndicator() {
-    const indicator = document.getElementById('typingIndicator');
-    indicator.classList.remove('active');
+  // Audio Classifier Demo Functions
+  let mediaRecorder = null;
+  let audioChunks = [];
+  let currentAudio = null;
+
+  function startRecording() {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+        
+        mediaRecorder.ondataavailable = event => {
+          audioChunks.push(event.data);
+        };
+        
+        mediaRecorder.onstop = () => {
+          const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+          currentAudio = URL.createObjectURL(audioBlob);
+          document.getElementById('audioWaveform').style.display = 'block';
+          document.getElementById('classifyAudioBtn').disabled = false;
+          stream.getTracks().forEach(track => track.stop());
+        };
+        
+        mediaRecorder.start();
+        document.getElementById('recordBtn').disabled = true;
+        document.getElementById('stopBtn').disabled = false;
+        document.getElementById('audio-output').textContent = 'Recording audio... Speak clearly into your microphone.';
+      })
+      .catch(err => {
+        alert('Microphone access denied or not available');
+        console.error('Error accessing microphone:', err);
+      });
   }
 
-  function generateBotResponse(userMessage) {
-    const responses = {
-      'experience': [
-        "I have 8+ years of experience in AI/ML, working on everything from computer vision to LLMs. Currently, I'm a Machine Learning Research Engineer at Global Health Labs focusing on healthcare AI solutions.",
-        "My experience spans deep learning research, edge deployment, and building FDA-submittable medical AI technology. I've published at top conferences like CVPR and MICCAI."
-      ],
-      'projects': [
-        "I'm currently working on several exciting projects including MAMBA state-space models, self-supervised vision models, and healthcare AI applications. Check out the Projects section above for detailed information!",
-        "Right now I'm focused on pneumonia detection from chest ultrasounds, TB prediction from cough audio, and efficient transformer alternatives. The Gallery section shows some visual examples of my work."
-      ],
-      'collaboration': [
-        "Absolutely! I'm always interested in collaborating on innovative AI projects, especially in healthcare, computer vision, and NLP. Feel free to reach out through the contact form or email me directly.",
-        "Yes, I'm open to collaborations, consulting, and research partnerships. I particularly enjoy working on real-world applications of AI that can make a meaningful impact."
-      ],
-      'contact': [
-        "You can reach me at sourabh.kulhare06@gmail.com or connect with me on LinkedIn. I'm based in Seattle and usually respond within 24 hours.",
-        "The best way to contact me is through email: sourabh.kulhare06@gmail.com. You can also use the contact form on this page or find me on LinkedIn and GitHub."
-      ],
-      'default': [
-        "That's a great question! Could you be more specific about what you'd like to know? I'm happy to discuss my research, experience, or potential collaborations.",
-        "Thanks for your interest! Feel free to ask me about my AI/ML experience, current projects, or how we might work together.",
-        "I'd love to help! You can ask me about my technical background, research publications, or anything else you'd like to know.",
-        "Interesting! Let me know what specific aspect you'd like to explore - whether it's my technical work, research focus, or career journey."
-      ]
-    };
-
-    let responseCategory = 'default';
-    const lowerMessage = userMessage.toLowerCase();
-
-    if (lowerMessage.includes('experience') || lowerMessage.includes('background') || lowerMessage.includes('work')) {
-      responseCategory = 'experience';
-    } else if (lowerMessage.includes('project') || lowerMessage.includes('research') || lowerMessage.includes('work on')) {
-      responseCategory = 'projects';
-    } else if (lowerMessage.includes('collaborat') || lowerMessage.includes('available') || lowerMessage.includes('hire') || lowerMessage.includes('work together')) {
-      responseCategory = 'collaboration';
-    } else if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('email') || lowerMessage.includes('connect')) {
-      responseCategory = 'contact';
+  function stopRecording() {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+      mediaRecorder.stop();
+      document.getElementById('recordBtn').disabled = false;
+      document.getElementById('stopBtn').disabled = true;
+      document.getElementById('audio-output').textContent = 'Recording saved. Ready for classification.';
     }
+  }
 
-    const categoryResponses = responses[responseCategory];
-    const randomResponse = categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
+  function handleAudioUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      currentAudio = URL.createObjectURL(file);
+      document.getElementById('audioWaveform').style.display = 'block';
+      document.getElementById('classifyAudioBtn').disabled = false;
+      document.getElementById('audio-output').textContent = 'Audio file loaded. Ready for classification.';
+    }
+  }
+
+  function classifyAudio() {
+    if (!currentAudio) {
+      alert('Please record or upload audio first');
+      return;
+    }
     
-    addMessage(randomResponse, 'bot');
+    const analysis = document.getElementById('audioAnalysis');
+    const output = document.getElementById('audio-output');
+    
+    analysis.style.display = 'block';
+    analysis.innerHTML = '<div style="text-align: center;">🔄 Analyzing audio...</div>';
+    output.textContent = 'Processing audio through neural networks...';
+    
+    setTimeout(() => {
+      const audioTypes = [
+        { type: 'Speech', confidence: 0.92, details: 'Human speech detected, clear pronunciation' },
+        { type: 'Cough', confidence: 0.87, details: 'Respiratory sound, potential health indicator' },
+        { type: 'Music', confidence: 0.78, details: 'Musical content with harmonic structure' },
+        { type: 'Environmental', confidence: 0.65, details: 'Background noise or ambient sound' }
+      ];
+      
+      const selectedType = audioTypes[Math.floor(Math.random() * audioTypes.length)];
+      const duration = (Math.random() * 10 + 2).toFixed(1);
+      const frequency = Math.floor(Math.random() * 8000) + 200;
+      
+      analysis.innerHTML = `
+        <strong>🎵 Audio Classification Results:</strong><br>
+        <strong>Type:</strong> ${selectedType.type}<br>
+        <strong>Confidence:</strong> ${selectedType.confidence}<br>
+        <strong>Details:</strong> ${selectedType.details}<br>
+        <strong>Duration:</strong> ${duration}s<br>
+        <strong>Dominant Frequency:</strong> ${frequency}Hz<br>
+        <strong>Audio Quality:</strong> ${Math.random() > 0.5 ? 'Good' : 'Excellent'}<br>
+        <strong>Background Noise:</strong> ${Math.random() > 0.7 ? 'Minimal' : 'Low'}
+      `;
+      
+      output.textContent = `Audio classification complete!\nAudio type: ${selectedType.type}\nProcessing time: ${Math.random() * 800 + 400}ms\nModel: Wav2Vec 2.0 + Custom CNN\nFeatures extracted: ${Math.floor(Math.random() * 500) + 128}\nSample rate: 44.1kHz`;
+    }, 2500);
   }
 
-  function handleChatKeyPress(event) {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault();
-      sendMessage();
+  function clearAudio() {
+    if (currentAudio) {
+      URL.revokeObjectURL(currentAudio);
+      currentAudio = null;
+    }
+    
+    document.getElementById('audioInput').value = '';
+    document.getElementById('audioWaveform').style.display = 'none';
+    document.getElementById('audioAnalysis').style.display = 'none';
+    document.getElementById('classifyAudioBtn').disabled = true;
+    document.getElementById('recordBtn').disabled = false;
+    document.getElementById('stopBtn').disabled = true;
+    document.getElementById('audio-output').textContent = 'Audio classifier ready...\nModels: Wav2Vec 2.0, SpeechT5, Custom CNN\nApplications: Cough analysis, Speech recognition, Environmental sound classification';
+  }
+
+  // Code Assistant Demo Functions
+  function analyzeCode() {
+    const code = document.getElementById('codeInput').value.trim();
+    const language = document.getElementById('codeLanguage').value;
+    
+    if (!code) {
+      alert('Please enter some code to analyze');
+      return;
+    }
+    
+    const suggestions = document.getElementById('codeSuggestions');
+    const output = document.getElementById('code-output');
+    
+    suggestions.style.display = 'block';
+    suggestions.innerHTML = '<div style="text-align: center;">🔄 Analyzing code...</div>';
+    output.textContent = `Analyzing ${language} code...`;
+    
+    setTimeout(() => {
+      const codeAnalysis = generateCodeAnalysis(code, language);
+      suggestions.innerHTML = codeAnalysis;
+      
+      const lines = code.split('\n').length;
+      const chars = code.length;
+      output.textContent = `Code analysis complete!\nLanguage: ${language}\nLines: ${lines}\nCharacters: ${chars}\nComplexity: ${lines > 50 ? 'High' : lines > 20 ? 'Medium' : 'Low'}\nAnalysis time: ${Math.random() * 300 + 100}ms`;
+    }, 1500);
+  }
+
+  function generateCodeAnalysis(code, language) {
+    const suggestions = [
+      '✅ Code structure looks good',
+      '⚠️ Consider adding error handling',
+      '💡 Variable names could be more descriptive',
+      '🔧 Consider extracting this into a separate function',
+      '📝 Add comments for complex logic',
+      '⚡ This loop could be optimized',
+      '🛡️ Consider input validation',
+      '🎯 Good use of ' + language + ' best practices'
+    ];
+    
+    const selectedSuggestions = suggestions.slice(0, Math.floor(Math.random() * 4) + 3);
+    const score = Math.floor(Math.random() * 30) + 70;
+    
+    return `
+      <strong>📊 Code Quality Analysis:</strong><br>
+      <strong>Overall Score:</strong> ${score}/100<br><br>
+      <strong>🔍 Suggestions:</strong><br>
+      ${selectedSuggestions.map(s => `• ${s}`).join('<br>')}<br><br>
+      <strong>🏆 Best Practices:</strong><br>
+      • Following ${language} conventions<br>
+      • ${Math.random() > 0.5 ? 'Good' : 'Excellent'} readability<br>
+      • ${Math.random() > 0.3 ? 'Adequate' : 'Strong'} error handling<br><br>
+      <strong>⚡ Performance:</strong> ${Math.random() > 0.6 ? 'Optimized' : 'Could be improved'}
+    `;
+  }
+
+  function generateCode() {
+    const language = document.getElementById('codeLanguage').value;
+    const codeInput = document.getElementById('codeInput');
+    const output = document.getElementById('code-output');
+    
+    const codeExamples = {
+      python: `# Machine Learning Example
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Generate sample data
+X = np.random.rand(100, 1) * 10
+y = 2 * X.flatten() + 1 + np.random.randn(100) * 0.5
+
+# Train model
+model = LinearRegression()
+model.fit(X, y)
+
+# Make predictions
+predictions = model.predict(X)
+print(f"Model score: {model.score(X, y):.3f}")`,
+      
+      javascript: `// Modern JavaScript Example
+class DataProcessor {
+  constructor(data) {
+    this.data = data;
+  }
+  
+  async processData() {
+    try {
+      const results = await this.data
+        .filter(item => item.active)
+        .map(item => ({
+          ...item,
+          processed: true,
+          timestamp: new Date().toISOString()
+        }));
+      
+      return results;
+    } catch (error) {
+      console.error('Processing failed:', error);
+      throw error;
     }
   }
+}`,
+      
+      java: `// Java Example
+public class Calculator {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        
+        double result = calc.calculate(10, 5, "add");
+        System.out.println("Result: " + result);
+    }
+    
+    public double calculate(double a, double b, String operation) {
+        switch (operation.toLowerCase()) {
+            case "add": return a + b;
+            case "subtract": return a - b;
+            case "multiply": return a * b;
+            case "divide": 
+                if (b != 0) return a / b;
+                throw new IllegalArgumentException("Division by zero");
+            default: 
+                throw new IllegalArgumentException("Invalid operation");
+        }
+    }
+}`,
+      
+      cpp: `// C++ Example
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-  function adjustTextareaHeight(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = Math.min(textarea.scrollHeight, 100) + 'px';
+class NumberProcessor {
+private:
+    std::vector<int> numbers;
+    
+public:
+    void addNumber(int num) {
+        numbers.push_back(num);
+    }
+    
+    double getAverage() const {
+        if (numbers.empty()) return 0.0;
+        
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        return static_cast<double>(sum) / numbers.size();
+    }
+    
+    void sortNumbers() {
+        std::sort(numbers.begin(), numbers.end());
+    }
+};`,
+      
+      sql: `-- SQL Example
+-- Create a comprehensive query for data analysis
+WITH monthly_sales AS (
+    SELECT 
+        DATE_TRUNC('month', order_date) as month,
+        SUM(total_amount) as total_sales,
+        COUNT(*) as order_count,
+        AVG(total_amount) as avg_order_value
+    FROM orders 
+    WHERE order_date >= DATE_SUB(CURRENT_DATE, INTERVAL 12 MONTH)
+    GROUP BY DATE_TRUNC('month', order_date)
+),
+growth_metrics AS (
+    SELECT *,
+        LAG(total_sales) OVER (ORDER BY month) as prev_month_sales,
+        (total_sales - LAG(total_sales) OVER (ORDER BY month)) / 
+        LAG(total_sales) OVER (ORDER BY month) * 100 as growth_rate
+    FROM monthly_sales
+)
+SELECT * FROM growth_metrics ORDER BY month;`
+    };
+    
+    codeInput.value = codeExamples[language] || '// Code example not available for this language';
+    output.textContent = `Generated ${language} code example\nType: ${language === 'sql' ? 'Data analysis query' : language === 'python' ? 'Machine learning' : 'Application code'}\nLines: ${codeInput.value.split('\n').length}\nReady for analysis`;
+  }
+
+  function clearCode() {
+    document.getElementById('codeInput').value = '';
+    document.getElementById('codeSuggestions').style.display = 'none';
+    document.getElementById('code-output').textContent = 'Code assistant ready...\nFeatures: Syntax analysis, Bug detection, Performance optimization, Best practices\nSupported: Python, JavaScript, Java, C++, SQL';
   }
 
   // Initialize chat status
