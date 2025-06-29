@@ -4,18 +4,111 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sourabh Kulhare - AI Research Engineer</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * {
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #f4f4f4;
       color: #333;
       margin: 0;
       padding: 0;
       line-height: 1.6;
+    }
+
+    /* Search Bar */
+    .search-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 300px;
+      transition: all 0.3s ease;
+    }
+
+    .search-container.collapsed {
+      width: 50px;
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      padding: 0.5rem;
+      border-radius: 20px;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-toggle {
+      background: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .search-toggle:hover {
+      background: #005577;
+    }
+
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .search-result-item {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .search-result-item:hover {
+      background: #f8f9fa;
+    }
+
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-title {
+      font-weight: 600;
+      color: #0077b6;
+      margin-bottom: 0.3rem;
+    }
+
+    .search-result-content {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.4;
     }
 
     header {
@@ -50,16 +143,35 @@
       color: #90e0ef;
       text-decoration: none;
       margin: 0 15px;
-      font-weight: bold;
+      font-weight: 500;
       padding: 8px 12px;
       border-radius: 20px;
       transition: all 0.3s ease;
       display: inline-block;
+      position: relative;
     }
 
     nav a:hover {
       background: rgba(144, 224, 239, 0.2);
       transform: translateY(-2px);
+    }
+
+    nav a.active {
+      background: #90e0ef;
+      color: #003f5c;
+      font-weight: 600;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 2px;
+      background: #90e0ef;
+      border-radius: 1px;
     }
 
     section {
@@ -144,7 +256,215 @@
       box-shadow: 0 4px 12px rgba(144, 224, 239, 0.4);
     }
 
-    /* Skills Section Enhancements */
+    /* Expandable Sections */
+    .expandable-section {
+      margin: 1rem 0;
+    }
+
+    .section-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-toggle:hover {
+      background: #e9ecef;
+      border-color: #0077b6;
+    }
+
+    .section-toggle h3 {
+      margin: 0;
+      color: #0077b6;
+      font-weight: 600;
+    }
+
+    .toggle-icon {
+      background: #0077b6;
+      color: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      font-size: 0.8rem;
+    }
+
+    .toggle-icon.expanded {
+      transform: rotate(180deg);
+    }
+
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      border-top: none;
+    }
+
+    .section-content.expanded {
+      max-height: 1000px;
+      padding: 1.5rem;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #0077b6, #90e0ef);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 80px;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #0077b6;
+      border: 4px solid white;
+      box-shadow: 0 2px 8px rgba(0,119,182,0.3);
+      z-index: 2;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      border-left: 4px solid #0077b6;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .timeline-date {
+      background: #0077b6;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0077b6;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-subtitle {
+      color: #666;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-description {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .timeline-description ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-description li {
+      margin: 0.3rem 0;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #0077b6;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      background: #0077b6;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .form-submit:hover {
+      background: #005577;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,119,182,0.3);
+    }
     .skill-category {
       margin-bottom: 1.5rem;
       padding: 1rem;
@@ -510,6 +830,13 @@
 </head>
 <body>
 
+<!-- Search Container -->
+<div class="search-container collapsed" id="searchContainer">
+  <input type="text" class="search-input" id="searchInput" placeholder="Search content..." style="display: none;">
+  <button class="search-toggle" id="searchToggle">🔍</button>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
 <header>
   <img src="supporting_files/IMG_5192.jpg" alt="Sourabh Kulhare" class="profile-photo">
   <h1>Sourabh Kulhare</h1>
@@ -540,180 +867,240 @@
 
 <section id="experience">
   <h2>Experience</h2>
-  <div class="experience-item">
-    <div class="experience-header">
-      <strong>Machine Learning Research Engineer</strong> – Global Health Labs, Bellevue, WA (2020–Present)
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2020 - Present</div>
+        <div class="timeline-title">Machine Learning Research Engineer</div>
+        <div class="timeline-subtitle">Global Health Labs, Bellevue, WA</div>
+        <div class="timeline-description">
+          <ul>
+            <li>Leading advanced AI initiatives across diverse projects</li>
+            <li>Applied Machine Learning for automated healthcare diagnosis</li>
+            <li>Deploying efficient deep learning models to edge devices</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <ul class="experience-details">
-      <li>Leading advanced AI initiatives across diverse projects</li>
-      <li>Applied Machine Learning for automated healthcare diagnosis</li>
-      <li>Deploying efficient deep learning models to edge devices</li>
-    </ul>
-  </div>
 
-  <div class="experience-item">
-    <div class="experience-header">
-      <strong>Associate Machine Learning Scientist</strong> – Intellectual Ventures Laboratory, Bellevue, WA (2017–2020)
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2017 - 2020</div>
+        <div class="timeline-title">Associate Machine Learning Scientist</div>
+        <div class="timeline-subtitle">Intellectual Ventures Laboratory, Bellevue, WA</div>
+        <div class="timeline-description">
+          <ul>
+            <li>Generative AI for data synthesis and domain adaptation</li>
+            <li>Sequence Modeling for audio (cough) analysis</li>
+            <li>Deep Learning system for diagnosing pneumonia abnormalities</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <ul class="experience-details">
-      <li>Generative AI for data synthesis and domain adaptation</li>
-      <li>Sequence Modeling for audio (cough) analysis</li>
-      <li>Deep Learning system for diagnosing pneumonia abnormalities</li>
-    </ul>
-  </div>
 
-  <div class="experience-item">
-    <div class="experience-header">
-      <strong>Deep Learning Graduate Researcher</strong> – RIT (2016–2017), Rochester, NY
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2016 - 2017</div>
+        <div class="timeline-title">Deep Learning Graduate Researcher</div>
+        <div class="timeline-subtitle">RIT, Rochester, NY</div>
+        <div class="timeline-description">
+          <ul>
+            <li>Led research on spatiotemporal analysis of video sequences and key video events recognition</li>
+            <li>Experienced in industrial robotics, ROS, autonomous navigation, and Roomba-based robotic platforms</li>
+            <li>Developed natural language summarization module with LSTM, word embedding, and neural attention</li>
+            <li>Collaborated with a diverse machine learning group at Rochester Institute of Technology</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <ul class="experience-details">
-      <li>Led research on spatiotemporal analysis of video sequences and key video events recognition</li>
-      <li>Experienced in industrial robotics, ROS, autonomous navigation, and Roomba-based robotic platforms</li>
-      <li>Developed natural language summarization module with LSTM, word embedding, and neural attention</li>
-      <li>Collaborated with a diverse machine learning group at Rochester Institute of Technology</li>
-    </ul>
-  </div>
 
-  <div class="experience-item">
-    <div class="experience-header">
-      <strong>Computer Vision and NLP Intern</strong> – Ahold - USA (2016), Boston, MA
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2016</div>
+        <div class="timeline-title">Computer Vision and NLP Intern</div>
+        <div class="timeline-subtitle">Ahold - USA, Boston, MA</div>
+        <div class="timeline-description">
+          <ul>
+            <li>Developed a computer vision solution for automatic storage monitoring through live streaming</li>
+            <li>Designed a system for automatic navigation system for indoor Robots</li>
+            <li>Developed a conversational ChatBot solution for customer inquiries</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <ul class="experience-details">
-      <li>Developed a computer vision solution for automatic storage monitoring through live streaming</li>
-      <li>Designed a system for automatic navigation system for indoor Robots</li>
-      <li>Developed a conversational ChatBot solution for customer inquiries</li>
-    </ul>
   </div>
 </section>
 
 <section id="education">
   <h2>Education</h2>
-  <ul>
-    <li>
-      <strong>Master of Science in Computer Engineering</strong><br>
-      Rochester Institute of Technology, Rochester, NY<br>
-      <em>2014–2017</em>
-    </li>
-    <li>
-      <strong>Bachelor of Technology in Electronics and Communications</strong><br>
-      Lovely Professional University, Jalandhar, India<br>
-      <em>2009–2013</em>
-    </li>
-  </ul>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2014 - 2017</div>
+        <div class="timeline-title">Master of Science in Computer Engineering</div>
+        <div class="timeline-subtitle">Rochester Institute of Technology, Rochester, NY</div>
+        <div class="timeline-description">
+          Specialized in Machine Learning, Computer Vision, and Deep Learning. Conducted research on video analysis and natural language processing.
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2009 - 2013</div>
+        <div class="timeline-title">Bachelor of Technology in Electronics and Communications</div>
+        <div class="timeline-subtitle">Lovely Professional University, Jalandhar, India</div>
+        <div class="timeline-description">
+          Foundation in electronics, communications, and signal processing. Developed strong analytical and problem-solving skills.
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="skills">
   <h2>Skills & Tools</h2>
   
-  <div class="skill-category">
-    <h3>Programming Languages</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🐍</span>
-      <span class="skill-name">Python</span>
+  <div class="expandable-section">
+    <div class="section-toggle" onclick="toggleSection('programming-languages')">
+      <h3>Programming Languages</h3>
+      <div class="toggle-icon" id="programming-languages-icon">▼</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">⚡</span>
-      <span class="skill-name">C++</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">☕</span>
-      <span class="skill-name">Java</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🌙</span>
-      <span class="skill-name">Lua</span>
-    </div>
-  </div>
-
-  <div class="skill-category">
-    <h3>ML/DL Frameworks</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🔥</span>
-      <span class="skill-name">PyTorch</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🧠</span>
-      <span class="skill-name">TensorFlow</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">📊</span>
-      <span class="skill-name">scikit-learn</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🎯</span>
-      <span class="skill-name">Keras</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">👁️</span>
-      <span class="skill-name">OpenCV</span>
+    <div class="section-content" id="programming-languages-content">
+      <div class="skill-item">
+        <span class="skill-icon">🐍</span>
+        <span class="skill-name">Python</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">⚡</span>
+        <span class="skill-name">C++</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">☕</span>
+        <span class="skill-name">Java</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🌙</span>
+        <span class="skill-name">Lua</span>
+      </div>
     </div>
   </div>
 
-  <div class="skill-category">
-    <h3>LLMs & NLP</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🔗</span>
-      <span class="skill-name">LangChain</span>
+  <div class="expandable-section">
+    <div class="section-toggle" onclick="toggleSection('ml-frameworks')">
+      <h3>ML/DL Frameworks</h3>
+      <div class="toggle-icon" id="ml-frameworks-icon">▼</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔍</span>
-      <span class="skill-name">RAG (Retrieval-Augmented Generation)</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🤗</span>
-      <span class="skill-name">Hugging Face</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">📝</span>
-      <span class="skill-name">NLTK</span>
-    </div>
-  </div>
-
-  <div class="skill-category">
-    <h3>Deployment & Cloud</h3>
-    <div class="skill-item">
-      <span class="skill-icon">🌐</span>
-      <span class="skill-name">Flask</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🐳</span>
-      <span class="skill-name">Docker</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">⚡</span>
-      <span class="skill-name">TensorRT</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">📱</span>
-      <span class="skill-name">TFLite</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">☁️</span>
-      <span class="skill-name">AWS</span>
-    </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔵</span>
-      <span class="skill-name">Azure</span>
+    <div class="section-content" id="ml-frameworks-content">
+      <div class="skill-item">
+        <span class="skill-icon">🔥</span>
+        <span class="skill-name">PyTorch</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🧠</span>
+        <span class="skill-name">TensorFlow</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">📊</span>
+        <span class="skill-name">scikit-learn</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🎯</span>
+        <span class="skill-name">Keras</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">👁️</span>
+        <span class="skill-name">OpenCV</span>
+      </div>
     </div>
   </div>
 
-  <div class="skill-category">
-    <h3>Tools & Other</h3>
-    <div class="skill-item">
-      <span class="skill-icon">📈</span>
-      <span class="skill-name">W&B (Weights & Biases)</span>
+  <div class="expandable-section">
+    <div class="section-toggle" onclick="toggleSection('llms-nlp')">
+      <h3>LLMs & NLP</h3>
+      <div class="toggle-icon" id="llms-nlp-icon">▼</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">🔧</span>
-      <span class="skill-name">Git/GitHub</span>
+    <div class="section-content" id="llms-nlp-content">
+      <div class="skill-item">
+        <span class="skill-icon">🔗</span>
+        <span class="skill-name">LangChain</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🔍</span>
+        <span class="skill-name">RAG (Retrieval-Augmented Generation)</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🤗</span>
+        <span class="skill-name">Hugging Face</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">📝</span>
+        <span class="skill-name">NLTK</span>
+      </div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">🗄️</span>
-      <span class="skill-name">SQL</span>
+  </div>
+
+  <div class="expandable-section">
+    <div class="section-toggle" onclick="toggleSection('deployment-cloud')">
+      <h3>Deployment & Cloud</h3>
+      <div class="toggle-icon" id="deployment-cloud-icon">▼</div>
     </div>
-    <div class="skill-item">
-      <span class="skill-icon">🎨</span>
-      <span class="skill-name">Generative Models (GANs, Diffusion)</span>
+    <div class="section-content" id="deployment-cloud-content">
+      <div class="skill-item">
+        <span class="skill-icon">🌐</span>
+        <span class="skill-name">Flask</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🐳</span>
+        <span class="skill-name">Docker</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">⚡</span>
+        <span class="skill-name">TensorRT</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">📱</span>
+        <span class="skill-name">TFLite</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">☁️</span>
+        <span class="skill-name">AWS</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🔵</span>
+        <span class="skill-name">Azure</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="expandable-section">
+    <div class="section-toggle" onclick="toggleSection('tools-other')">
+      <h3>Tools & Other</h3>
+      <div class="toggle-icon" id="tools-other-icon">▼</div>
+    </div>
+    <div class="section-content" id="tools-other-content">
+      <div class="skill-item">
+        <span class="skill-icon">📈</span>
+        <span class="skill-name">W&B (Weights & Biases)</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🔧</span>
+        <span class="skill-name">Git/GitHub</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🗄️</span>
+        <span class="skill-name">SQL</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-icon">🎨</span>
+        <span class="skill-name">Generative Models (GANs, Diffusion)</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1016,6 +1403,29 @@
     Google Scholar: <a href="https://scholar.google.com/citations?user=hTZnzOQAAAAJ&hl=en" target="_blank">Sourabh Kulhare</a>
   </p>
   <a href="supporting_files/Sourabh-KulhareJune25.pdf" download class="resume-btn">📄 Download My Resume</a>
+  
+  <div class="contact-form">
+    <h3>Get in Touch</h3>
+    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Collaboration, Research, or General Inquiry">
+      </div>
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" required placeholder="Tell me about your project, research interests, or how we can collaborate..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message</button>
+    </form>
+  </div>
 </section>
 
 <footer>
@@ -1027,6 +1437,153 @@
 </button>
 
 <script>
+  // Search functionality
+  const searchToggle = document.getElementById('searchToggle');
+  const searchContainer = document.getElementById('searchContainer');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  let searchData = [];
+
+  // Initialize search data
+  function initializeSearch() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      const sectionId = section.id;
+      const sectionTitle = section.querySelector('h2').textContent;
+      const content = section.textContent.toLowerCase();
+      
+      searchData.push({
+        id: sectionId,
+        title: sectionTitle,
+        content: content,
+        element: section
+      });
+    });
+  }
+
+  // Toggle search
+  searchToggle.addEventListener('click', function() {
+    if (searchContainer.classList.contains('collapsed')) {
+      searchContainer.classList.remove('collapsed');
+      searchInput.style.display = 'block';
+      searchInput.focus();
+    } else {
+      searchContainer.classList.add('collapsed');
+      searchInput.style.display = 'none';
+      searchResults.style.display = 'none';
+    }
+  });
+
+  // Search functionality
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    
+    if (query.length < 2) {
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    const results = searchData.filter(item => 
+      item.content.includes(query) || item.title.toLowerCase().includes(query)
+    );
+
+    displaySearchResults(results, query);
+  });
+
+  function displaySearchResults(results, query) {
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+    } else {
+      searchResults.innerHTML = results.map(result => {
+        const preview = getContentPreview(result.content, query);
+        return `
+          <div class="search-result-item" onclick="navigateToSection('${result.id}')">
+            <div class="search-result-title">${result.title}</div>
+            <div class="search-result-content">${preview}</div>
+          </div>
+        `;
+      }).join('');
+    }
+    searchResults.style.display = 'block';
+  }
+
+  function getContentPreview(content, query) {
+    const index = content.indexOf(query);
+    if (index === -1) return content.substring(0, 100) + '...';
+    
+    const start = Math.max(0, index - 50);
+    const end = Math.min(content.length, index + query.length + 50);
+    let preview = content.substring(start, end);
+    
+    if (start > 0) preview = '...' + preview;
+    if (end < content.length) preview = preview + '...';
+    
+    return preview.replace(new RegExp(query, 'gi'), `<strong>$&</strong>`);
+  }
+
+  function navigateToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      searchResults.style.display = 'none';
+      searchContainer.classList.add('collapsed');
+      searchInput.style.display = 'none';
+    }
+  }
+
+  // Active section highlighting
+  function updateActiveNavigation() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        currentSection = section.id;
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSection}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  // Expandable sections
+  function toggleSection(sectionId) {
+    const content = document.getElementById(`${sectionId}-content`);
+    const icon = document.getElementById(`${sectionId}-icon`);
+    
+    if (content.classList.contains('expanded')) {
+      content.classList.remove('expanded');
+      icon.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      icon.classList.add('expanded');
+    }
+  }
+
+  // Contact form handling
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message')
+    };
+    
+    // Here you would typically send the data to a server
+    alert(`Thank you, ${data.name}! Your message has been received. I'll get back to you soon.`);
+    event.target.reset();
+  }
+
   // Back to top button functionality
   window.addEventListener('scroll', function() {
     const backToTop = document.getElementById('backToTop');
@@ -1035,6 +1592,9 @@
     } else {
       backToTop.classList.remove('visible');
     }
+    
+    // Update active navigation
+    updateActiveNavigation();
   });
 
   function scrollToTop() {
@@ -1073,8 +1633,12 @@
     });
   }, observerOptions);
 
-  // Observe all sections for animation
+  // Initialize everything when page loads
   document.addEventListener('DOMContentLoaded', function() {
+    // Initialize search
+    initializeSearch();
+    
+    // Observe sections for animation
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
       section.style.opacity = '0';
@@ -1082,6 +1646,16 @@
       section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(section);
     });
+    
+    // Set initial active navigation
+    updateActiveNavigation();
+  });
+
+  // Close search when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!searchContainer.contains(event.target)) {
+      searchResults.style.display = 'none';
+    }
   });
 </script>
 
