@@ -18,55 +18,8 @@
       line-height: 1.6;
     }
 
-    /* Loading Animation */
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #003f5c, #0077b6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    .loading-overlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loading-spinner {
-      width: 60px;
-      height: 60px;
-      border: 4px solid rgba(144, 224, 239, 0.3);
-      border-left: 4px solid #90e0ef;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    .loading-text {
-      color: #90e0ef;
-      font-size: 1.2rem;
-      margin-top: 20px;
-      font-weight: 500;
-      animation: pulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 1; }
-    }
-
     header {
-      background: linear-gradient(135deg, #003f5c 0%, #0077b6 100%);
+      background: #003f5c;
       color: white;
       padding: 2rem;
       text-align: center;
@@ -432,285 +385,7 @@
       border-radius: 0 12px 0 60px;
     }
 
-    /* Custom Cursor */
-    * {
-      cursor: none;
-    }
-
-    .custom-cursor {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: #0077b6;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transition: transform 0.1s ease;
-      mix-blend-mode: difference;
-    }
-
-    .custom-cursor-trail {
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      background: #90e0ef;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease;
-      opacity: 0.7;
-    }
-
-    .custom-cursor.hover {
-      transform: scale(1.5);
-      background: #90e0ef;
-    }
-
-    /* Parallax Header */
-    header {
-      background: linear-gradient(135deg, #003f5c 0%, #0077b6 100%);
-      background-attachment: fixed;
-      background-size: 120% 120%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(144, 224, 239, 0.1) 0%, transparent 70%);
-      animation: float 6s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(20px, -20px) rotate(1deg); }
-      66% { transform: translate(-20px, 20px) rotate(-1deg); }
-    }
-
-    /* Gradient Section Backgrounds */
-    section:nth-child(odd) {
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    }
-
-    section:nth-child(even) {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    }
-
-    #about {
-      background: linear-gradient(135deg, #ffffff 0%, rgba(144, 224, 239, 0.05) 100%);
-    }
-
-    #skills {
-      background: linear-gradient(135deg, rgba(0, 119, 182, 0.03) 0%, #ffffff 100%);
-    }
-
-    #projects {
-      background: linear-gradient(135deg, #ffffff 0%, rgba(144, 224, 239, 0.08) 100%);
-    }
-
-    #publications {
-      background: linear-gradient(135deg, rgba(0, 119, 182, 0.05) 0%, #ffffff 100%);
-    }
-
-    #books {
-      background: linear-gradient(135deg, #ffffff 0%, rgba(144, 224, 239, 0.06) 100%);
-    }
-
-    #contact {
-      background: linear-gradient(135deg, rgba(0, 63, 92, 0.05) 0%, #ffffff 100%);
-    }
-
-    /* Enhanced Interactive Elements */
-    a, button, .project-item, .book-item, .hobby-item, .skill-item, .resume-btn, .resume-btn-header, .back-to-top {
-      cursor: none;
-    }
-
-    a:hover, button:hover, .project-item:hover, .book-item:hover, .hobby-item:hover, .resume-btn:hover, .resume-btn-header:hover, .back-to-top:hover {
-      cursor: none;
-    }
-
-    /* Parallax Elements */
-    .parallax-element {
-      transform: translateZ(0);
-      will-change: transform;
-    }
-
-    /* Enhanced Animations */
-    .section-animate {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .section-animate.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Gradient Overlay for Better Text Readability */
-    header::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, rgba(0, 63, 92, 0.1) 0%, rgba(0, 119, 182, 0.1) 100%);
-      pointer-events: none;
-    }
-
-    /* Profile photo gets higher z-index to stay above overlay */
-    .profile-photo {
-      position: relative;
-      z-index: 2;
-    }
-
-    h1, header p, .resume-btn-header, nav {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* About Section */
-    #about {
-      background: linear-gradient(135deg, #ffffff 0%, rgba(144, 224, 239, 0.05) 100%);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-top: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #about::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 119, 182, 0.03);
-      border-radius: 10px;
-      z-index: 1;
-    }
-
-    #about p {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Experience Section */
-    #experience {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .experience-item {
-      background: #f8f9fa;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border-radius: 8px;
-      border-left: 4px solid #0077b6;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .experience-item:hover {
-      background: #e9ecef;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .experience-header {
-      font-weight: bold;
-      color: #0077b6;
-      margin-bottom: 0.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .experience-details {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Education Section */
-    #education {
-      position: relative;
-      overflow: hidden;
-    }
-
-    #education ul {
-      padding-left: 0;
-      list-style: none;
-    }
-
-    #education li {
-      background: #f8f9fa;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      border-radius: 8px;
-      border-left: 4px solid #0077b6;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #education li:hover {
-      background: #e9ecef;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    /* Skills Section */
-    #skills {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Project Section */
-    #projects {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Publications Section */
-    #publications {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Talks Section */
-    #talks {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Books Section */
-    #books {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Hobbies Section */
-    #hobbies {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Contact Section */
-    #contact {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Responsive Styles */
+    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
         padding: 1.5rem 1rem;
@@ -835,19 +510,7 @@
 </head>
 <body>
 
-<!-- Loading Animation -->
-<div class="loading-overlay" id="loadingOverlay">
-  <div style="text-align: center;">
-    <div class="loading-spinner"></div>
-    <div class="loading-text">Loading...</div>
-  </div>
-</div>
-
-<!-- Custom Cursor -->
-<div class="custom-cursor" id="customCursor"></div>
-<div class="custom-cursor-trail" id="cursorTrail"></div>
-
-<header class="parallax-element">
+<header>
   <img src="supporting_files/IMG_5192.jpg" alt="Sourabh Kulhare" class="profile-photo">
   <h1>Sourabh Kulhare</h1>
   <p>AI Research Engineer | Deep Learning | Computer Vision | Generative Models</p>
@@ -1145,36 +808,11 @@
 <section id="publications">
   <h2>Publications</h2>
   <ul>
-    <li>
-      <strong>Title:</strong> Deep Learning for Pneumonia Detection in Chest Ultrasound<br>
-      <strong>Venue:</strong> CVPR 2023, Vancouver, Canada<br>
-      <strong>Description:</strong> This paper presents deep learning algorithms that accurately detect key lung abnormalities—pleural effusion, consolidation, and B-lines—in ultrasound scans, using a large dataset from patients in Nigeria and China. These lightweight models, suitable for mobile deployment, aim to assist point-of-care pneumonia diagnosis in low- and middle-income countries, where expert interpretation is scarce. The study also addresses challenges in defining ground truth for pneumonia diagnosis in such settings.<br>
-      <strong>Link:</strong> <a href="https://openaccess.thecvf.com/content/CVPR2023W/DL-UIA/papers/Shea_Deep_Learning_Video_Classification_of_Lung_Ultrasound_Features_Associated_With_CVPRW_2023_paper.pdf" target="_blank">View Paper</a>
-    </li>
-    <li>
-      <strong>Title:</strong> Medical Image Synthesis Using Generative Adversarial Networks<br>
-      <strong>Venue:</strong> MICCAI 2023, Vancouver, Canada<br>
-      <strong>Description:</strong> Training deep learning models in healthcare is limited by data scarcity and privacy concerns; this study shows that incorporating synthetic data from generative models improves performance, balances datasets, and protects privacy, outperforming models trained on real data alone.<br>
-      <strong>Link:</strong> <a href="https://arxiv.org/pdf/2310.03608" target="_blank">View Paper</a>
-    </li>
-    <li>
-      <strong>Title:</strong> Lung Abnormality Detection in Medical Imaging Using Efficient CNNs<br>
-      <strong>Venue:</strong> MICCAI 2018, Granada, Spain<br>
-      <strong>Description:</strong> Ultrasound can detect various lung conditions, but interpreting its non-structural features requires expertise. This study presents a CNN-based algorithm trained on annotated ultrasound videos from swine models to identify five key lung features, achieving accurate detection—including pneumothorax using simulated M-mode inputs.<br>
-      <strong>Link:</strong> <a href="https://www.researchgate.net/profile/Petrov-Igor/publication/358324752_Inclusion_imaging_using_single-shot_ultrasound_and_convolutional_neural_networks/links/668e756f3e0edb1e0fdb4931/Inclusion-imaging-using-single-shot-ultrasound-and-convolutional-neural-networks.pdf" target="_blank">View Paper</a>
-    </li>
-    <li>
-      <strong>Title:</strong> Video and Text Summarization Using Deep Learning<br>
-      <strong>Venue:</strong> WACV 2017, Santa Rosa, CA<br>
-      <strong>Description:</strong> This work introduces novel methods for summarizing and annotating long consumer videos by extracting impactful segments—based on image quality, cinematography, and user preferences—and generating both visual summaries and textual descriptions via recurrent neural networks. Unlike traditional keyframe-only approaches, it combines visual subshot selection with sequential encoding to produce rich, multi-modal video summaries.<br>
-      <strong>Link:</strong> <a href="https://www.researchgate.net/profile/Shagan-Sah/publication/316948434_Semantic_Text_Summarization_of_Long_Videos/links/5eecc89c458515814a6ae5fb/Semantic-Text-Summarization-of-Long-Videos.pdf" target="_blank">View Paper</a>
-    </li>
-    <li>
-      <strong>Title:</strong> Salient Activity Recognition in Video Sequences<br>
-      <strong>Venue:</strong> ICPR 2016, Cancún, México <br>
-      <strong>Description:</strong> This paper explores efficient and accurate methods for large-scale activity recognition in surveillance videos, addressing the challenges of processing vast amounts of streaming data. It presents a novel deep learning fusion architecture leveraging multi-modal inputs, including color spaces and optical flow, and introduces keyframe extraction to reduce computational load while maintaining classification performance.<br>
-      <strong>Link:</strong> <a href="https://projet.liris.cnrs.fr/imagine/pub/proceedings/ICPR-2016/media/files/0516.pdf" target="_blank">View Paper</a>
-    </li>
+    <li>Deep Learning for Pneumonia Detection in Chest Ultrasound, CVPR 2023, Vancouver, Canada</li>
+    <li>Medical Image Synthesis Using Generative Adversarial Networks, MICCAI 2023, Vancouver, Canada</li>
+    <li>Lung Abnormality Detection in Medical Imaging Using Efficient CNNs, MICCAI 2018, Granada, Spain</li>
+    <li>Video and Text Summarization Using Deep Learning, WACV 2017, Santa Rosa, CA</li>
+    <li>Salient Activity Recognition in Video Sequences, ICPR 2016, Cancún, México</li>
   </ul>
 </section>
 
@@ -1364,85 +1002,6 @@
 </button>
 
 <script>
-  // Loading Animation
-  window.addEventListener('load', function() {
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    setTimeout(() => {
-      loadingOverlay.classList.add('hidden');
-      // Remove from DOM after animation completes
-      setTimeout(() => {
-        loadingOverlay.remove();
-      }, 500);
-    }, 1000); // Show loading for 1 second minimum
-  });
-
-  // Custom Cursor
-  const cursor = document.getElementById('customCursor');
-  const cursorTrail = document.getElementById('cursorTrail');
-  let mouseX = 0, mouseY = 0;
-  let trailX = 0, trailY = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    cursor.style.left = mouseX - 10 + 'px';
-    cursor.style.top = mouseY - 10 + 'px';
-  });
-
-  // Smooth cursor trail
-  function animateCursorTrail() {
-    trailX += (mouseX - trailX) * 0.1;
-    trailY += (mouseY - trailY) * 0.1;
-    
-    cursorTrail.style.left = trailX - 4 + 'px';
-    cursorTrail.style.top = trailY - 4 + 'px';
-    
-    requestAnimationFrame(animateCursorTrail);
-  }
-  animateCursorTrail();
-
-  // Cursor hover effects
-  const interactiveElements = document.querySelectorAll('a, button, .project-item, .book-item, .hobby-item, .resume-btn, .resume-btn-header, .back-to-top');
-  
-  interactiveElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-      cursor.classList.add('hover');
-    });
-    
-    element.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  });
-
-  // Parallax Effects
-  function handleParallax() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.parallax-element');
-    
-    parallaxElements.forEach(element => {
-      const speed = 0.5;
-      const yPos = -(scrolled * speed);
-      element.style.transform = `translateY(${yPos}px)`;
-    });
-  }
-
-  window.addEventListener('scroll', handleParallax);
-
-  // Enhanced Section Animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const sectionObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-      }
-    });
-  }, observerOptions);
-
   // Back to top button functionality
   window.addEventListener('scroll', function() {
     const backToTop = document.getElementById('backToTop');
@@ -1474,37 +1033,30 @@
     });
   });
 
-  // Initialize animations when DOM is loaded
+  // Add entrance animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections for animation
   document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
-      section.classList.add('section-animate');
-      sectionObserver.observe(section);
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
     });
-
-    // Add parallax class to header
-    const header = document.querySelector('header');
-    if (header) {
-      header.classList.add('parallax-element');
-    }
-
-    // Hide cursor on touch devices
-    if ('ontouchstart' in window) {
-      cursor.style.display = 'none';
-      cursorTrail.style.display = 'none';
-      document.body.style.cursor = 'auto';
-    }
-  });
-
-  // Hide custom cursor when mouse leaves window
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    cursorTrail.style.opacity = '0';
-  });
-
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    cursorTrail.style.opacity = '0.7';
   });
 </script>
 
