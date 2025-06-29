@@ -331,6 +331,60 @@
     .book-item:nth-child(14) .book-cover { background: linear-gradient(135deg, #778ca3, #4b6584); }
     .book-item:nth-child(15) .book-cover { background: linear-gradient(135deg, #f53b57, #ef3b2d); }
 
+    /* Hobbies Section */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .hobby-item {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 12px;
+      border-left: 4px solid #0077b6;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hobby-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      background: #e9ecef;
+    }
+
+    .hobby-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hobby-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #0077b6;
+      margin-bottom: 1rem;
+    }
+
+    .hobby-description {
+      color: #555;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .hobby-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, rgba(0,119,182,0.1), rgba(144,224,239,0.1));
+      border-radius: 0 12px 0 60px;
+    }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
@@ -434,6 +488,23 @@
       .book-author {
         font-size: 0.75rem;
       }
+
+      .hobbies-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .hobby-item {
+        padding: 1.5rem;
+      }
+
+      .hobby-icon {
+        font-size: 2.5rem;
+      }
+
+      .hobby-title {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -453,6 +524,7 @@
     <a href="#publications">Publications</a>
     <a href="#talks">Talks</a>
     <a href="#books">Books</a>
+    <a href="#hobbies">Hobbies</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -863,6 +935,35 @@
       </div>
       <div class="book-title">Shoe Dog</div>
       <div class="book-author">Phil Knight</div>
+    </div>
+  </div>
+</section>
+
+<section id="hobbies">
+  <h2>Hobbies & Interests</h2>
+  <div class="hobbies-grid">
+    <div class="hobby-item">
+      <span class="hobby-icon">🏀</span>
+      <div class="hobby-title">Basketball</div>
+      <div class="hobby-description">
+        Basketball has been a passion of mine since childhood. The sport teaches invaluable life lessons about teamwork, strategy, and perseverance under pressure. I love the mental chess match between teams, the split-second decision-making, and how it mirrors the collaborative problem-solving I do in AI research. The fast-paced nature keeps me sharp, and the team dynamics remind me that the best solutions often come from collective intelligence rather than individual brilliance.
+      </div>
+    </div>
+    
+    <div class="hobby-item">
+      <span class="hobby-icon">💪</span>
+      <div class="hobby-title">Working Out</div>
+      <div class="hobby-description">
+        Physical fitness is my foundation for mental clarity and sustained productivity. Working out isn't just about physical health—it's my daily meditation and stress relief. The discipline required to maintain consistency in fitness directly translates to the rigor needed in research. When I'm pushing through a challenging set, it mirrors pushing through complex algorithms and debugging sessions. The endorphins and mental clarity from exercise fuel my creativity and problem-solving abilities throughout the day.
+      </div>
+    </div>
+    
+    <div class="hobby-item">
+      <span class="hobby-icon">📚</span>
+      <div class="hobby-title">Reading</div>
+      <div class="hobby-description">
+        Reading is my gateway to understanding the world beyond AI and technology. Books expose me to diverse perspectives, historical contexts, and timeless wisdom that inform my approach to innovation. Whether it's biographies of great leaders, philosophical works, or business strategy, each book adds layers to my thinking. Reading teaches patience, deep focus, and the ability to synthesize complex ideas—skills that are essential when tackling ambitious AI projects that require both technical precision and visionary thinking.
+      </div>
     </div>
   </div>
 </section>
