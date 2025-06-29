@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sourabh Kulhare - AI Research Engineer</title>
   <style>
+    * {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #f4f4f4;
       color: #333;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
 
     header {
@@ -18,6 +23,7 @@
       color: white;
       padding: 2rem;
       text-align: center;
+      position: relative;
     }
 
     .profile-photo {
@@ -29,6 +35,15 @@
       display: block;
       object-fit: cover;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+
+    nav {
+      margin-top: 1rem;
     }
 
     nav a {
@@ -36,6 +51,15 @@
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background: rgba(144, 224, 239, 0.2);
+      transform: translateY(-2px);
     }
 
     section {
@@ -46,10 +70,19 @@
       margin-top: 1rem;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
 
     h2 {
       color: #0077b6;
+      border-bottom: 2px solid #90e0ef;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
     ul {
@@ -66,6 +99,11 @@
 
     a {
       color: #0077b6;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #005577;
     }
 
     .resume-btn {
@@ -77,12 +115,14 @@
       display: inline-block;
       margin: 10px 0;
       font-weight: bold;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .resume-btn:hover {
       background: #005577;
       color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,119,182,0.3);
     }
 
     .resume-btn-header {
@@ -101,6 +141,190 @@
       background: white;
       color: #003f5c;
       transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(144, 224, 239, 0.4);
+    }
+
+    /* Skills Section Enhancements */
+    .skill-category {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #0077b6;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+    }
+
+    .skill-icon {
+      font-size: 1.2rem;
+      margin-right: 0.8rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .skill-name {
+      flex: 1;
+      font-weight: 500;
+    }
+
+    /* Project Enhancement */
+    .project-item {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      border-left: 4px solid #0077b6;
+      transition: all 0.3s ease;
+    }
+
+    .project-item:hover {
+      background: #e9ecef;
+      transform: translateX(5px);
+    }
+
+    .project-title {
+      font-weight: bold;
+      color: #0077b6;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+      margin-bottom: 0.8rem;
+      color: #555;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background: #0077b6;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,119,182,0.3);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #005577;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 1.5rem 1rem;
+      }
+
+      .profile-photo {
+        width: 120px;
+        height: 120px;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem auto;
+        text-align: center;
+        max-width: 200px;
+      }
+
+      section {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .tech-stack {
+        gap: 0.3rem;
+      }
+
+      .tech-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+      }
+
+      .skill-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .skill-icon {
+        margin-bottom: 0.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 1rem 0.5rem;
+      }
+
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+      }
+
+      section {
+        margin: 0.5rem;
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .resume-btn, .resume-btn-header {
+        width: 90%;
+        text-align: center;
+        margin: 0.5rem auto;
+        display: block;
+      }
+
+      .project-item {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -143,26 +367,205 @@
 
 <section id="skills">
   <h2>Skills & Tools</h2>
-  <ul>
-    <li><strong>Languages:</strong> Python, C++, Java, Lua </li>
-    <li><strong>Frameworks:</strong> PyTorch, TensorFlow, scikit-learn, Keras, OpenCV</li>
-    <li><strong>LLMs & NLP:</strong> LangChain, RAG, Hugging Face, NLTK</li>
-    <li><strong>Deployment:</strong> Flask, Docker, TensorRT, TFLite, AWS, Azure</li>
-    <li><strong>Experimentation:</strong> W&B, Git/GitHub</li>
-    <li><strong>Other:</strong> SQL, S3, MCP, A2A, Generative Models (GANs, Diffusion)</li>
-  </ul>
+  
+  <div class="skill-category">
+    <h3>Programming Languages</h3>
+    <div class="skill-item">
+      <span class="skill-icon">🐍</span>
+      <span class="skill-name">Python</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⚡</span>
+      <span class="skill-name">C++</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">☕</span>
+      <span class="skill-name">Java</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🌙</span>
+      <span class="skill-name">Lua</span>
+    </div>
+  </div>
+
+  <div class="skill-category">
+    <h3>ML/DL Frameworks</h3>
+    <div class="skill-item">
+      <span class="skill-icon">🔥</span>
+      <span class="skill-name">PyTorch</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🧠</span>
+      <span class="skill-name">TensorFlow</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">📊</span>
+      <span class="skill-name">scikit-learn</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🎯</span>
+      <span class="skill-name">Keras</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">👁️</span>
+      <span class="skill-name">OpenCV</span>
+    </div>
+  </div>
+
+  <div class="skill-category">
+    <h3>LLMs & NLP</h3>
+    <div class="skill-item">
+      <span class="skill-icon">🔗</span>
+      <span class="skill-name">LangChain</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🔍</span>
+      <span class="skill-name">RAG (Retrieval-Augmented Generation)</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🤗</span>
+      <span class="skill-name">Hugging Face</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">📝</span>
+      <span class="skill-name">NLTK</span>
+    </div>
+  </div>
+
+  <div class="skill-category">
+    <h3>Deployment & Cloud</h3>
+    <div class="skill-item">
+      <span class="skill-icon">🌐</span>
+      <span class="skill-name">Flask</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🐳</span>
+      <span class="skill-name">Docker</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">⚡</span>
+      <span class="skill-name">TensorRT</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">📱</span>
+      <span class="skill-name">TFLite</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">☁️</span>
+      <span class="skill-name">AWS</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🔵</span>
+      <span class="skill-name">Azure</span>
+    </div>
+  </div>
+
+  <div class="skill-category">
+    <h3>Tools & Other</h3>
+    <div class="skill-item">
+      <span class="skill-icon">📈</span>
+      <span class="skill-name">W&B (Weights & Biases)</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🔧</span>
+      <span class="skill-name">Git/GitHub</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🗄️</span>
+      <span class="skill-name">SQL</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-icon">🎨</span>
+      <span class="skill-name">Generative Models (GANs, Diffusion)</span>
+    </div>
+  </div>
 </section>
 
 <section id="projects">
   <h2>Projects</h2>
-  <ul>
-    <li>Self-supervised vision foundation model for video analysis </li>
-    <li> State-space-models (MAMBA), an efficient replacement for Transformers</li>
-    <li> Scientific journal classification with fine-tuned mini LLM </li>
-    <li>Stock prediction using fine-tuned LLMs on financial news (LangChain/RAG)</li>
-    <li>TB prediction from cough audio using MFCC + LSTM + MIL</li>
-    <li>Image quality filter using YOLOv7 and DINOv2</li>
-  </ul>
+  
+  <div class="project-item">
+    <div class="project-title">Self-supervised Vision Foundation Model for Video Analysis</div>
+    <div class="project-description">
+      Developed a self-supervised learning framework for video understanding using foundation models, enabling robust feature extraction from unlabeled video data for downstream tasks.
+    </div>
+    <div class="tech-stack">
+      <span class="tech-tag">PyTorch</span>
+      <span class="tech-tag">Computer Vision</span>
+      <span class="tech-tag">Self-supervised Learning</span>
+      <span class="tech-tag">Video Processing</span>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-title">State-Space Models (MAMBA) - Transformer Alternative</div>
+    <div class="project-description">
+      Implemented and optimized MAMBA architecture as an efficient replacement for Transformers, achieving better performance with linear complexity for long sequences.
+    </div>
+    <div class="tech-stack">
+      <span class="tech-tag">PyTorch</span>
+      <span class="tech-tag">MAMBA</span>
+      <span class="tech-tag">State-Space Models</span>
+      <span class="tech-tag">Deep Learning</span>
+      <span class="tech-tag">NLP</span>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-title">Scientific Journal Classification with Fine-tuned Mini LLM</div>
+    <div class="project-description">
+      Built an efficient text classification system using a fine-tuned lightweight LLM to categorize scientific papers by research domain and methodology.
+    </div>
+    <div class="tech-stack">
+      <span class="tech-tag">Hugging Face</span>
+      <span class="tech-tag">Fine-tuning</span>
+      <span class="tech-tag">Text Classification</span>
+      <span class="tech-tag">LLM</span>
+      <span class="tech-tag">Scientific Computing</span>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-title">Stock Prediction with LLMs and Financial News</div>
+    <div class="project-description">
+      Developed a stock prediction system using fine-tuned LLMs to analyze financial news sentiment and market trends with LangChain and RAG architecture.
+    </div>
+    <div class="tech-stack">
+      <span class="tech-tag">LangChain</span>
+      <span class="tech-tag">RAG</span>
+      <span class="tech-tag">Financial Analysis</span>
+      <span class="tech-tag">LLM</span>
+      <span class="tech-tag">Sentiment Analysis</span>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-title">TB Prediction from Cough Audio Analysis</div>
+    <div class="project-description">
+      Created an audio-based tuberculosis detection system using MFCC features, LSTM networks, and Multiple Instance Learning for early disease diagnosis.
+    </div>
+    <div class="tech-stack">
+      <span class="tech-tag">Audio Processing</span>
+      <span class="tech-tag">MFCC</span>
+      <span class="tech-tag">LSTM</span>
+      <span class="tech-tag">MIL</span>
+      <span class="tech-tag">Healthcare AI</span>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <div class="project-title">Image Quality Filter with YOLO and DINOv2</div>
+    <div class="project-description">
+      Built an automated image quality assessment system combining YOLOv7 object detection with DINOv2 vision transformer for content quality evaluation.
+    </div>
+    <div class="tech-stack">
+      <span class="tech-tag">YOLOv7</span>
+      <span class="tech-tag">DINOv2</span>
+      <span class="tech-tag">Computer Vision</span>
+      <span class="tech-tag">Image Processing</span>
+      <span class="tech-tag">Quality Assessment</span>
+    </div>
+  </div>
 </section>
 
 <section id="publications">
@@ -227,6 +630,69 @@
 <footer>
   <p>© 2025 Sourabh Kulhare | Built with HTML</p>
 </footer>
+
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+  ↑
+</button>
+
+<script>
+  // Back to top button functionality
+  window.addEventListener('scroll', function() {
+    const backToTop = document.getElementById('backToTop');
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add entrance animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections for animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  });
+</script>
 
 </body>
 </html>
