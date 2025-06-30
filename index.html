@@ -1611,8 +1611,8 @@
           <div class="company">Global Health Labs, Bellevue, WA</div>
         </div>
         <ul class="experience-details">
-          <li>Leading advanced AI initiatives across diverse projects</li>
-          <li>Applied Machine Learning for automated healthcare diagnosis</li>
+          <li>AI-enabled ultrasound technology holds significant potential to assist healthcare professionals in managing complicated pregnancies by providing accurate and timely diagnostic insights. In a collaborative effort involving multiple research groups and organizations, I contributed to developing an efficient alternative to the Vision Transformer architecture by implementing Mamba, a video encoder optimized for ultrasound data. Additionally, I implemented the Swin Transformer (Shifted Window Transformer) model for video classification tasks, leveraging its hierarchical and efficient attention mechanisms. I trained these models on a large-scale ultrasound video dataset, ensuring robust performance across diverse cases. Furthermore, I designed and deployed the entire machine learning pipeline—including feature extraction, model training, and evaluation—using cloud infrastructure on AWS to enable scalable and reproducible experiments.</li>
+          <li>Through my experience, I observed that many supervised machine learning solutions struggle to generalize effectively across diverse demographics, varied ultrasound devices, and a wide range of clinical use cases. To address these challenges, I developed and introduced a self-supervised learning framework designed to train both large and small vision foundational models—such as Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs)—without relying heavily on labeled data. This approach enables the models to learn robust, universal feature representations from ultrasound frames, improving their adaptability and performance across heterogeneous datasets and real-world scenarios.</li>
           <li>Deploying efficient deep learning models to edge devices</li>
         </ul>
       </div>
@@ -1712,8 +1712,8 @@
           <div class="institution">Lovely Professional University, Jalandhar, India</div>
         </div>
         <ul class="education-details">
-          <li>Specialized in Electronics and Communication Systems</li>
-          <li>Final Year Project: Eye Controlled wheel Chair</li>
+          <li>Specialized in Electronics and Communication Systems, where I developed a strong foundation in embedded systems, signal processing, and communication technologies. During this time, I also discovered my passion for coding, computer systems, algorithms, and working with sensors—interests that eventually led me to explore more advanced topics in machine learning and computer vision.</li>
+          <li>Final Year Project: Eye-Controlled Wheelchair : Developed a battery-powered wheelchair controlled through eye movements, designed to assist individuals with limited mobility. The system used an eye-tracking sensor to detect directional gaze, which was processed to control the motors driving the wheelchair's wheels. </li>
         </ul>
       </div>
     </div>
@@ -3967,6 +3967,188 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     document.getElementById('imageAnalysis').style.display = 'none';
     document.getElementById('analyzeImageBtn').disabled = true;
     document.getElementById('imageInput').value = '';
+  }
+
+  // Live Chat Widget Functions
+  let chatOpen = false;
+  let chatResponses = {
+    'Tell me about your experience': "I have 8+ years of experience in AI/ML, specializing in deep learning, computer vision, and LLMs. I've worked at Global Health Labs and Intellectual Ventures Laboratory, focusing on healthcare AI applications.",
+    'What projects are you working on?': "Currently working on self-supervised vision models, MAMBA architectures, and agentic AI systems. Check out my interactive demos above to see some of my recent work!",
+    'Are you available for collaboration?': "Yes! I'm always interested in exciting AI/ML projects. Feel free to reach out through the contact form or connect with me on LinkedIn.",
+    'How can I contact you?': "You can reach me via the contact form on this page, LinkedIn, or email. I'm based in the Seattle area and open to both remote and in-person collaborations."
+  };
+
+  function toggleChat() {
+    const chatWindow = document.getElementById('chatWindow');
+    const chatButton = document.getElementById('chatButton');
+    
+    chatOpen = !chatOpen;
+    
+    if (chatOpen) {
+      chatWindow.style.display = 'block';
+      chatButton.classList.add('active');
+      chatButton.innerHTML = '✕';
+      
+      // Auto-focus on input when chat opens
+      setTimeout(() => {
+        document.getElementById('chatInput').focus();
+      }, 300);
+    } else {
+      chatWindow.style.display = 'none';
+      chatButton.classList.remove('active');
+      chatButton.innerHTML = '💬';
+    }
+  }
+
+  function sendQuickResponse(message) {
+    addMessage(message, 'user');
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Send automated response after delay
+    setTimeout(() => {
+      hideTypingIndicator();
+      const response = chatResponses[message] || "Thanks for your message! I'll get back to you soon.";
+      addMessage(response, 'bot');
+      
+      // Hide quick responses after first interaction
+      const quickResponses = document.getElementById('quickResponses');
+      if (quickResponses) {
+        quickResponses.style.display = 'none';
+      }
+    }, 1500 + Math.random() * 1000); // Random delay to feel more natural
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    addMessage(message, 'user');
+    input.value = '';
+    adjustTextareaHeight(input);
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Generate smart response based on keywords
+    setTimeout(() => {
+      hideTypingIndicator();
+      const response = generateSmartResponse(message);
+      addMessage(response, 'bot');
+    }, 1000 + Math.random() * 1500);
+  }
+
+  function generateSmartResponse(message) {
+    const msg = message.toLowerCase();
+    
+    if (msg.includes('experience') || msg.includes('work') || msg.includes('background')) {
+      return "I have 8+ years in AI/ML research, with expertise in deep learning, computer vision, and LLMs. I've worked on healthcare applications, autonomous systems, and recently on agentic AI architectures.";
+    }
+    
+    if (msg.includes('project') || msg.includes('demo') || msg.includes('code')) {
+      return "Check out my interactive demos above! I'm currently working on vision foundation models, MAMBA architectures, and multi-agent systems. All my projects combine cutting-edge research with practical applications.";
+    }
+    
+    if (msg.includes('hire') || msg.includes('job') || msg.includes('available') || msg.includes('work')) {
+      return "I'm open to discussing exciting opportunities in AI/ML! I'm particularly interested in roles involving research, product development, or technical leadership. Feel free to reach out!";
+    }
+    
+    if (msg.includes('contact') || msg.includes('email') || msg.includes('reach')) {
+      return "You can reach me through the contact form on this page, or connect with me on LinkedIn. I'm based in the Seattle area and always happy to chat about AI/ML!";
+    }
+    
+    if (msg.includes('skill') || msg.includes('tech') || msg.includes('tool')) {
+      return "My tech stack includes PyTorch, TensorFlow, LangChain, and various deployment tools. I specialize in vision models, LLMs, and building end-to-end AI systems. Check out the skills section for the full list!";
+    }
+    
+    if (msg.includes('research') || msg.includes('paper') || msg.includes('publication')) {
+      return "I've published research on medical imaging, video analysis, and self-supervised learning. My work focuses on bridging the gap between research and practical applications, especially in healthcare AI.";
+    }
+    
+    // Default responses
+    const defaultResponses = [
+      "That's a great question! I'd love to discuss this further. Feel free to reach out through the contact form for a more detailed conversation.",
+      "Thanks for your interest! For specific questions about my work or potential collaborations, don't hesitate to contact me directly.",
+      "I appreciate your message! You can find more details in my experience and projects sections, or reach out for a deeper discussion."
+    ];
+    
+    return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+  }
+
+  function addMessage(message, sender) {
+    const messagesContainer = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender}`;
+    
+    const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    
+    messageDiv.innerHTML = `
+      <div class="message-bubble">${message}</div>
+      <div class="message-time">${time}</div>
+    `;
+    
+    // Remove quick responses if they exist
+    const quickResponses = document.getElementById('quickResponses');
+    if (quickResponses && sender === 'user') {
+      quickResponses.remove();
+    }
+    
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function showTypingIndicator() {
+    document.getElementById('typingIndicator').style.display = 'flex';
+    const messagesContainer = document.getElementById('chatMessages');
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function hideTypingIndicator() {
+    document.getElementById('typingIndicator').style.display = 'none';
+  }
+
+  function handleChatKeyPress(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function adjustTextareaHeight(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = Math.min(textarea.scrollHeight, 100) + 'px';
+  }
+
+  // Initialize chat widget
+  document.addEventListener('DOMContentLoaded', function() {
+    // Hide typing indicator initially
+    document.getElementById('typingIndicator').style.display = 'none';
+    
+    // Set initial chat status
+    updateChatStatus();
+    
+    // Update status periodically
+    setInterval(updateChatStatus, 30000); // Update every 30 seconds
+  });
+
+  function updateChatStatus() {
+    const status = document.getElementById('chatStatus');
+    const now = new Date();
+    const hour = now.getHours();
+    
+    if (hour >= 9 && hour < 17) {
+      status.textContent = 'Online';
+      status.style.color = '#28a745';
+    } else if (hour >= 17 && hour < 22) {
+      status.textContent = 'Available';
+      status.style.color = '#ffc107';
+    } else {
+      status.textContent = 'Away';
+      status.style.color = '#6c757d';
+    }
   }
 
 </script>
