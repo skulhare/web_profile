@@ -6,7 +6,7 @@
   <title>Sourabh Kulhare - AI Research Engineer</title>
   
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S80HCG2QJ8"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-359992776"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -256,9 +256,39 @@
 
     .experience-details li,
     .education-details li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       color: #555;
       line-height: 1.6;
+      position: relative;
+    }
+
+    /* Expandable content styles */
+    .summary {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .full-text {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .expand-btn {
+      background: none;
+      border: none;
+      color: #7209b7;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .expand-btn:hover {
+      background: rgba(114, 9, 183, 0.1);
+      transform: translateY(-1px);
     }
 
     /* Skills Section Enhancements */
@@ -1611,9 +1641,21 @@
           <div class="company">Global Health Labs, Bellevue, WA</div>
         </div>
         <ul class="experience-details">
-          <li>AI-enabled ultrasound technology holds significant potential to assist healthcare professionals in managing complicated pregnancies by providing accurate and timely diagnostic insights. In a collaborative effort involving multiple research groups and organizations, I contributed to developing an efficient alternative to the Vision Transformer architecture by implementing Mamba, a video encoder optimized for ultrasound data. Additionally, I implemented the Swin Transformer (Shifted Window Transformer) model for video classification tasks, leveraging its hierarchical and efficient attention mechanisms. I trained these models on a large-scale ultrasound video dataset, ensuring robust performance across diverse cases. Furthermore, I designed and deployed the entire machine learning pipeline—including feature extraction, model training, and evaluation—using cloud infrastructure on AWS to enable scalable and reproducible experiments.</li>
-          <li>Through my experience, I observed that many supervised machine learning solutions struggle to generalize effectively across diverse demographics, varied ultrasound devices, and a wide range of clinical use cases. To address these challenges, I developed and introduced a self-supervised learning framework designed to train both large and small vision foundational models—such as Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs)—without relying heavily on labeled data. This approach enables the models to learn robust, universal feature representations from ultrasound frames, improving their adaptability and performance across heterogeneous datasets and real-world scenarios.</li>
-          <li>Collaborated with a technical partner to de-risk and optimize their hemoglobin value estimation algorithm, which utilizes hyperspectral imaging to detect patients with low hemoglobin levels on a standalone medical device. I converted the original algorithm into a Python/PyTorch-based model, improving its modularity and maintainability. Additionally, I significantly optimized the inference pipeline to enable near real-time performance, making it more suitable for deployment in clinical and point-of-care environments.</li>
+          <li>
+            <span class="summary">AI-enabled ultrasound technology development using Mamba and Swin Transformer architectures for video classification tasks.</span>
+            <span class="full-text" style="display: none;">AI-enabled ultrasound technology holds significant potential to assist healthcare professionals in managing complicated pregnancies by providing accurate and timely diagnostic insights. In a collaborative effort involving multiple research groups and organizations, I contributed to developing an efficient alternative to the Vision Transformer architecture by implementing Mamba, a video encoder optimized for ultrasound data. Additionally, I implemented the Swin Transformer (Shifted Window Transformer) model for video classification tasks, leveraging its hierarchical and efficient attention mechanisms. I trained these models on a large-scale ultrasound video dataset, ensuring robust performance across diverse cases. Furthermore, I designed and deployed the entire machine learning pipeline—including feature extraction, model training, and evaluation—using cloud infrastructure on AWS to enable scalable and reproducible experiments.</span>
+            <button class="expand-btn" onclick="toggleExpand(this)">see more</button>
+          </li>
+          <li>
+            <span class="summary">Developed self-supervised learning framework for vision foundational models to improve generalization across diverse demographics and devices.</span>
+            <span class="full-text" style="display: none;">Through my experience, I observed that many supervised machine learning solutions struggle to generalize effectively across diverse demographics, varied ultrasound devices, and a wide range of clinical use cases. To address these challenges, I developed and introduced a self-supervised learning framework designed to train both large and small vision foundational models—such as Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs)—without relying heavily on labeled data. This approach enables the models to learn robust, universal feature representations from ultrasound frames, improving their adaptability and performance across heterogeneous datasets and real-world scenarios.</span>
+            <button class="expand-btn" onclick="toggleExpand(this)">see more</button>
+          </li>
+          <li>
+            <span class="summary">Optimized hemoglobin estimation algorithm using hyperspectral imaging for real-time clinical deployment.</span>
+            <span class="full-text" style="display: none;">Collaborated with a technical partner to de-risk and optimize their hemoglobin value estimation algorithm, which utilizes hyperspectral imaging to detect patients with low hemoglobin levels on a standalone medical device. I converted the original algorithm into a Python/PyTorch-based model, improving its modularity and maintainability. Additionally, I significantly optimized the inference pipeline to enable near real-time performance, making it more suitable for deployment in clinical and point-of-care environments.</span>
+            <button class="expand-btn" onclick="toggleExpand(this)">see more</button>
+          </li>
           <li>Our team was tasked with a project aimed at streamlining the peer-review process by automatically categorizing scientific journal submissions into 50 distinct categories. To achieve this, we developed an abstract classification system using Microsoft’s Phi-3 Mini large language model (LLM), fine-tuned specifically for scientific text understanding. The resulting classifier significantly reduced the manual workload, ultimately saving reviewers approximately 45% of their time in the initial triage and categorization phase.</li>
           <li>Since the algorithms were required to run on standalone mobile devices without internet connectivity, I focused on optimizing large, computationally intensive models to make them suitable for on-device inference. To achieve this, I applied a range of model compression and optimization techniques, including neural architecture search to identify efficient network structures, pruning to remove redundant parameters, quantization to reduce numerical precision and model size, and knowledge distillation to transfer knowledge from large teacher models to lightweight student models. These techniques collectively enabled the deployment of fast, accurate, and resource-efficient models suitable for real-time performance on edge devices.</li>
         </ul>
@@ -1941,7 +1983,7 @@ Accuracy: 94.2% on validation set
           <div id="stock-analysis-progress" style="margin-top: 1rem; display: none;">
             <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #7209b7;">
               <div id="stock-progress-text">🔄 Processing through LangChain pipeline...</div>
-              <div style="width: 100%; height: 8px; background: #e9ecef; border-radius: 4px; margin-top: 0.8rem; overflow: hidden;">
+              <div style="width:  100%; height: 8px; background: #e9ecef; border-radius: 4px; margin-top: 0.8rem; overflow: hidden;">
                 <div id="stock-progress-bar" style="height: 100%; background: linear-gradient(90deg, #28a745, #ffc107, #dc3545); width: 0%; transition: width 0.6s ease; border-radius: 4px;"></div>
               </div>
             </div>
@@ -1951,7 +1993,7 @@ Accuracy: 94.2% on validation set
             <div class="stock-prediction-card" style="background: #fff; border: 2px solid #e9ecef; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
               <div class="prediction-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
                 <h5 style="margin: 0; color: #7209b7; font-size: 1.1rem;">📊 Prediction Results</h5>
-                <div id="confidence-badge" style="background: #e9ecef; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;"></div>
+                <div id="confidence-badge" style="background: #e9ecef; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500;"></div>
               </div>
               
               <div class="sentiment-analysis" style="margin-bottom: 1.5rem;">
@@ -2202,7 +2244,7 @@ Features: Word count, Character count, Reading time, Complexity score
           <h4 style="color: #7209b7;">AI-Powered Research Assistant</h4>
           <p>Enter a research topic and get comprehensive analysis with citations</p>
           <div style="margin: 1rem 0;">
-            <input type="text" id="research-query" placeholder="Enter research topic (e.g., 'machine learning in healthcare')" style="width: 80%; padding: 0.8rem; border-radius: 6px; border: 2px solid #e9ecef; margin-bottom: 1rem;">
+            <input type="text" id="research-query" placeholder="Enter research topic (e.g., 'machine learning in healthcare')" style="width: 80%; padding: 0.8rem; border-radius: 6px; border: 2px solid #e9ecef;">
           </div>
           <div id="research-progress" style="margin-top: 1rem; display: none;">
             <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px;">
@@ -2742,7 +2784,42 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
       section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(section);
     });
+    
+    // Convert long bullet points to expandable format
+    convertToExpandable();
   });
+
+  function convertToExpandable() {
+    const experienceDetails = document.querySelectorAll('.experience-details li, .education-details li');
+    
+    experienceDetails.forEach(li => {
+      // Skip if already converted
+      if (li.querySelector('.expand-btn')) return;
+      
+      const text = li.textContent.trim();
+      
+      // Only convert if text is longer than 150 characters
+      if (text.length > 150) {
+        // Create summary (first sentence or first 80 characters)
+        let summary = text;
+        const firstSentence = text.match(/^[^.!?]*[.!?]/);
+        if (firstSentence && firstSentence[0].length < 120) {
+          summary = firstSentence[0].trim();
+        } else {
+          // Find a good break point around 80 characters
+          const breakPoint = text.substring(0, 80).lastIndexOf(' ');
+          summary = text.substring(0, breakPoint > 0 ? breakPoint : 80) + '...';
+        }
+        
+        // Clear the li content and rebuild with expandable structure
+        li.innerHTML = `
+          <span class="summary">${summary}</span>
+          <span class="full-text" style="display: none;">${text}</span>
+          <button class="expand-btn" onclick="toggleExpand(this)">see more</button>
+        `;
+      }
+    });
+  }
 
   // Contact Form Functionality
   function handleSubmit(event) {
@@ -3537,44 +3614,13 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
   }
 
   function generateSampleImages() {
-    // Simulate loading sample images
-    const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    
-    // Create a simple colored canvas as sample
-    const canvas = document.createElement('canvas');
-    canvas.width = 200;
-    canvas.height = 150;
-    const ctx = canvas.getContext('2d');
-    
-    // Create gradient background
-    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, randomColor);
-    gradient.addColorStop(1, '#ffffff');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Add some shapes to make it interesting
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-    ctx.beginPath();
-    ctx.arc(canvas.width * 0.3, canvas.height * 0.4, 30, 0, 2 * Math.PI);
-    ctx.fill();
-    
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-    ctx.fillRect(canvas.width * 0.6, canvas.height * 0.2, 40, 60);
-    
-    currentVisionImage = canvas.toDataURL();
-    const preview = document.getElementById('visionImagePreview');
-    preview.innerHTML = `<img src="${currentVisionImage}" style="max-width: 100%; max-height: 130px; border-radius: 4px; object-fit: cover;">`;
-    document.getElementById('analyzeVisionBtn').disabled = false;
-    
-    const uploadArea = document.querySelector('.vision-upload-area');
-    uploadArea.style.border = '2px solid #7209b7';
-    uploadArea.style.background = '#f0f8ff';
-    
-    document.getElementById('vision-output').textContent = 'Sample image loaded! Click "Analyze Features" to explore vision representations.';
+    // Simulate loading a sample image
+    const img = document.getElementById('previewImg');
+    img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNzIwOWI3Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TYW1wbGUgSW1hZ2U8L3RleHQ+PC9zdmc+';
+    document.getElementById('imagePreview').style.display = 'block';
+    document.getElementById('analyzeImageBtn').disabled = false;
   }
-
+  
   function clearVisionDemo() {
     currentVisionImage = null;
     visionFeatures = null;
@@ -4152,7 +4198,23 @@ Pipeline: Data cleaning → Feature extraction → Model training → Validation
     }
   }
 
-</script>
+  // Expandable content functionality
+  function toggleExpand(button) {
+    const listItem = button.parentElement;
+    const summary = listItem.querySelector('.summary');
+    const fullText = listItem.querySelector('.full-text');
+    
+    if (fullText.style.display === 'none') {
+      // Show full text
+      summary.style.display = 'none';
+      fullText.style.display = 'inline';
+      button.textContent = 'see less';
+    } else {
+      // Show summary
+      summary.style.display = 'inline';
+      fullText.style.display = 'none';
+      button.textContent = 'see more';
+    }
+  }
 
-</body>
-</html>
+</script>
